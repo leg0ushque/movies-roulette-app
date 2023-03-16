@@ -1,1 +1,2 @@
-# reactjs_learn_program
+# movies-roulette-app
+ReactJS Mentoring Program
