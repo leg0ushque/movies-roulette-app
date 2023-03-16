@@ -5,3 +5,9 @@
   --color4: #555555;
   --color5: #ffffff;
 }
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url("../public/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+}
