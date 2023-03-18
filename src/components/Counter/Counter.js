@@ -6,6 +6,11 @@ class Counter extends Component {
     value: 0,
   };
 
+  constructor(props) {
+    super(props);
+    this.state.value = props.value;
+  }
+
   incrementCounter = () => {
     this.setState((state) => {
       return { value: +state.value + 1 };
@@ -17,11 +22,6 @@ class Counter extends Component {
       return { value: +state.value - 1 };
     });
   };
-
-  constructor(props) {
-    super(props);
-    this.state.value = props.value;
-  }
 
   render() {
     return React.createElement("div", { className: "counter" }, [
