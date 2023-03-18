@@ -1,0 +1,21 @@
+div.counter {
+    border: 3px solid black;
+    margin:5px;
+    display: block;
+    width: 150px;
+    text-align: center;
+}
+
+.button {
+  display: inline;
+  margin-right: 5px;
+  width: 50px;
+}
+
+.incButton {
+  background-color: green;
+}
+
+.decButton {
+  background-color: indianred;
+}
