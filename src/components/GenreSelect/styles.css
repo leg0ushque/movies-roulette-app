@@ -1,0 +1,36 @@
+:root{
+  --genreButton-border-thickness: 4px;
+}
+
+ul.genresList{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li.genreButton {
+  background-color: var(--color3);
+  font-family: 'Montserrat';
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color5);
+
+  float: left;
+  display: block;
+  padding: 16px;
+  border-bottom: var(--genreButton-border-thickness) solid var(--color4);
+}
+
+li.genreButton.selected{
+  border-bottom: var(--genreButton-border-thickness) solid var(--color1);
+}
+
+li.genreButton.selected:hover{
+  background-color: var(--color3);
+  border-bottom: var(--genreButton-border-thickness) solid var(--color1);
+}
+
+li.genreButton:hover {
+  background-color: var(--color4);
+}
