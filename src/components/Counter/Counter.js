@@ -8,7 +8,7 @@ class Counter extends Component {
 
   constructor(props) {
     super(props);
-    this.state.value = props.value;
+    this.state.value = props.initialValue;
   }
 
   incrementCounter = () => {

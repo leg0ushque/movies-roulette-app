@@ -20,9 +20,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>movies-roulette</h1>
-        <Counter value="321"></Counter>
+        <Counter initialValue="321"></Counter>
         <br></br>
-        <SearchForm defaultValue="" onSearch={onSearchCallback}></SearchForm>
+        <SearchForm initialValue="" onSearch={onSearchCallback}></SearchForm>
         <br></br>
         <GenreSelect
           genres={genresList()}

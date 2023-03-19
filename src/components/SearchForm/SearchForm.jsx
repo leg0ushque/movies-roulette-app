@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import "./styles.css";
 
-const defaultValue = "";
+const DEFAULT_VALUE = "";
 
 class SearchForm extends Component {
   state = {
-    defaultValue: defaultValue,
+    defaultValue: DEFAULT_VALUE,
     onSearch: (value) => {},
   };
 
   constructor(props) {
     super(props);
-    this.state.defaultValue = props.defaultValue || defaultValue;
+    this.state.defaultValue = props.initialValue || DEFAULT_VALUE;
     this.state.onSearch = props.onSearch;
   }
 
