@@ -1,7 +1,7 @@
 import "./App.css";
-import { Counter } from "./components/Counter";
-import { GenreSelect } from "./components/GenreSelect";
-import { SearchForm } from "./components/SearchForm";
+import Counter from "./components/Counter";
+import GenreSelect from "./components/GenreSelect";
+import SearchForm from "./components/SearchForm";
 
 function onSearchCallback(value) {
   console.log("onSearchCallback called with value=" + value);
