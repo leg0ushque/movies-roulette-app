@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./styles.css";
 
-const defaultSelected = "All";
+const ALL_GENRE_BUTTON = "All";
 
 class GenreSelect extends Component {
   state = {
@@ -12,9 +12,8 @@ class GenreSelect extends Component {
 
   constructor(props) {
     super(props);
-    this.state.genres = Array.from(props.genres) || new Array() < "" > 0;
-    this.state.selected = props.selected || defaultSelected;
-    console.log(this.state.selected);
+    this.state.genres = Array.from(props.genres) || [];
+    this.state.selected = props.selected || ALL_GENRE_BUTTON;
     this.state.onSelect = props.onSelect;
   }
 
@@ -23,28 +22,31 @@ class GenreSelect extends Component {
   };
 
   render() {
-    const genresButtons = this.state.genres.map((name) =>
-      this.createGenreButton(name, this.state.selected.toLowerCase() === name.toLowerCase()
+    const genresButtons = [ALL_GENRE_BUTTON, ...this.state.genres].map((name) =>
+      this.createGenreButton(
+        name,
+        this.state.selected.toLowerCase() === name.toLowerCase(),
+        name
       )
     );
 
     return (
       <>
         <ul className="genresList">
-          {this.createGenreButton("All", this.state.selected.toLowerCase() === "all")}
           {genresButtons}
         </ul>
       </>
     );
   }
 
-  createGenreButton(genreName, selected) {
+  createGenreButton(genreName, isSelected, elementKey) {
     return (
       <li
-        className={selected ? "genreButton selected" : "genreButton"}
+        className={isSelected ? "genreButton selected" : "genreButton"}
+        key={elementKey}
         genre={genreName}
         onClick={(e) =>
-          !selected ? this.select(e.target.attributes.genre.value) : {}
+          !isSelected ? this.select(e.target.attributes.genre.value) : {}
         }
       >
         {genreName}
