@@ -1,24 +1,13 @@
 import React, { Component } from "react";
 import "./styles.css";
 
-const ALL_GENRE_BUTTON = "All";
-
 class GenreSelect extends Component {
-  state = {
-    genres: [],
-    selected: "",
-    onSelect: (genre) => {},
-  };
-
   constructor(props) {
     super(props);
-    this.state.genres = Array.from(props.genres) || [];
-    this.state.selected = props.selected || ALL_GENRE_BUTTON;
-    this.state.onSelect = props.onSelect;
   }
 
   select(genreName) {
-    this.state.onSelect(genreName);
+    this.props.onSelect(genreName);
   };
 
   createGenreButton(genreName, isSelected, elementKey) {
@@ -34,10 +23,10 @@ class GenreSelect extends Component {
   }
 
   render() {
-    const genresButtons = [ALL_GENRE_BUTTON, ...this.state.genres].map((name) =>
+    const genresButtons = this.props.genres.map((name) =>
       this.createGenreButton(
         name,
-        this.state.selected.toLowerCase() === name.toLowerCase(),
+        this.props.selected.toLowerCase() === name.toLowerCase(),
         name
       )
     );

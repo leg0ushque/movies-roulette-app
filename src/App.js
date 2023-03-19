@@ -13,7 +13,7 @@ function onSelectGenreCallback(genre) {
 }
 
 function genresList() {
-  return ["Action", "Comedy"];
+  return ["All", "Action", "Comedy"];
 }
 
 class App extends Component {
@@ -23,17 +23,17 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state.selectedGenre = props.selectedGenre || '';
+    this.state.selectedGenre = props.selectedGenre || 'All';
     this.updateGenre = this.updateGenre.bind(this)
   }
 
   updateGenre(genre) {
-    let newState = this.state;
-    newState = {
-      selectedGenre: genre
-    }
-    this.setState(newState);
-    alert(this.selectedGenre);
+    this.setState(() => {
+      return {
+        selectedGenre: genre
+      }
+    });
+    onSelectGenreCallback(genre);
   }
 
   render() {
