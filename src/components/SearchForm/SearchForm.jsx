@@ -43,6 +43,7 @@ class SearchForm extends Component {
           placeholder={INPUT_PLACEHOLDER_TEXT}
           value={this.state.value}
           onChange={this.handleChange}
+          required
         ></input>
         <input type="submit" value={INPUT_SUBMIT_TEXT} />
       </form>
