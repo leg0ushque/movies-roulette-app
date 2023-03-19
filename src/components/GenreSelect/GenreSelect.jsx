@@ -32,9 +32,7 @@ class GenreSelect extends Component {
 
     return (
       <>
-        <ul className="genresList">
-          {genresButtons}
-        </ul>
+        <ul className="genresList">{genresButtons}</ul>
       </>
     );
   }
@@ -45,9 +43,7 @@ class GenreSelect extends Component {
         className={isSelected ? "genreButton selected" : "genreButton"}
         key={elementKey}
         genre={genreName}
-        onClick={(e) =>
-          !isSelected ? this.select(e.target.attributes.genre.value) : {}
-        }
+        onClick={() => (!isSelected ? this.select(genreName) : {})}
       >
         {genreName}
       </li>
