@@ -22,20 +22,18 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <>
-        <div className="search-form">
-          <input
-            type="text"
-            placeholder="What do you want to watch?"
-            id="searchInput"
-            className="search-input"
-            defaultValue={this.state.defaultValue}
-          ></input>
-          <button type="button" className="search-button" onClick={this.search}>
-            SEARCH
-          </button>
-        </div>
-      </>
+      <div className="search-form">
+        <input
+          type="text"
+          placeholder="What do you want to watch?"
+          id="searchInput"
+          className="search-input"
+          defaultValue={this.state.defaultValue}
+        ></input>
+        <button type="button" className="search-button" onClick={this.search}>
+          SEARCH
+        </button>
+      </div>
     );
   }
 }

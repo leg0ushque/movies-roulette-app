@@ -44,9 +44,7 @@ class GenreSelect extends Component {
     );
 
     return (
-      <>
         <ul className="genresList">{genresButtons}</ul>
-      </>
     );
   }
 }
