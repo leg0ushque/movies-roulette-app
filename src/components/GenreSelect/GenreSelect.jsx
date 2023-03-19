@@ -20,6 +20,19 @@ class GenreSelect extends Component {
   select = (genreName) => {
     this.state.onSelect(genreName);
   };
+  
+  createGenreButton(genreName, isSelected, elementKey) {
+    return (
+      <li
+        className={isSelected ? "genreButton selected" : "genreButton"}
+        key={elementKey}
+        genre={genreName}
+        onClick={() => (!isSelected ? this.select(genreName) : {})}
+      >
+        {genreName}
+      </li>
+    );
+  }
 
   render() {
     const genresButtons = [ALL_GENRE_BUTTON, ...this.state.genres].map((name) =>
@@ -34,19 +47,6 @@ class GenreSelect extends Component {
       <>
         <ul className="genresList">{genresButtons}</ul>
       </>
-    );
-  }
-
-  createGenreButton(genreName, isSelected, elementKey) {
-    return (
-      <li
-        className={isSelected ? "genreButton selected" : "genreButton"}
-        key={elementKey}
-        genre={genreName}
-        onClick={() => (!isSelected ? this.select(genreName) : {})}
-      >
-        {genreName}
-      </li>
     );
   }
 }
