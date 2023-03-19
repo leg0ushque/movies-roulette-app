@@ -9,7 +9,7 @@ ul.genresList{
   overflow: hidden;
 }
 
-li.genreButton {
+ul.genresList li {
   background-color: var(--color3);
   font-family: 'Montserrat';
   text-align: center;
@@ -22,15 +22,15 @@ li.genreButton {
   border-bottom: var(--genreButton-border-thickness) solid var(--color4);
 }
 
-li.genreButton.selected{
+ul.genresList li.selected{
   border-bottom: var(--genreButton-border-thickness) solid var(--color1);
 }
 
-li.genreButton.selected:hover{
+ul.genresList li.selected:hover{
   background-color: var(--color3);
   border-bottom: var(--genreButton-border-thickness) solid var(--color1);
 }
 
-li.genreButton:hover {
+ul.genresList li:hover {
   background-color: var(--color4);
 }

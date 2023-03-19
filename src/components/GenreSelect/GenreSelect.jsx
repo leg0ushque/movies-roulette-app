@@ -17,16 +17,15 @@ class GenreSelect extends Component {
     this.state.onSelect = props.onSelect;
   }
 
-  select = (genreName) => {
+  select(genreName) {
     this.state.onSelect(genreName);
   };
-  
+
   createGenreButton(genreName, isSelected, elementKey) {
     return (
       <li
-        className={isSelected ? "genreButton selected" : "genreButton"}
         key={elementKey}
-        genre={genreName}
+        className={isSelected ? "selected" : ""}
         onClick={() => (!isSelected ? this.select(genreName) : {})}
       >
         {genreName}
@@ -43,9 +42,7 @@ class GenreSelect extends Component {
       )
     );
 
-    return (
-        <ul className="genresList">{genresButtons}</ul>
-    );
+    return <ul className="genresList">{genresButtons}</ul>;
   }
 }
 
