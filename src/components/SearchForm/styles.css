@@ -1,10 +1,10 @@
-div.search-form {
+form.search {
   font-family: 'Montserrat';
   width: 75%;
   height: 4vw;
 }
 
-input.search-input {
+form.search input {
   display: inline;
   font-family: inherit;
   font-size: large;
@@ -21,7 +21,7 @@ input.search-input {
   border-radius: 4px;
 }
 
-input.search-input::placeholder {
+form.search input::placeholder {
   font-weight: 400;
   font-size: 1.5vw;
   padding-left: 1vw;
@@ -31,7 +31,7 @@ input.search-input::placeholder {
   color: var(--color5);
 }
 
-button.search-button {
+form.search input[type="submit"] {
   display: inline;
   height: inherit;
   width: 20%;
