@@ -1,0 +1,36 @@
+:root{
+  --genreButton-border-thickness: 4px;
+}
+
+ul.genresList{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+ul.genresList li {
+  background-color: var(--color3);
+  font-family: 'Montserrat';
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color5);
+
+  float: left;
+  display: block;
+  padding: 16px;
+  border-bottom: var(--genreButton-border-thickness) solid var(--color4);
+}
+
+ul.genresList li.selected{
+  border-bottom: var(--genreButton-border-thickness) solid var(--color1);
+}
+
+ul.genresList li.selected:hover{
+  background-color: var(--color3);
+  border-bottom: var(--genreButton-border-thickness) solid var(--color1);
+}
+
+ul.genresList li:hover {
+  background-color: var(--color4);
+}
