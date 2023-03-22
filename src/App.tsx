@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
 import './App.css';
+
+import React, { useState } from 'react';
+
 import Counter from './components/Counter';
 import GenreSelect from './components/GenreSelect';
 import SearchForm from './components/SearchForm';
+
 import type Genre from './shared/types/IGenre';
 
 const DEFAULT_SELECTED_GENRE_ID: string = '0';

@@ -1,6 +1,8 @@
-import React from 'react';
-import type Genre from '../../shared/types/IGenre';
 import './styles.css';
+
+import React from 'react';
+
+import type Genre from '../../shared/types/IGenre';
 
 export interface IGenreSelectProps {
   genres: Genre[]

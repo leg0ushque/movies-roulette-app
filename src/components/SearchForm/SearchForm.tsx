@@ -1,5 +1,6 @@
-import React, { type ChangeEvent, type FormEvent } from 'react';
 import './styles.css';
+
+import React, { type ChangeEvent, type FormEvent } from 'react';
 
 const DEFAULT_VALUE = '';
 const INPUT_PLACEHOLDER_TEXT = 'What do you want to watch?';
