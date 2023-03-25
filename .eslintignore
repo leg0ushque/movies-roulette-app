@@ -5,3 +5,4 @@ instrumented/
 .github/
 .nyc_output/
 coverage/
+wdio.conf.ts

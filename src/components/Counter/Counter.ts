@@ -47,7 +47,7 @@ class Counter extends Component<ICounterProps, ICounterState> {
           'button',
           {
             key: 'decrementor',
-            className: 'button incButton',
+            className: 'incButton',
             type: 'button',
             onClick: this.incrementCounter
           },
@@ -57,7 +57,7 @@ class Counter extends Component<ICounterProps, ICounterState> {
           'button',
           {
             key: 'incrementor',
-            className: 'button decButton',
+            className: 'decButton',
             type: 'button',
             onClick: this.decrementCounter
           },
