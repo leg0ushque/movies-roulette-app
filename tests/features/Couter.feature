@@ -18,3 +18,13 @@ Feature: The Counter component in SPA
     Examples:
       | value |
       | 322   |
+
+  Scenario Outline: As a user, I can decrement Counter value
+
+    Given I am on the main page
+    When I click decrement button
+    Then I should see Counter with value equal <value>
+
+    Examples:
+      | value |
+      | 320   |
