@@ -32,17 +32,21 @@ class Counter extends Component<ICounterProps, ICounterState> {
     });
   };
 
-  render (): React.DetailedReactHTMLElement<{ className: string }, HTMLElement> {
-    return React.createElement('div', { className: 'counter' }, [
+  render (): React.DetailedReactHTMLElement<{ key: string, className: string }, HTMLElement> {
+    return React.createElement('div', { key: 'counterWrapper', className: 'counter' }, [
       React.createElement(
         'span',
-        { className: 'counterValue' },
+        {
+          key: 'valueSpan',
+          className: 'counterValue'
+        },
         this.state.value.toString()
       ),
       React.createElement('div', {}, [
         React.createElement(
           'button',
           {
+            key: 'decrementor',
             className: 'button incButton',
             type: 'button',
             onClick: this.incrementCounter
@@ -52,6 +56,7 @@ class Counter extends Component<ICounterProps, ICounterState> {
         React.createElement(
           'button',
           {
+            key: 'incrementor',
             className: 'button decButton',
             type: 'button',
             onClick: this.decrementCounter
