@@ -13,7 +13,7 @@ When(/^I click decrement button$/, async () => {
   await $('button.decButton').click();
 });
 
-Then(/^I should see Counter with value equal (.*)$/, async (value: number) => {
+Then(/^I should see Counter with value equal (.*)$/, async (value) => {
   await expect($('span.counterValue')).toBeExisting();
   await expect($('span.counterValue')).toHaveTextContaining(value);
 });

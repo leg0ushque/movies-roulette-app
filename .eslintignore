@@ -6,3 +6,4 @@ instrumented/
 .nyc_output/
 coverage/
 wdio.conf.ts
+tests/**/*.js

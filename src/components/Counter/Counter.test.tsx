@@ -13,7 +13,7 @@ describe('Counter', () => {
     render(<Counter initialValue={testInitialValue} />)
   });
 
-  test('has inivial value rendered', () => {
+  test('has initial value rendered', () => {
     const counterValueElement = screen.getByText(testInitialValue);
 
     expect(counterValueElement).toHaveTextContent(testInitialValue.toString());
