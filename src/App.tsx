@@ -8,8 +8,6 @@ import SearchForm from './components/SearchForm';
 
 import type Genre from './shared/types/IGenre';
 
-const DEFAULT_SELECTED_GENRE_ID: string = '0';
-
 function onSearchCallback (value: string): void {
   console.log('onSearchCallback called with value=' + value);
 }
@@ -20,10 +18,6 @@ function onSelectGenreCallback (genreId: string): void {
 
 function genresList (): Genre[] {
   return [
-    {
-      id: DEFAULT_SELECTED_GENRE_ID,
-      name: 'All'
-    },
     {
       id: '1',
       name: 'Action'
@@ -39,8 +33,7 @@ interface AppProps {
 }
 
 const App: React.FC<AppProps> = (props) => {
-  const [selectedGenreId, setSelectedGenreId] = useState(
-    props.selectedGenreId.length > 0 ? props.selectedGenreId : DEFAULT_SELECTED_GENRE_ID);
+  const [selectedGenreId, setSelectedGenreId] = useState(props.selectedGenreId);
 
   return (
     <div className="App">

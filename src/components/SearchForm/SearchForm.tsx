@@ -2,9 +2,9 @@ import './styles.css';
 
 import React, { type ChangeEvent, type FormEvent } from 'react';
 
-const DEFAULT_VALUE = '';
-const INPUT_PLACEHOLDER_TEXT = 'What do you want to watch?';
-const INPUT_SUBMIT_TEXT = 'SEARCH';
+export const DEFAULT_VALUE = '';
+export const INPUT_PLACEHOLDER_TEXT = 'What do you want to watch?';
+export const INPUT_SUBMIT_TEXT = 'SEARCH';
 
 interface ISearchFormProps {
   initialValue: string
@@ -22,7 +22,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     onSearch: (value: string) => {}
   };
 
-  defaultProps = {
+  static defaultProps = {
     value: DEFAULT_VALUE
   }
 
