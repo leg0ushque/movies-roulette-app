@@ -23,8 +23,8 @@ class GenreSelect extends React.Component<IGenreSelectProps> {
     return (
             <li
                 key={genre.id}
-                className={isSelected ? 'selected' : ''}
-                onClick={() => { this.select(genre.id); }}
+                className={`${isSelected ? 'selected' : ''} prevent-select`}
+                onClick={isSelected ? () => { } : () => { this.select(genre.id) } }
             >
                 {genre.name}
             </li>
