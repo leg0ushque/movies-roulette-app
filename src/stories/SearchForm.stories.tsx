@@ -2,18 +2,23 @@ import '../components/SearchForm/styles.css';
 
 import React from 'react';
 
-import { ComponentMeta } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import SearchForm from '../components/SearchForm';
+import SearchForm, { type ISearchFormProps } from '../components/SearchForm';
 
-const CounterStory: ComponentMeta<typeof SearchForm> = {
-    title: "Components/SearchForm",
-    component: SearchForm,
+const SearchFormStory: ComponentMeta<typeof SearchForm> = {
+  title: 'Components/SearchForm',
+  component: SearchForm
 }
-export default CounterStory;
+export default SearchFormStory;
 
-export const InitialNumber = () => 
-    <SearchForm
-        initialValue=''
-        onSearch={()=>{}}
-        />
+const Template: ComponentStory<typeof SearchForm> = (props: ISearchFormProps) => <SearchForm {...props} />;
+
+export const Default = {
+  ...Template.bind({}),
+  args: {
+    initialValue: '',
+    onSearch: action('Search initiated in Search form with value')
+  }
+};
