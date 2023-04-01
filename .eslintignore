@@ -7,5 +7,3 @@ instrumented/
 coverage/
 wdio.conf.ts
 tests/**/*.js
-!.storybook
-stories/
