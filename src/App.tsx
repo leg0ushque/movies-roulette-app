@@ -28,11 +28,11 @@ function genresList (): Genre[] {
     }]
 }
 
-interface AppProps {
+interface IAppProps {
   selectedGenreId: string
 }
 
-const App: React.FC<AppProps> = (props) => {
+const App: React.FC<IAppProps> = (props) => {
   const [selectedGenreId, setSelectedGenreId] = useState(props.selectedGenreId);
 
   return (

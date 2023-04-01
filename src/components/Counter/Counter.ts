@@ -2,7 +2,7 @@ import './styles.css';
 
 import React, { Component } from 'react';
 
-interface ICounterProps {
+export interface ICounterProps {
   initialValue: number
 }
 

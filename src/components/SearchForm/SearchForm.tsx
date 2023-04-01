@@ -6,7 +6,7 @@ export const DEFAULT_VALUE = '';
 export const INPUT_PLACEHOLDER_TEXT = 'What do you want to watch?';
 export const INPUT_SUBMIT_TEXT = 'SEARCH';
 
-interface ISearchFormProps {
+export interface ISearchFormProps {
   initialValue: string
   onSearch: (value: string) => void
 }

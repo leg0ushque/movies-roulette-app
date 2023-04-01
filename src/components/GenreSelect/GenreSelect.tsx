@@ -4,7 +4,7 @@ import React from 'react';
 
 import type Genre from '../../shared/types/IGenre';
 
-const DEFAULT_SELECTED_GENRE_ID: string = '';
+const DEFAULT_SELECTED_GENRE_ID: string = '0';
 
 export interface IGenreSelectProps {
   genres: Genre[]
@@ -39,7 +39,9 @@ class GenreSelect extends React.Component<IGenreSelectProps> {
 
     const genresButtons = [allGenre, ...this.props.genres].map((genre: Genre) =>
       this.createGenreButton(genre,
-        this.props.selectedGenreId === genre.id));
+        (this.props.selectedGenreId.length > 0 && this.props.genres.length > 0
+          ? this.props.selectedGenreId
+          : DEFAULT_SELECTED_GENRE_ID) === genre.id));
 
     return <ul className="genresList" role="genresList">{genresButtons}</ul>;
   }
