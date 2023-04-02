@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import ContextMenu from '../components/ContextMenu';
 
+import type IContextMenuState from '../shared/types/IContextMenuState';
+
 import { useState } from 'react';
 import type IContextMenuItem from '../shared/types/IContextMenuItem';
 export interface IContextMenuWrapperProps {
@@ -9,42 +11,47 @@ export interface IContextMenuWrapperProps {
 }
 
 const ContextMenuWrapper: React.FC<IContextMenuWrapperProps> = (props) => {
-  const [contextItemId, setContextItemId] = useState('')
-  const [contextMenuPosX, setContextMenuPosX] = useState(0)
-  const [contextMenuPosY, setContextMenuPosY] = useState(0)
-  const [contextMenuIsVisible, setContextMenuVisibility] = useState(false)
+  const [contextMenuState, setContextMenuState] = useState<IContextMenuState>({ id: '', posX: 0, posY: 0, isVisible: false });
 
-  const showContextMenu = (event: React.MouseEvent<HTMLLIElement>): void => {
+  const showContextMenu = (event: React.MouseEvent<HTMLLIElement>, id: string): void => {
     event.preventDefault();
+    setContextMenuState(() => {
+      return {
+        id,
+        posX: event.pageX,
+        posY: event.pageY,
+        isVisible: true
+      }
+    })
+  }
 
-    setContextMenuPosX(event.pageX)
-    setContextMenuPosY(event.pageY)
-    setContextMenuVisibility(true)
+  const hideContextMenu = (): void => {
+    setContextMenuState((state) => {
+      return {
+        ...state,
+        isVisible: false
+      }
+    })
   }
 
   return (
     <>
       <ContextMenu
-        id={contextItemId}
-        posX={contextMenuPosX}
-        posY={contextMenuPosY}
-        isVisible={contextMenuIsVisible}
-        changeVisibility={setContextMenuVisibility}
+        menuState={contextMenuState}
+        hideMenu={hideContextMenu}
         items={props.items}
         />
         <span>Here is the list with context menu. Right click to test!</span>
         <ul>
           <li onContextMenu={(e) => {
-            setContextItemId('item-id');
-            showContextMenu(e);
+            showContextMenu(e, 'item-id');
           }}>
             First item of the list
           </li>
         </ul>
         <ul>
           <li onContextMenu={(e) => {
-            setContextItemId('another-item-id');
-            showContextMenu(e);
+            showContextMenu(e, 'another-item-id');
           }}>
             Second item of the list
           </li>

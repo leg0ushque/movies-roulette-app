@@ -2,26 +2,24 @@ import './styles.css';
 
 import * as React from 'react';
 
-import type IContextMenuItem from '../../shared/types/IContextMenuItem';
+import type IContextMenuState from '../../shared/types/IContextMenuState';
 
+import type IContextMenuItem from '../../shared/types/IContextMenuItem';
 export interface IContextMenuProps {
-  id: string
-  posX: number
-  posY: number
-  isVisible: boolean
+  menuState: IContextMenuState
   items: IContextMenuItem[]
-  changeVisibility: (state: boolean) => void
+  hideMenu: () => void
 }
 
 const ContextMenu: React.FC<IContextMenuProps> = (props) => {
-  if (!props.isVisible) {
+  if (!props.menuState.isVisible) {
     return null;
   }
 
   const items = props.items.map((item) =>
     <li key={item.name} onClick={() => {
-      props.changeVisibility(false);
-      item.clickHandler(props.id)
+      props.hideMenu();
+      item.clickHandler(props.menuState.id)
     }}>
       {item.name}
     </li>
@@ -30,10 +28,10 @@ const ContextMenu: React.FC<IContextMenuProps> = (props) => {
   return (
     <ul
       className='context-menu prevent-select'
-      style={{ top: props.posY, left: props.posX }}
+      style={{ top: props.menuState.posY, left: props.menuState.posX }}
     >
       <div key='close'>
-        <span onClick={() => { props.changeVisibility(false) }}>
+        <span onClick={() => { props.hideMenu() }}>
           ✖
         </span>
       </div>
