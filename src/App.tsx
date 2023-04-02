@@ -6,7 +6,7 @@ import Counter from './components/Counter';
 import GenreSelect from './components/GenreSelect';
 import SearchForm from './components/SearchForm';
 
-import type Genre from './shared/types/IGenre';
+import type IGenre from './shared/types/IGenre';
 
 function onSearchCallback (value: string): void {
   console.log('onSearchCallback called with value=' + value);
@@ -16,7 +16,7 @@ function onSelectGenreCallback (genreId: string): void {
   console.log('onSelectGenre callback called with genreId=' + genreId);
 }
 
-function genresList (): Genre[] {
+function genresList (): IGenre[] {
   return [
     {
       id: '1',

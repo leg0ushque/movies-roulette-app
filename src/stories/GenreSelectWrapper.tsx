@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 
 import GenreSelect from '../components/GenreSelect';
 
-import type Genre from '../shared/types/IGenre';
+import type IGenre from '../shared/types/IGenre';
 
 export interface IGenreSelectWrapperProps {
-  genres: Genre[]
+  genres: IGenre[]
   selectedGenreId: string
   onSelect: (genreId: string) => void
 }

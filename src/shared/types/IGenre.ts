@@ -1,6 +1,6 @@
-interface Genre {
+interface IGenre {
   id: string
   name: string
 }
 
-export default Genre
+export default IGenre
