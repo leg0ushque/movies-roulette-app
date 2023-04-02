@@ -1,0 +1,76 @@
+.movieDetails{
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+    margin: 0;
+    padding: 0px 10px;
+}
+
+.movieDetails:first-child {
+    padding: 0;
+}
+
+.movieDetails .image {
+    margin: 0 5% 0 0;
+}
+
+.movieDetails .image img {
+    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.movieDetails .info {
+    font-family: 'Montserrat';
+    color: var(--color5);
+    padding: 0;
+}
+
+.movieDetails .info .title{
+    display: inline-block;
+    font-weight: 200;
+    font-size: xx-large;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.movieDetails .info .rating{
+    display: inline-block;
+    font-weight: 50;
+    font-size: large;
+    letter-spacing: 1px;
+    vertical-align: middle;
+
+    padding: 12px;
+    border: 1px solid var(--color5);
+    border-radius: 100%;
+    margin-top: -3%;
+    margin-left: 5%;
+}
+
+.movieDetails .info .genresList{
+    opacity: 50%;
+    font-size: small;
+    margin-bottom: 3%;
+}
+
+.movieDetails .info .releaseYear{
+    display: inline-block;
+    color: var(--color1);
+    font-size: larger;
+    margin-right: 50px;
+    margin-bottom: 3%;
+}
+
+.movieDetails .info .duration{
+    display: inline-block;
+    color: var(--color1);
+    font-size: larger;
+}
+
+.movieDetails .info .description{
+    display: inline-block;
+    color: var(--color5);
+    opacity: 50%;
+    font-size: large;
+}
