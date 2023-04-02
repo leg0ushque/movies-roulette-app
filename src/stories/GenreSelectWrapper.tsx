@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 
-import GenreSelect from '../components/GenreSelect/';
+import GenreSelect from '../components/GenreSelect';
 
 import type Genre from '../shared/types/IGenre';
 
