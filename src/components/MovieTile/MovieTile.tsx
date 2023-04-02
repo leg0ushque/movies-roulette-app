@@ -23,7 +23,7 @@ const MovieTile: React.FC<IMovieTileProps> = (props) => {
   const [movieInfo] = useState<IMovie>(movieTilePropsValidator(props));
 
   return (
-    <Col lg={4} className='movieTile' onContextMenu={(e) => {
+    <Col lg={4} className='movieTile' onClick={() => { props.onClick(props.id) }} onContextMenu={(e) => {
       props.onContextMenu(e, props.id);
     }}>
       <Row>

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
 import { GENRES_LIST } from './constants';
@@ -27,6 +28,7 @@ export const DefaultSingle = {
     imageUrl: 'https://m.media-amazon.com/images/I/715QHVj8vaL._SL1302_.jpg',
     title: 'John Wick 4',
     releaseYear: '2023',
-    genresList: GENRES_LIST.map(item => item.name)
+    genresList: GENRES_LIST.map(item => item.name),
+    onClick: action('Movie tile clicked!')
   }
 };
