@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css';
 
 import React, { useState } from 'react';
 import Col from 'react-bootstrap/Col';
@@ -15,13 +16,16 @@ export interface IMovieTileProps extends IMovie {
   releaseYear: string
   genresList: string[]
   onClick: (genreId: string) => void
+  onContextMenu: (event: React.MouseEvent, id: string) => void
 }
 
 const MovieTile: React.FC<IMovieTileProps> = (props) => {
   const [movieInfo] = useState<IMovie>(movieTilePropsValidator(props));
 
   return (
-    <Col md={4} className='movieTile'>
+    <Col lg={4} className='movieTile' onContextMenu={(e) => {
+      props.onContextMenu(e, props.id);
+    }}>
       <Row>
         <Col className='image'><img src={movieInfo.imageUrl}/></Col>
       </Row>

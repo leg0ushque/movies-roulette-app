@@ -1,38 +1,17 @@
-import '../components/MovieTile/styles.css';
-
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import styled from 'styled-components';
 
-import { type Args, type PartialStoryFn } from '@storybook/csf';
-import { type ComponentMeta, type ComponentStory, type ReactFramework } from '@storybook/react';
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import MovieTile, { type IMovieTileProps } from '../components/MovieTile';
 import { GENRES_LIST } from './constants';
+import MovieTileWrapper, { type IMovieTileWrapperProps } from './MovieTileWrapper';
 
-const StyledDiv = styled.div`
-  background: var(--color3)
-  `;
-
-const MovieTileStory: ComponentMeta<typeof MovieTile> = {
+const MovieTileWrapperStory: ComponentMeta<typeof MovieTileWrapper> = {
   title: 'Components/MovieTile',
-  component: MovieTile,
-  decorators: [
-    (Story: PartialStoryFn<ReactFramework, Args>) => (
-      <StyledDiv className='decorator'>
-        <Container>
-          <Row>
-            <Story/>
-          </Row>
-        </Container>
-      </StyledDiv>
-    )
-  ]
+  component: MovieTileWrapper
 }
-export default MovieTileStory;
+export default MovieTileWrapperStory;
 
-const Template: ComponentStory<typeof MovieTile> = (props: IMovieTileProps) => <MovieTile {...props} />;
+const Template: ComponentStory<typeof MovieTileWrapper> = (props: IMovieTileWrapperProps) => <MovieTileWrapper {...props} />;
 
 export const NoDataProvided = {
   ...Template.bind({}),
@@ -44,6 +23,7 @@ export const NoDataProvided = {
 export const DefaultSingle = {
   ...Template.bind({}),
   args: {
+    id: '3076',
     imageUrl: 'https://m.media-amazon.com/images/I/715QHVj8vaL._SL1302_.jpg',
     title: 'John Wick 4',
     releaseYear: '2023',

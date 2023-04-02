@@ -1,8 +1,9 @@
 .context-menu {
     font-family: 'Montserrat';
     font-size: 110%;
-    background: var(--color3);
+    background: var(--color2);
     color: var(--color5);
+    z-index: 100;
 
     position: absolute;
     width: 12rem;
