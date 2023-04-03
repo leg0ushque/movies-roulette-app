@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --coverage",
+    "test": "jest --coverage --collectCoverageFrom='src/components/**/*.tsx'",
     "eject": "react-scripts eject",
     "wdio": "wdio run ./wdio.conf.ts",
     "storybook": "start-storybook -p 6006 -s public",
