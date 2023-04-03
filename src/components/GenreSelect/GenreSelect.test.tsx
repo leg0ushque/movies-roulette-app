@@ -69,9 +69,9 @@ describe('GenreSelect', () => {
       selectedGenreId={testGenres[itemToSelectIndex].id}
       onSelect={onSelectCallbackMock}
     />)
-    const ul = getByRole('genresList');
+    const ul = getByRole('genresList')
 
-    fireEvent.click(ul.children[itemToSelectIndex + 1]);
+    fireEvent.click(ul.children[itemToSelectIndex + 1])
 
     expect(onSelectCallbackMock).toBeCalledTimes(1)
     expect(onSelectCallbackMock).toBeCalledWith(testGenres[itemToSelectIndex].id);
