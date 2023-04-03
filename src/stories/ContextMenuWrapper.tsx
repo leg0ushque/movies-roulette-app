@@ -6,6 +6,7 @@ import type IContextMenuState from '../shared/types/IContextMenuState';
 
 import { useState } from 'react';
 import type IContextMenuItem from '../shared/types/IContextMenuItem';
+
 export interface IContextMenuWrapperProps {
   items: IContextMenuItem[]
 }

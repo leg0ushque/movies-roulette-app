@@ -5,6 +5,7 @@ import * as React from 'react';
 import type IContextMenuState from '../../shared/types/IContextMenuState';
 
 import type IContextMenuItem from '../../shared/types/IContextMenuItem';
+
 export interface IContextMenuProps {
   menuState: IContextMenuState
   items: IContextMenuItem[]
@@ -27,11 +28,11 @@ const ContextMenu: React.FC<IContextMenuProps> = (props) => {
 
   return (
     <ul
-      className='context-menu prevent-select'
+      className='context-menu prevent-select' role='context-menu'
       style={{ top: props.menuState.posY, left: props.menuState.posX }}
     >
       <div key='close'>
-        <span onClick={() => { props.hideMenu() }}>
+        <span onClick={() => { props.hideMenu() }} role='context-menu-close-button'>
           ✖
         </span>
       </div>

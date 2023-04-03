@@ -1,6 +1,6 @@
 import './App.css';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Counter from './components/Counter';
 import GenreSelect from './components/GenreSelect';
@@ -34,6 +34,10 @@ interface IAppProps {
 
 const App: React.FC<IAppProps> = (props) => {
   const [selectedGenreId, setSelectedGenreId] = useState(props.selectedGenreId);
+
+  useEffect(() => {
+    onSelectGenreCallback(selectedGenreId);
+  }, [selectedGenreId])
 
   return (
     <div className="App">

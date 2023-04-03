@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface ISortWay {
   id: string
@@ -14,15 +14,22 @@ export interface ISortControlProps {
 const SortControl: React.FunctionComponent<ISortControlProps> = (props) => {
   const [selectedSortId, setSelectedSortId] = useState(props.selectedSortId)
 
+  useEffect(() => {
+    props.onChange(selectedSortId);
+  }, [selectedSortId])
+
   const handleDropdownChange = (newValue: string): void => {
     setSelectedSortId(newValue);
-    props.onChange(newValue);
   }
 
   const dropdownItems = props.sortWays.map((item) => (
-    (item.id === selectedSortId)
-      ? <li className='selected' key={item.name}>{item.name}</li>
-      : <li key={item.name} onClick={() => { handleDropdownChange(item.id); }}>{item.name}</li>
+    <li
+      key={item.name}
+      className={item.id === selectedSortId ? 'selected' : ''}
+      onClick={() => { handleDropdownChange(item.id); }}
+    >
+    {item.name}
+    </li>
   ));
 
   return (
@@ -33,7 +40,7 @@ const SortControl: React.FunctionComponent<ISortControlProps> = (props) => {
           {props.sortWays.find((item) => item.id === selectedSortId)?.name }
           &nbsp;<span className='dropdown-triangle'>&#9660;</span>
         </div>
-        <ul className="dropdown-content">
+        <ul className="dropdown-content" role="sortList">
           {dropdownItems}
         </ul>
       </div>

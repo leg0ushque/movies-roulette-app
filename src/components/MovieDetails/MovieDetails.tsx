@@ -20,15 +20,15 @@ const MovieDetails: React.FC<IMovieDetailsProps> = (props) => {
     <Container className='movieDetails'>
       <Row>
         <Col md={4} className='image'>
-          <img src={props.imageUrl}/>
+          <img src={props.imageUrl} role='image'/>
         </Col>
         <Col md={7} className='info'>
-          <div className='title'>{props.title}</div>
-          <div className='rating prevent-select'>{props.rating}</div>
-          <div className='genresList'>{props.genresList.join(', ')}</div>
-          <div className='releaseYear'>{props.releaseYear}</div>
-          <div className='duration'>{props.duration}</div>
-          <div className='description'>{props.description}</div>
+          <div className='title' role='title'>{props.title}</div>
+          <div className='rating prevent-select' role='rating'>{props.rating}</div>
+          <div className='genresList' role='genresList'>{props.genresList.join(', ')}</div>
+          <div className='releaseYear' role='releaseYear'>{props.releaseYear}</div>
+          <div className='duration' role='duration'>{props.duration}</div>
+          <div className='description' role='description'>{props.description}</div>
         </Col>
       </Row>
     </Container>
