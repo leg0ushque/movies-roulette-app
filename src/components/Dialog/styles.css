@@ -1,0 +1,75 @@
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.dialog {
+    z-index: 101;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    
+    width: 81.3%;
+    padding: 0 0 15px 0;
+
+    background-color: var(--color3);
+    font-family: 'Montserrat';
+    color: var(--color5);
+
+    transform: translate(-50%, -50%);
+}
+
+.dialog.notification {
+    width: 50.17%;
+    text-align: center;
+}
+
+.dialog-header {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.dialog-logo {
+    padding: 0 0 0 0;
+    margin: 0 0 15px 0;
+
+    width: 50px;
+    border-radius: 100%;
+    border: 0;
+
+    background-color: var(--color1);
+    font-family: 'Montserrat';
+    color: var(--color5);
+    font-size: xx-large;
+    text-align: center;
+}
+
+
+.dialog-title {
+    text-transform: uppercase;
+}
+
+.dialog-close-button {
+    float: right;
+    border: 0;
+    background-color: var(--color3);
+    color: var(--color5);
+    font-size: x-large;
+}
+
+.dialog-body {
+    padding: 0 20px;
+}
+
+.dialog-footer {
+    padding: 10px;
+}
+
+.dialog-button {
+    margin: 5px;
+}
