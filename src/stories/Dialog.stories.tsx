@@ -40,8 +40,8 @@ const content: JSX.Element = (
 export const Default = {
   ...Template.bind({}),
   args: {
-    title: (<h2>Dialog title</h2>),
-    body: (
+    title: 'Dialog title',
+    children: (
       <div>
         {content}
       </div>
@@ -56,7 +56,7 @@ export const DefaultWithLogo = {
   ...Template.bind({}),
   args: {
     title: (<h2>Dialog title</h2>),
-    body: (
+    children: (
       <div>
         {content}
       </div>
@@ -72,8 +72,8 @@ export const DefaultWithLogo = {
 export const DefaultNotificationWithLogo = {
   ...Template.bind({}),
   args: {
-    title: (<h2>Congratulations!</h2>),
-    body: (
+    title: 'Congratulations!',
+    children: (
       <div>
         <p>The movie has been added to database successfully</p>
       </div>

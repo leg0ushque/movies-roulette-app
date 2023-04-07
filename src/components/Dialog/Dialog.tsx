@@ -3,14 +3,13 @@ import './styles.css';
 import React from 'react';
 
 export interface IDialogProps {
-  logo: JSX.Element
+  logo: string
   title: JSX.Element
-  body: JSX.Element
   isNotification: boolean
   onClose: () => void
 }
 
-const logo = (content: JSX.Element | null): JSX.Element | null => {
+const logo = (content: string | null): JSX.Element | null => {
   if (content !== null) {
     return (
       <div className="dialog-logo">
@@ -22,21 +21,21 @@ const logo = (content: JSX.Element | null): JSX.Element | null => {
   }
 }
 
-const Dialog: React.FC<IDialogProps> = (props) => {
+const Dialog: React.FC<React.PropsWithChildren<IDialogProps>> = (props) => {
   return (
     <div>
         <div className="dialog-overlay" />
         <div className={'dialog' + (props.isNotification ? ' notification ' : '')}>
-            <div className="dialog-header">
-                <button className="dialog-close-button" onClick={props.onClose}>&#10005;</button>
+          <div className="dialog-header">
+              <button className="dialog-close-button" onClick={props.onClose}>&#10005;</button>
+          </div>
+          {logo(props.logo)}
+          <div className="dialog-title">
+            {props.title}
             </div>
-            {logo(props.logo)}
-            <div className="dialog-title">
-                <p>{props.title}</p>
-            </div>
-            <div className="dialog-body">
-                <p>{props.body}</p>
-            </div>
+          <div className="dialog-body">
+            {props.children}
+          </div>
         </div>
     </div>
   );

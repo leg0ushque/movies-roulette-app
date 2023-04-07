@@ -8,14 +8,17 @@
     z-index: 100;
 }
 
+.dialog:not(.dialog.notification) {
+    top: 50%;
+}
+
 .dialog {
     z-index: 101;
     position: fixed;
-    top: 50%;
     left: 50%;
     
     width: 81.3%;
-    padding: 0 0 15px 0;
+    padding: 0 0 3% 0;
 
     background-color: var(--color3);
     font-family: 'Montserrat';
@@ -25,13 +28,14 @@
 }
 
 .dialog.notification {
+    top: 30%;
     width: 50.17%;
     text-align: center;
 }
 
 .dialog-header {
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .dialog-logo {
@@ -42,16 +46,28 @@
     border-radius: 100%;
     border: 0;
 
+    text-align: center;
     background-color: var(--color1);
     font-family: 'Montserrat';
     color: var(--color5);
+    line-height: 50px;
+
     font-size: xx-large;
-    text-align: center;
 }
 
+.dialog-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .dialog-title {
+    font-size: xx-large;
     text-transform: uppercase;
+}
+
+.dialog:not(.notification) .dialog-title {
+    margin-left: 5%;
 }
 
 .dialog-close-button {
@@ -62,14 +78,14 @@
     font-size: x-large;
 }
 
+.dialog:not(.notification) .dialog-body {
+    padding: 20px 5%;
+}
+
 .dialog-body {
-    padding: 0 20px;
+    padding: 20px 5%;
 }
 
-.dialog-footer {
-    padding: 10px;
-}
-
-.dialog-button {
-    margin: 5px;
+.dialog-body:last-child {
+    padding-bottom: 0;
 }
