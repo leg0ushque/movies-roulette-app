@@ -10,7 +10,11 @@
 
 .form-row input {
     margin-bottom: 6vh;
-    border-radius: 5px;
+    border-radius: 4px;
+}
+
+.form-row input:focus {
+    border-color: var(--color1);
 }
 
 .movieForm label {
@@ -25,7 +29,7 @@
 .movieForm input[type=text], 
 .movieForm input[type=date],
 .movieForm input[type=number],
-.movieForm .genresDropdown {
+.movieForm .dropdown button {
     padding: 10px 1.5vw;
     display: block;
     background-color: var(--color6);
@@ -33,47 +37,93 @@
     border: 0;
     font-size: large;
     width: 100%;
+    text-align: left;
 }
 
-.movieForm input.title{
+.movieForm input.title {
     color: var(--color5);
-
 }
 
-.genresDropdown {
-    font-family: 'Montserrat';
-    text-transform: uppercase;
-    color: var(--color5);
+/* DROPDOWN STYLES BELOW */
 
-    display: inline-block;
-}
-
-.dropdown-content {
-    list-style-type: none;
-    background-color: var(--color4);
-    color: var(--color5);
-
-    display: none;
-    position: absolute;
-    min-width: 160px;
-    margin: 0;
-    padding: 0;
-    z-index: 1;
-}
-
-.dropdown-content li {
-    padding: 16px;
+/* input with placeholder */
+.movieForm .dropdown {
     width: 100%;
+    margin-bottom: 6vh;
 }
 
-.dropdown-content li:hover {
+/* for active button */
+.movieForm .dropdown button:active {
     background-color: var(--color1);
 }
 
-.genresDropdown:hover .dropdown-content {
-    display: block;
+/* form appearing after dropdown button clicked */
+.movieForm .dropdown-menu {
+    background-color: var(--color6);
+    width: 100%;
+    overflow-y: scroll;
+    max-height: 200px;
+    height: 150px;
 }
 
-.dropdown-triangle {
-    color: var(--color1)
+/* form appearing after dropdown checkbox item */
+.movieForm .dropdown-menu div {
+    background-color: var(--color6);
+    color: var(--color5);
+    font-size: large;
+    text-transform: none;
+}
+
+/* Dropdown item */
+.movieForm .dropdown .form-check{
+    padding: 7px 0 10px 45px;
+}
+
+/* Dropdown item label */ 
+.movieForm .dropdown .form-check label{
+    color: var(--color5);
+    font-size: medium;
+    padding: 0;
+    text-transform: none;
+}
+
+.movieForm .dropdown .form-check:hover{
+    background-color: var(--color4);
+}
+
+/* Dropdown item V-square */ 
+.movieForm .dropdown .form-check input[type=checkbox]{
+    border-color: var(--color1);
+}
+
+.movieForm .dropdown .form-check input[type=checkbox]:focus{
+    border-color: var(--color1);
+    box-shadow:  0 0 5px var(--color1);
+}
+
+.movieForm .dropdown .form-check input[type=checkbox]:checked{
+    background-color: var(--color1);
+}
+
+/* DROPDOWN TRIANGLE SYMBOL STYLES */ 
+
+/* triangle symbol of INACTIVE dropdown button */
+.movieForm .dropdown button::after {
+    color: var(--color1);
+    float: right;
+    margin-top: 10px;
+}
+
+/* triangle symbol of ACTIVE dropdown button */
+.movieForm .dropdown button:active::after {
+    color: var(--color5)
+}
+
+/* rotation animation when dropdown shown */
+
+.dropdown-toggle[aria-expanded="true"]:after {
+    transform: rotate(180deg); 
+}
+.dropdown-toggle:after { 
+    transition: 0.7s; 
 }

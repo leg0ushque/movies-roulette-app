@@ -4,17 +4,17 @@ import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
 import Dialog from '../components/Dialog';
-import MovieForm, { type IMovieFormProps } from '../components/MovieForm';
 import testData from '../shared/constants/test-data';
 import type IGenre from '../shared/types/IGenre';
+import MovieFormWrapper, { type IMovieFormWrapperProps } from './MovieFormWrapper';
 
-const MovieFormStory: ComponentMeta<typeof MovieForm> = {
+const MovieFormWrapperStory: ComponentMeta<typeof MovieFormWrapper> = {
   title: 'Components/MovieForm',
-  component: MovieForm
+  component: MovieFormWrapper
 }
-export default MovieFormStory;
+export default MovieFormWrapperStory;
 
-const Template: ComponentStory<typeof MovieForm> = (props: IMovieFormProps) => <MovieForm {...props} />;
+const Template: ComponentStory<typeof MovieFormWrapper> = (props: IMovieFormWrapperProps) => <MovieFormWrapper {...props} />;
 
 const movie = testData.movies[0]
 movie.genresList = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
