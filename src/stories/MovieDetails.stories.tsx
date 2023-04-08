@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
 import MovieDetails, { type IMovieDetailsProps } from '../components/MovieDetails';
-import { GENRES_LIST } from './constants';
+import testData from '../shared/constants/test-data';
+import type IGenre from '../shared/types/IGenre';
 
 const DarkBackgroundDiv = styled.div`
   background: var(--color3)
@@ -25,16 +26,12 @@ export default MovieDetailsStory;
 
 const Template: ComponentStory<typeof MovieDetails> = (props: IMovieDetailsProps) => <MovieDetails {...props} />;
 
+const movie = testData.movies[0]
+movie.genresList = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
+
 export const Default = {
   ...Template.bind({}),
   args: {
-    id: '3076',
-    imageUrl: 'https://m.media-amazon.com/images/I/715QHVj8vaL._SL1302_.jpg',
-    title: 'John Wick 4',
-    releaseYear: '2023',
-    genresList: GENRES_LIST.map(item => item.name),
-    rating: 9.5,
-    duration: '2h 49m',
-    description: 'John Wick (Keanu Reeves) uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nisi sunt odio libero magni assumenda soluta consectetur quia eveniet cumque error sit deserunt temporibus recusandae similique, enim fugit qui autem?'
+    movie
   }
 };

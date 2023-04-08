@@ -1,3 +1,7 @@
+:root {
+    --modal-common-padding: 5%;
+}
+
 .dialog-overlay {
     position: fixed;
     top: 0;
@@ -67,7 +71,7 @@
 }
 
 .dialog:not(.notification) .dialog-title {
-    margin-left: 5%;
+    margin-left: var(--modal-common-padding);
 }
 
 .dialog-close-button {
@@ -79,11 +83,11 @@
 }
 
 .dialog:not(.notification) .dialog-body {
-    padding: 20px 5%;
+    padding: 20px var(--modal-common-padding);
 }
 
 .dialog-body {
-    padding: 20px 5%;
+    padding: 20px 3%;
 }
 
 .dialog-body:last-child {

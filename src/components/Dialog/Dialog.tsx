@@ -4,7 +4,7 @@ import React from 'react';
 
 export interface IDialogProps {
   logo: string
-  title: JSX.Element
+  title: JSX.Element | string
   isNotification: boolean
   onClose: () => void
 }

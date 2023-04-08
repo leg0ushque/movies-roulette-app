@@ -5,7 +5,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import { GENRES_LIST } from './constants';
+import testData from '../shared/constants/test-data';
 import GenreSelectWrapper, { type IGenreSelectWrapperProps } from './GenreSelectWrapper';
 
 const GenreSelectStory: ComponentMeta<typeof GenreSelectWrapper> = {
@@ -29,7 +29,7 @@ export const WithNoGenres = {
 export const WithSomeGenres = {
   ...Template.bind({}),
   args: {
-    genres: GENRES_LIST,
+    genres: testData.genres,
     selectedGenreId: '',
     onSelect: action('Genre selection initiated in GenreSelect with id')
   }

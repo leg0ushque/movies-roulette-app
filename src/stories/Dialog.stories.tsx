@@ -5,6 +5,19 @@ import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
 import Dialog, { type IDialogProps } from '../components/Dialog';
 
+const DIALOG_CONTENT: JSX.Element = (
+  <>
+  <p>Dialog content</p>
+  <p>Dialog content</p>
+  <p>Dialog content</p>
+  <p>Dialog content</p>
+  <p>Dialog content</p>
+  <p>Dialog content</p>
+  <p>Dialog content</p>
+  <p>Dialog content</p>
+  </>
+)
+
 const DialogStory: ComponentMeta<typeof Dialog> = {
   title: 'Components/Dialog',
   component: Dialog,
@@ -23,27 +36,13 @@ export default DialogStory;
 
 const Template: ComponentStory<typeof Dialog> = (props: IDialogProps) => <Dialog {...props} />;
 
-const content: JSX.Element = (
-  <>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  </>
-)
-
 export const Default = {
   ...Template.bind({}),
   args: {
     title: 'Dialog title',
     children: (
       <div>
-        {content}
+        {DIALOG_CONTENT}
       </div>
     ),
     logo: null,
@@ -58,7 +57,7 @@ export const DefaultWithLogo = {
     title: (<h2>Dialog title</h2>),
     children: (
       <div>
-        {content}
+        {DIALOG_CONTENT}
       </div>
     ),
     logo: (

@@ -4,34 +4,16 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import testData from '../../shared/constants/test-data';
+import type IGenre from '../../shared/types/IGenre';
 import MovieDetails from './MovieDetails';
 
 describe('MovieDetails', () => {
-  const genres = ['Action, Comedy'];
-  const genresRendered = genres.join(', ');
-
-  const movieDetails = {
-    id: '654',
-    title: 'test movie title',
-    description: 'test movie description',
-    releaseYear: '9876',
-    rating: 5.2,
-    duration: '1h 23m',
-    imageUrl: 'https://test-image-url.com/item.png',
-    genresList: genres
-  };
+  const movie = testData.movies[0];
+  movie.genresList = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
 
   test('has all items passed in props rendered', () => {
-    const { getByRole } = render(<MovieDetails
-      id={movieDetails.id}
-      title={movieDetails.title}
-      description={movieDetails.description}
-      releaseYear={movieDetails.releaseYear}
-      rating={movieDetails.rating}
-      duration={movieDetails.duration}
-      imageUrl={movieDetails.imageUrl}
-      genresList={movieDetails.genresList}
-      />)
+    const { getByRole } = render(<MovieDetails movie={movie}/>)
 
     const imageElement = getByRole('image')
     const titleElement = getByRole('title')
@@ -41,12 +23,12 @@ describe('MovieDetails', () => {
     const durationElement = getByRole('duration')
     const descriptionElement = getByRole('description')
 
-    expect((imageElement as HTMLImageElement).src).toBe(movieDetails.imageUrl);
-    expect(titleElement.textContent).toBe(movieDetails.title);
-    expect(ratingElement.textContent).toBe(movieDetails.rating.toString());
-    expect(genresListElement.textContent).toBe(genresRendered);
-    expect(releaseYearElement.textContent).toBe(movieDetails.releaseYear);
-    expect(durationElement.textContent).toBe(movieDetails.duration);
-    expect(descriptionElement.textContent).toBe(movieDetails.description);
+    expect((imageElement as HTMLImageElement).src).toBe(movie.imageUrl);
+    expect(titleElement.textContent).toBe(movie.title);
+    expect(ratingElement.textContent).toBe(movie.rating.toString());
+    expect(genresListElement.textContent).toBe(movie.genresList);
+    expect(releaseYearElement.textContent).toBe(movie.releaseDate.getFullYear());
+    expect(durationElement.textContent).toBe(movie.duration);
+    expect(descriptionElement.textContent).toBe(movie.description);
   });
 });

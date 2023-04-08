@@ -3,16 +3,10 @@ import './styles.css';
 
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import type IMovieModel from '../../models/IMovieModel';
 
 export interface IMovieDetailsProps {
-  id: string
-  title: string
-  description: string
-  releaseYear: string
-  rating: number
-  duration: string
-  imageUrl: string
-  genresList: string[]
+  movie: IMovieModel
 }
 
 const MovieDetails: React.FC<IMovieDetailsProps> = (props) => {
@@ -20,15 +14,15 @@ const MovieDetails: React.FC<IMovieDetailsProps> = (props) => {
     <Container className='movieDetails'>
       <Row>
         <Col md={4} className='image'>
-          <img src={props.imageUrl} role='image'/>
+          <img src={props.movie.imageUrl} role='image'/>
         </Col>
         <Col md={7} className='info'>
-          <div className='title' role='title'>{props.title}</div>
-          <div className='rating prevent-select' role='rating'>{props.rating}</div>
-          <div className='genresList' role='genresList'>{props.genresList.join(', ')}</div>
-          <div className='releaseYear' role='releaseYear'>{props.releaseYear}</div>
-          <div className='duration' role='duration'>{props.duration}</div>
-          <div className='description' role='description'>{props.description}</div>
+          <div className='title' role='title'>{props.movie.title}</div>
+          <div className='rating prevent-select' role='rating'>{props.movie.rating}</div>
+          <div className='genresList' role='genresList'>{props.movie.genresList.join(', ')}</div>
+          <div className='releaseYear' role='releaseYear'>{props.movie.releaseDate.getFullYear()}</div>
+          <div className='duration' role='duration'>{props.movie.duration}</div>
+          <div className='description' role='description'>{props.movie.description}</div>
         </Col>
       </Row>
     </Container>

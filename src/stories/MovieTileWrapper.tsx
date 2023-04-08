@@ -6,9 +6,10 @@ import styled from 'styled-components';
 
 import ContextMenu from '../components/ContextMenu';
 import MovieTile, { type IMovieTileProps } from '../components/MovieTile';
-import { movieContextMenuItems } from '../shared/utils/movieContextMenuItems';
 
+import { EDIT_DELETE_CONTEXT_MENU_ITEMS } from '../components/ContextMenu/constants';
 import type IContextMenuState from '../shared/types/IContextMenuState';
+
 export interface IMovieTileWrapperProps extends IMovieTileProps { }
 
 const DarkBackgroundDiv = styled.div`
@@ -44,20 +45,16 @@ const MovieTileWrapper: React.FC<IMovieTileWrapperProps> = (props) => {
         <ContextMenu
           menuState={contextMenuState}
           hideMenu={hideContextMenu}
-          items={movieContextMenuItems}
+          items={EDIT_DELETE_CONTEXT_MENU_ITEMS}
         />
         <DarkBackgroundDiv>
           <Container>
             <Row>
               <MovieTile
-                id={props.id}
-                title={props.title}
-                imageUrl={props.imageUrl}
-                releaseYear={props.releaseYear}
-                genresList={props.genresList}
+                movie={props.movie}
                 onClick={props.onClick}
                 onContextMenu={(e) => {
-                  showContextMenu(e, props.id);
+                  showContextMenu(e, props.movie.id);
                 }}
               ></MovieTile>
             </Row>

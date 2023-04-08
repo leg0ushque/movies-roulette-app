@@ -2,7 +2,7 @@ import React from 'react';
 
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import { movieContextMenuItems } from '../shared/utils/movieContextMenuItems';
+import { EDIT_DELETE_CONTEXT_MENU_ITEMS } from '../components/ContextMenu/constants';
 import ContextMenuWrapper, { type IContextMenuWrapperProps } from './ContextMenuWrapper';
 
 const ContextMenuWrapperStory: ComponentMeta<typeof ContextMenuWrapper> = {
@@ -16,6 +16,6 @@ const Template: ComponentStory<typeof ContextMenuWrapper> = (props: IContextMenu
 export const Default = {
   ...Template.bind({}),
   args: {
-    items: movieContextMenuItems
+    items: EDIT_DELETE_CONTEXT_MENU_ITEMS
   }
 };

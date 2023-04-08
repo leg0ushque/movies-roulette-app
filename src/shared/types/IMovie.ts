@@ -1,10 +1,14 @@
-interface IMovie {
-  id: string
+import type IEntity from './IEntity'
+
+interface IMovie extends IEntity {
   title: string
+  description: string
+  duration: string
+  releaseDate: Date
+  rating: number
+  genreIds: string[]
+  movieUrl: string
   imageUrl: string
-  releaseYear: string
-  genresList: string[]
-  onClick: (genreId: string) => void
 }
 
 export default IMovie
