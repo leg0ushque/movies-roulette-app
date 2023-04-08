@@ -1,0 +1,79 @@
+.movieForm {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.container {
+    padding: 0;
+}
+
+.form-row input {
+    margin-bottom: 6vh;
+    border-radius: 5px;
+}
+
+.movieForm label {
+    display: block;
+    color: var(--color1);
+    text-transform: uppercase;
+    font-size: small;
+    letter-spacing: 1px;
+    padding: 0 0 15px 0;
+}
+
+.movieForm input[type=text], 
+.movieForm input[type=date],
+.movieForm input[type=number],
+.movieForm .genresDropdown {
+    padding: 10px 1.5vw;
+    display: block;
+    background-color: var(--color6);
+    color: var(--color5);
+    border: 0;
+    font-size: large;
+    width: 100%;
+}
+
+.movieForm input.title{
+    color: var(--color5);
+
+}
+
+.genresDropdown {
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    color: var(--color5);
+
+    display: inline-block;
+}
+
+.dropdown-content {
+    list-style-type: none;
+    background-color: var(--color4);
+    color: var(--color5);
+
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+.dropdown-content li {
+    padding: 16px;
+    width: 100%;
+}
+
+.dropdown-content li:hover {
+    background-color: var(--color1);
+}
+
+.genresDropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-triangle {
+    color: var(--color1)
+}
