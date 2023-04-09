@@ -8,8 +8,10 @@
     padding: 0;
 }
 
-.form-row input {
-    margin-bottom: 6vh;
+/* form-rows */
+.movieForm .form-row input,
+.movieForm .form-row textarea {
+    margin-bottom: 3vh;
     border-radius: 4px;
 }
 
@@ -26,22 +28,29 @@
     padding: 0 0 15px 0;
 }
 
+.movieForm input[type=date] {
+  color-scheme: dark
+}
+
 .movieForm input[type=text], 
 .movieForm input[type=date],
 .movieForm input[type=number],
-.movieForm .dropdown button {
+.movieForm .dropdown button,
+.movieForm textarea.description {
     padding: 10px 1.5vw;
     display: block;
     background-color: var(--color6);
     color: var(--color5);
     border: 0;
-    font-size: large;
+    font-size: medium;
     width: 100%;
     text-align: left;
 }
 
-.movieForm input.title {
+.movieForm textarea.description {
     color: var(--color5);
+    word-wrap: break-word;
+    resize: none;
 }
 
 /* DROPDOWN STYLES BELOW */
@@ -49,7 +58,7 @@
 /* input with placeholder */
 .movieForm .dropdown {
     width: 100%;
-    margin-bottom: 6vh;
+    margin-bottom: 3vh;
 }
 
 /* for active button */
@@ -82,8 +91,8 @@
 /* Dropdown item label */ 
 .movieForm .dropdown .form-check label{
     color: var(--color5);
-    font-size: medium;
-    padding: 0;
+    font-size: smaller;
+    padding: 2px 0 0 0;
     text-transform: none;
 }
 

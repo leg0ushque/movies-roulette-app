@@ -39,7 +39,7 @@ export const AsDialogModal = {
 
 AsDialogModal.decorators = [
   (Story) => (
-    <Dialog logo={''} title={'Movie form in DIALOG'} isNotification={false} onClose={() => {}}>
+    <Dialog logo={''} title={'Movie form in DIALOG'} isNotification={false} onClose={() => { alert('Dialog close called') }}>
       <Story />
     </Dialog>
   )

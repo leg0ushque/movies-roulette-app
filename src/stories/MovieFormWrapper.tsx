@@ -31,7 +31,7 @@ const MovieFormWrapper: React.FC<IMovieFormWrapperProps> = (props) => {
 
       if (movie.genreIds?.some((x: string) => x === id)) {
         // clone genreIds but without the id-to-remove
-        newGenreIds = oldMovie.genreIds.filter(function (item) { return item !== id });
+        newGenreIds = oldMovie.genreIds.filter((item) => { return item !== id });
       } else {
         // clone genreIds but with the id-to-add
         newGenreIds = [...oldMovie.genreIds, id];

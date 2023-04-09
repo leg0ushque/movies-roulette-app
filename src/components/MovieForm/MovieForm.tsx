@@ -4,10 +4,13 @@ import React, { type FormEvent } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
-import { GenrePlaceholder, MovieUrlPlaceholder, ReleaseDatePlaceholder, RuntimePlaceholder, TitlePlaceholder } from '../../shared/constants/placeholders';
+import 'react-datepicker/dist/react-datepicker.css';
+
+import { GenrePlaceholder, MovieUrlPlaceholder, OverviewPlaceholder, ReleaseDatePlaceholder, RuntimePlaceholder, TitlePlaceholder } from '../../shared/constants/placeholders';
 
 import type IGenre from '../../shared/types/IGenre';
 import type IMovie from '../../shared/types/IMovie';
+import formatInputDate from '../../shared/utils/dateFormat';
 
 const INPUT_RESET_TEXT = 'Reset'
 const INPUT_SUBMIT_TEXT = 'Submit'
@@ -22,6 +25,8 @@ export interface IMovieFormProps {
 const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
   event.preventDefault();
   alert('submit!');
+  console.dir(event.target as HTMLFormElement)
+  console.dir(new FormData(event.target as HTMLFormElement))
   console.log(Object.fromEntries(new FormData(event.target as HTMLFormElement)));
 }
 
@@ -35,6 +40,7 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
         key={itemKey}
         type='checkbox'
         checked={props.movie?.genreIds.some((x) => x === item.id)}
+        name={itemKey}
         label={item.name}
         onChange={() => { props.recheckGenre(item.id); }}/>
     )
@@ -47,25 +53,25 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
           <Col md={8} xs={11}>
             <label htmlFor="title">Title</label>
             <input type="text"
-              className="title"
+              name="title"
               placeholder={TitlePlaceholder}
               defaultValue={props.movie?.title}
               tabIndex={0}></input>
           </Col>
           <Col md={4} xs={11} className='pr-0'>
             <label htmlFor="releaseDate">Release date</label>
-            <input type="date"
-              className="releaseDate"
-              placeholder={ReleaseDatePlaceholder}
-              defaultValue={props.movie?.releaseDate?.toDateString()}
-              tabIndex={1}></input>
+            <input
+              type='date'
+              name='releaseDate'
+              defaultValue={formatInputDate(props.movie?.releaseDate ?? new Date())}
+              tabIndex={1}/>
           </Col>
         </Row>
         <Row className='form-row justify-content-center'>
           <Col md={8} xs={11}>
             <label htmlFor="movieUrl ">Movie URL</label>
             <input type="text"
-              className="movieUrl"
+              name="movieUrl"
               placeholder={MovieUrlPlaceholder}
               defaultValue={props.movie?.movieUrl}
               tabIndex={2}></input>
@@ -73,7 +79,7 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
           <Col md={4} xs={11} className='pr-0'>
             <label htmlFor="rating">Rating</label>
             <input type="number" min={0.0} max={10.0} step={0.1}
-              className="rating "
+              name="rating"
               placeholder={ReleaseDatePlaceholder}
               defaultValue={props.movie?.rating}
               tabIndex={3}></input>
@@ -89,9 +95,20 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
           <Col md={4} xs={11} className='pr-0'>
             <label htmlFor="runtime">Runtime</label>
             <input type="text" min={0.0} max={10.0} step={0.1}
-              className="runtime"
+              name="runtime"
               placeholder={RuntimePlaceholder}
               defaultValue={props.movie?.duration}
+              tabIndex={3}/>
+          </Col>
+        </Row>
+        <Row className='form-row justify-content-center'>
+          <Col md={12} xs={11} className='pr-0'>
+            <label htmlFor="description">Overview</label>
+            <textarea
+              name="description"
+              className="description"
+              placeholder={OverviewPlaceholder}
+              defaultValue={props.movie?.description}
               tabIndex={3}/>
           </Col>
         </Row>
