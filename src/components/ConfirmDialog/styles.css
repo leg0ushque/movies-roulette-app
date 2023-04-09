@@ -1,0 +1,22 @@
+/* scroll in dialog-body */
+.dialog .dialog-body {
+    overflow-y: hidden !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.dialog {
+    width: 50% !important;
+}
+
+.confirmDialogForm .align-right {
+    text-align: right;
+}
+
+.confirmDialogForm .button {
+    padding: 10px 20px !important;
+    height: fit-content;
+    width: fit-content !important;
+    margin-top: 5%;
+    font-size: medium;
+}
