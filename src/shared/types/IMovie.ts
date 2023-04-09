@@ -4,7 +4,7 @@ interface IMovie extends IEntity {
   title: string
   description: string
   duration: string
-  releaseDate: Date
+  releaseDate: Date | null
   rating: number
   genreIds: string[]
   movieUrl: string

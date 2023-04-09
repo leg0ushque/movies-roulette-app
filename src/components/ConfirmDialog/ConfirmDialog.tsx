@@ -26,9 +26,9 @@ const ConfirmDialog: React.FC<IConfirmDialogProps> = (props) => {
           event.preventDefault();
           props.onConfirm()
         }} >
-          {props.text}
+          <span role="confirm-dialog-message">{props.text}</span>
           <div className='align-right'>
-            <input className="button button-red" type="submit" value={INPUT_SUBMIT_TEXT} />
+            <input className="button button-red" type="submit" value={INPUT_SUBMIT_TEXT} role="confirm-dialog-button" />
           </div>
       </form>
     </Dialog>

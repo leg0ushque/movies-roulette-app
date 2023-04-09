@@ -11,9 +11,9 @@ export interface IDialogProps {
 }
 
 const logo = (content: string | null): JSX.Element | null => {
-  if (content !== null) {
+  if (content !== null && content.length > 0) {
     return (
-      <div className="dialog-logo">
+      <div className="dialog-logo" role="dialog-logo">
         {content}
       </div>
     )
@@ -29,15 +29,15 @@ const Dialog: React.FC<React.PropsWithChildren<IDialogProps>> = (props) => {
         <div className={
           'dialog' +
           (props.isNotification ? ' notification' : '') +
-          (props.isCentered ? ' centered' : '')}>
+          (props.isCentered ? ' centered' : '')} role="dialog">
           <div className="dialog-header">
-              <button className="dialog-close-button" onClick={props.onClose}>&#10005;</button>
+              <button className="dialog-close-button" role="dialog-close-button" onClick={props.onClose}>&#10005;</button>
           </div>
           {logo(props.logo)}
-          <div className="dialog-title">
+          <div className="dialog-title" role="dialog-title">
             {props.title}
             </div>
-          <div className="dialog-body">
+          <div className="dialog-body" role="dialog-body">
             {props.children}
           </div>
         </div>

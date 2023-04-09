@@ -4,6 +4,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import type IMovieModel from '../../models/IMovieModel';
 import testData from '../../shared/constants/test-data';
 import type IGenre from '../../shared/types/IGenre';
 import MovieDetails from './MovieDetails';
@@ -26,9 +27,30 @@ describe('MovieDetails', () => {
     expect((imageElement as HTMLImageElement).src).toBe(movie.imageUrl);
     expect(titleElement.textContent).toBe(movie.title);
     expect(ratingElement.textContent).toBe(movie.rating.toString());
-    expect(genresListElement.textContent).toBe(movie.genresList);
-    expect(releaseYearElement.textContent).toBe(movie.releaseDate.getFullYear());
+    expect(genresListElement.textContent).toBe(movie.genresList.map(x => x.name).join(', '));
+    expect(releaseYearElement.textContent).toBe(movie.releaseDate?.getFullYear().toString());
     expect(durationElement.textContent).toBe(movie.duration);
     expect(descriptionElement.textContent).toBe(movie.description);
+  });
+
+  test('has empty releaseYear rendered if it is not passed in props', () => {
+    const movie: IMovieModel = {
+      id: '',
+      imageUrl: '',
+      title: '',
+      releaseDate: null,
+      genreIds: [],
+      genresList: [],
+      rating: 0,
+      movieUrl: '',
+      duration: '',
+      description: ''
+    }
+
+    const { getByRole } = render(<MovieDetails movie={movie}/>)
+
+    const releaseYearElement = getByRole('releaseYear')
+
+    expect(releaseYearElement.textContent).toBe('');
   });
 });

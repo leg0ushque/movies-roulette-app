@@ -19,8 +19,8 @@ const MovieDetails: React.FC<IMovieDetailsProps> = (props) => {
         <Col md={7} className='info'>
           <div className='title' role='title'>{props.movie.title}</div>
           <div className='rating prevent-select' role='rating'>{props.movie.rating}</div>
-          <div className='genresList' role='genresList'>{props.movie.genresList.join(', ')}</div>
-          <div className='releaseYear' role='releaseYear'>{props.movie.releaseDate.getFullYear()}</div>
+          <div className='genresList' role='genresList'>{props.movie.genresList.map(x => x.name).join(', ')}</div>
+          <div className='releaseYear' role='releaseYear'>{props.movie.releaseDate?.getFullYear()}</div>
           <div className='duration' role='duration'>{props.movie.duration}</div>
           <div className='description' role='description'>{props.movie.description}</div>
         </Col>

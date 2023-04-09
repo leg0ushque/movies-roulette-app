@@ -4,9 +4,11 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
+import type IMovieModel from '../../models/IMovieModel';
 import testData from '../../shared/constants/test-data';
 import type IGenre from '../../shared/types/IGenre';
 import MovieTile from './MovieTile';
+import { COMING_SOON_TEXT, EPMTY_RELEASE_YEAR, IMAGE_NOT_FOUND_SRC } from './constants';
 
 describe('MovieTile', () => {
   const onClickMock = jest.fn();
@@ -26,10 +28,10 @@ describe('MovieTile', () => {
     const genresListElement = getByRole('genresList')
     const releaseYearElement = getByRole('releaseYear')
 
-    expect((imageElement as HTMLImageElement).src).toBe(movie.imageUrl);
+    expect(imageElement).toHaveAttribute('src', movie.imageUrl);
     expect(titleElement.textContent).toBe(movie.title);
-    expect(genresListElement.textContent).toBe(movie);
-    expect(releaseYearElement.textContent).toBe(movie.releaseDate.getFullYear());
+    expect(genresListElement.textContent).toBe(movie.genresList.map(x => x.name).join(', '));
+    expect(releaseYearElement.textContent).toBe(movie.releaseDate?.getFullYear().toString());
   });
 
   test('has onClick called when clicked', () => {
@@ -57,5 +59,35 @@ describe('MovieTile', () => {
     fireEvent.contextMenu(movieTile)
 
     expect(onContextMenu).toBeCalledTimes(1);
+  });
+
+  test('has default values if no data provided', () => {
+    const emptyMovie: IMovieModel = {
+      id: '',
+      imageUrl: '',
+      title: '',
+      releaseDate: null,
+      genreIds: [],
+      genresList: [],
+      rating: 0,
+      movieUrl: '',
+      duration: '',
+      description: ''
+    }
+
+    const { getByRole } = render(<MovieTile movie={emptyMovie}
+      onClick={onClickMock}
+      onContextMenu={onContextMenu}
+    />)
+
+    const image = getByRole('image')
+    const title = getByRole('title')
+    const releaseYear = getByRole('releaseYear')
+    const genresList = getByRole('genresList')
+
+    expect(image).toHaveAttribute('src', IMAGE_NOT_FOUND_SRC);
+    expect(title.textContent).toBe(COMING_SOON_TEXT);
+    expect(releaseYear.textContent).toBe(EPMTY_RELEASE_YEAR);
+    expect(genresList.textContent).toBe('')
   });
 });
