@@ -3,7 +3,6 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import ConfirmDialog, { type IConfirmDialogProps } from '../components/ConfirmDialog';
 import Dialog, { type IDialogProps } from '../components/Dialog';
 
 const DIALOG_CONTENT: JSX.Element = (
@@ -93,19 +92,6 @@ export const DefaultNotificationWithLogo = {
     ),
     isNotification: true,
     isCentered: true,
-    onClose: action('Dialog onclose called')
-  }
-};
-
-const ConfirmDialogTemplate: ComponentStory<typeof ConfirmDialog> = (props: IConfirmDialogProps) => <ConfirmDialog {...props} />;
-
-export const DeleteMovieConfirmDialog = {
-  ...ConfirmDialogTemplate.bind({}),
-  args: {
-    title: ('DELETE MOVIE'),
-    logo: null,
-    isNotification: true,
-    isCentered: false,
     onClose: action('Dialog onclose called')
   }
 };

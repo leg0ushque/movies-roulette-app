@@ -18,7 +18,7 @@ const ConfirmDialog: React.FC<IConfirmDialogProps> = (props) => {
     <Dialog
       logo={''}
       title={props.title}
-      isNotification={false}
+      isNotification={true}
       isCentered={false}
       onClose={props.onClose}>
       <form className="confirmDialogForm"

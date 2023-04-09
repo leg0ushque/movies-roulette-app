@@ -65,9 +65,6 @@
     line-height: 50px;
 
     font-size: xx-large;
-}
-
-.dialog-logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -79,7 +76,7 @@
     margin-bottom: 2vh;
 }
 
-.dialog:not(.notification) .dialog-title {
+.dialog:not(.centered) .dialog-title {
     margin-left: var(--modal-common-padding);
 }
 
@@ -91,12 +88,12 @@
     font-size: x-large;
 }
 
-.dialog:not(.notification) .dialog-body {
+.dialog:not(.centered) .dialog-body {
     padding: 20px var(--modal-common-padding);
 }
 
 /* scroll in dialog-body */
-.dialog:not(.dialog.notification) .dialog-body {
+.dialog:not(.notification) .dialog-body {
     max-height: 60vh;
     overflow-y: scroll;
 }
