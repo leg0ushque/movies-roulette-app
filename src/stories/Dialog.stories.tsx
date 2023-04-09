@@ -7,14 +7,22 @@ import Dialog, { type IDialogProps } from '../components/Dialog';
 
 const DIALOG_CONTENT: JSX.Element = (
   <>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
-  <p>Dialog content</p>
+  <p>Dialog content 1</p>
+  <p>Dialog content 2</p>
+  <p>Dialog content 3</p>
+  <p>Dialog content 4</p>
+  <p>Dialog content 5</p>
+  <p>Dialog content 6</p>
+  <p>Dialog content 7</p>
+  <p>Dialog content 8</p>
+  <p>Dialog content 9</p>
+  <p>Dialog content 10</p>
+  <p>Dialog content 11</p>
+  <p>Dialog content 12</p>
+  <p>Dialog content 13</p>
+  <p>Dialog content 14</p>
+  <p>Dialog content 15</p>
+  <p>Dialog content 16</p>
   </>
 )
 
