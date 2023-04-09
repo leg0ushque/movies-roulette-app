@@ -6,6 +6,7 @@ export interface IDialogProps {
   logo: string
   title: JSX.Element | string
   isNotification: boolean
+  isCentered: boolean
   onClose: () => void
 }
 
@@ -25,7 +26,10 @@ const Dialog: React.FC<React.PropsWithChildren<IDialogProps>> = (props) => {
   return (
     <div>
         <div className="dialog-overlay" />
-        <div className={'dialog' + (props.isNotification ? ' notification ' : '')}>
+        <div className={
+          'dialog' +
+          (props.isNotification ? ' notification' : '') +
+          (props.isCentered ? ' centered' : '')}>
           <div className="dialog-header">
               <button className="dialog-close-button" onClick={props.onClose}>&#10005;</button>
           </div>

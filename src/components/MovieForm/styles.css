@@ -121,7 +121,7 @@
     border: 2px var(--color1);
 }
 
-.movieForm .form-button {
+.movieForm .button {
     width: 100%;
     height: 100%;
     border-radius: 4px;
@@ -131,23 +131,22 @@
     text-transform: uppercase;
 }
 
-.movieForm .form-button.button-black {
+.movieForm .button.button-black {
     background-color: var(--color3);
     color: var(--color1);
 }
 
-.movieForm .form-button.button-black:hover {
+.movieForm .button.button-black:hover {
     background-color: var(--color6);
 }
 
-.movieForm .form-button.button-red:hover {
-    background-color: var(--color5);
-    color: var(--color2);
-}
-.movieForm .form-button.button-red {
+.movieForm .button.button-red {
     background-color: var(--color1);
     color: var(--color5);
-
+}
+.movieForm .button.button-red:hover {
+    background-color: var(--color5);
+    color: var(--color2);
 }
 
 /* DROPDOWN TRIANGLE SYMBOL STYLES */ 

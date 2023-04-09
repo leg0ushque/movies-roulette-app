@@ -3,10 +3,10 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import Dialog from '../components/Dialog';
 import testData from '../shared/constants/test-data';
-import type IGenre from '../shared/types/IGenre';
 import MovieFormWrapper, { type IMovieFormWrapperProps } from './MovieFormWrapper';
+
+import type IGenre from '../shared/types/IGenre';
 
 const MovieFormWrapperStory: ComponentMeta<typeof MovieFormWrapper> = {
   title: 'Components/MovieForm',
@@ -19,28 +19,20 @@ const Template: ComponentStory<typeof MovieFormWrapper> = (props: IMovieFormWrap
 const movie = testData.movies[0]
 movie.genresList = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
 
-export const Default = {
+export const DefaultEmptyForm = {
   ...Template.bind({}),
   args: {
-    movie,
+    movie: null,
     genres: testData.genres,
-    onClick: action('Movie tile clicked!')
+    onSubmit: action('Movie form submitted:')
   }
 };
 
-export const AsDialogModal = {
+export const DefaultFilledForm = {
   ...Template.bind({}),
   args: {
     movie,
     genres: testData.genres,
-    onClick: action('Movie tile clicked!')
+    onSubmit: action('Movie form submitted:')
   }
-}
-
-AsDialogModal.decorators = [
-  (Story) => (
-    <Dialog logo={''} title={'Movie form in DIALOG'} isNotification={false} onClose={() => { alert('Dialog close called') }}>
-      <Story />
-    </Dialog>
-  )
-];
+};

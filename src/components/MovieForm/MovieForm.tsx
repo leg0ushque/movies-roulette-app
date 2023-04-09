@@ -1,16 +1,18 @@
+import 'react-datepicker/dist/react-datepicker.css';
 import './styles.css';
 
 import React, { type FormEvent } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
-import 'react-datepicker/dist/react-datepicker.css';
-
-import { GenrePlaceholder, MovieUrlPlaceholder, OverviewPlaceholder, ReleaseDatePlaceholder, RuntimePlaceholder, TitlePlaceholder } from '../../shared/constants/placeholders';
+import {
+  GenrePlaceholder, MovieUrlPlaceholder, OverviewPlaceholder, ReleaseDatePlaceholder,
+  RuntimePlaceholder, TitlePlaceholder
+} from '../../shared/constants/placeholders';
+import formatInputDate from '../../shared/utils/dateFormat';
 
 import type IGenre from '../../shared/types/IGenre';
 import type IMovie from '../../shared/types/IMovie';
-import formatInputDate from '../../shared/utils/dateFormat';
 
 const INPUT_RESET_TEXT = 'Reset'
 const INPUT_SUBMIT_TEXT = 'Submit'
@@ -18,19 +20,16 @@ const INPUT_SUBMIT_TEXT = 'Submit'
 export interface IMovieFormProps {
   movie: IMovie | null
   genres: IGenre[]
-  onSubmit: (movie: IMovie) => void
+  onSubmit: (formData: object) => void
   recheckGenre: (id: string) => void
 }
 
-const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
-  event.preventDefault();
-  alert('submit!');
-  console.dir(event.target as HTMLFormElement)
-  console.dir(new FormData(event.target as HTMLFormElement))
-  console.log(Object.fromEntries(new FormData(event.target as HTMLFormElement)));
-}
-
 const MovieForm: React.FC<IMovieFormProps> = (props) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    props.onSubmit(Object.fromEntries(new FormData(event.target as HTMLFormElement)))
+  }
+
   const genreDropdownItems = props.genres.map((item) => {
     const itemKey = `d-item-${item.name}`;
 
@@ -116,10 +115,10 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
           <Col md={{ span: 5, offset: 7 }} xs={12} className='justify-content-end'>
             <Row>
               <Col md={6} xs={6} >
-                <input className="form-button button-black" type="reset" value={INPUT_RESET_TEXT} />
+                <input className="button button-black" type="reset" value={INPUT_RESET_TEXT} />
               </Col>
               <Col md={6} xs={6} >
-                <input className="form-button button-red" type="submit" value={INPUT_SUBMIT_TEXT} />
+                <input className="button button-red" type="submit" value={INPUT_SUBMIT_TEXT} />
               </Col>
             </Row>
           </Col>
