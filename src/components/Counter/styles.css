@@ -6,12 +6,6 @@ div.counter {
     text-align: center;
 }
 
-.button {
-  display: inline;
-  margin-right: 5px;
-  width: 50px;
-}
-
 .incButton {
   background-color: green;
 }
