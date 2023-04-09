@@ -87,14 +87,11 @@
     padding: 20px var(--modal-common-padding);
 }
 
-/*=============*/
-
+/* scroll in dialog-body */
 .dialog:not(.dialog.notification) .dialog-body {
     max-height: 60vh;
     overflow-y: scroll;
 }
-
-/*=============*/
 
 .dialog-body {
     padding: 20px 3%;

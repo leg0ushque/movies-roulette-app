@@ -112,11 +112,16 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
               tabIndex={3}/>
           </Col>
         </Row>
-        <Row>
-          <Col md={5}></Col>
-          <Col md={7}>
-            <input type="reset" value={INPUT_RESET_TEXT} />
-            <input type="submit" value={INPUT_SUBMIT_TEXT} />
+        <Row className='form-row'>
+          <Col md={{ span: 5, offset: 7 }} xs={12} className='justify-content-end'>
+            <Row>
+              <Col md={6} xs={6} >
+                <input className="form-button button-black" type="reset" value={INPUT_RESET_TEXT} />
+              </Col>
+              <Col md={6} xs={6} >
+                <input className="form-button button-red" type="submit" value={INPUT_SUBMIT_TEXT} />
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>
