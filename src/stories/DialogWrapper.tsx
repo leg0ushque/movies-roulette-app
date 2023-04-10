@@ -1,6 +1,7 @@
 
 import FocusTrap from 'focus-trap-react';
 import React, { useState } from 'react';
+
 import Dialog from '../components/Dialog';
 
 export interface IDialogWrapperProps {
@@ -14,9 +15,12 @@ export interface IDialogWrapperProps {
 const DialogWrapper: React.FC<React.PropsWithChildren<IDialogWrapperProps>> = (props) => {
   const [dialogIsOpened, setDialogIsOpened] = useState(false);
 
+  const openDialog = (): void => { setDialogIsOpened(true) }
+  const closeDialog = (): void => { setDialogIsOpened(false) }
+
   return (
     <>
-    <button className="redFocusedButton" onClick={() => { setDialogIsOpened(true); }} >Open dialog</button>
+    <button className="redFocusedButton" onClick={openDialog} >Open dialog</button>
     { dialogIsOpened &&
       <FocusTrap active={dialogIsOpened}>
         <Dialog
@@ -25,7 +29,7 @@ const DialogWrapper: React.FC<React.PropsWithChildren<IDialogWrapperProps>> = (p
           isNotification={props.isNotification}
           isCentered={props.isCentered}
           onClose={() => {
-            setDialogIsOpened(false);
+            closeDialog();
             props.onClose();
           }}
         >
