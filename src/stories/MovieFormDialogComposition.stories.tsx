@@ -3,11 +3,11 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import Dialog from '../components/Dialog';
 import testData from '../shared/constants/test-data';
 import MovieFormWrapper, { type IMovieFormWrapperProps } from './MovieFormWrapper';
 
 import type IGenre from '../shared/types/IGenre';
+import DialogWrapper from './DialogWrapper';
 
 const MovieFormWrapperStory: ComponentMeta<typeof MovieFormWrapper> = {
   title: 'Compositions/MovieForm in Dialog',
@@ -31,9 +31,13 @@ export const AddMovie = {
 
 AddMovie.decorators = [
   (Story) => (
-    <Dialog logo={''} title={'Add movie'} isNotification={false} isCentered={false} onClose={() => { alert('Dialog close called') }}>
+  <div>
+    <DialogWrapper logo={''} title={'Add movie'} isNotification={false} isCentered={false}
+      onClose={action('Dialog close called')}
+    >
       <Story />
-    </Dialog>
+    </DialogWrapper>
+  </div>
   )
 ];
 
@@ -48,8 +52,12 @@ export const EditMovie = {
 
 EditMovie.decorators = [
   (Story) => (
-    <Dialog logo={''} title={'Edit movie'} isNotification={false} isCentered={false} onClose={() => { alert('Dialog close called') }}>
-      <Story />
-    </Dialog>
+    <div>
+      <DialogWrapper logo={''} title={'Edit movie'} isNotification={false} isCentered={false}
+        onClose={action('Dialog close called')}
+      >
+        <Story />
+      </DialogWrapper>
+    </div>
   )
 ];

@@ -117,7 +117,7 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
                 <input className="button button-black" type="reset" value={INPUT_RESET_TEXT} />
               </Col>
               <Col md={6} xs={6} >
-                <input className="button button-red" type="submit" role="submitButton" value={INPUT_SUBMIT_TEXT} />
+                <input className="button button-red" autoFocus type="submit" role="submitButton" value={INPUT_SUBMIT_TEXT} />
               </Col>
             </Row>
           </Col>

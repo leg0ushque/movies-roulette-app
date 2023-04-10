@@ -13,7 +13,7 @@ export interface IConfirmDialogProps {
   onClose: () => void
 }
 
-const ConfirmDialog: React.FC<IConfirmDialogProps> = (props) => {
+const ConfirmDialog: React.FC<React.PropsWithChildren<IConfirmDialogProps>> = (props) => {
   return (
     <Dialog
       logo={''}

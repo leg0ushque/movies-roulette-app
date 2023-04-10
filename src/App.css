@@ -69,3 +69,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color5);
 }
+
+.redFocusedButton:focus {
+  background-color: green;
+}
+.redFocusedButton:hover {
+  background-color: green;
+}

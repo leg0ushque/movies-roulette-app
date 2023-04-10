@@ -3,7 +3,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import Dialog, { type IDialogProps } from '../components/Dialog';
+import DialogWrapper, { type IDialogWrapperProps } from './DialogWrapper';
 
 const DIALOG_CONTENT: JSX.Element = (
   <>
@@ -26,9 +26,9 @@ const DIALOG_CONTENT: JSX.Element = (
   </>
 )
 
-const DialogStory: ComponentMeta<typeof Dialog> = {
+const DialogWrapperStory: ComponentMeta<typeof DialogWrapper> = {
   title: 'Components/Dialog',
-  component: Dialog,
+  component: DialogWrapper,
   decorators: [
     (Story) => (
       <>
@@ -40,9 +40,9 @@ const DialogStory: ComponentMeta<typeof Dialog> = {
     )
   ]
 }
-export default DialogStory;
+export default DialogWrapperStory;
 
-const Template: ComponentStory<typeof Dialog> = (props: IDialogProps) => <Dialog {...props} />;
+const Template: ComponentStory<typeof DialogWrapper> = (props: IDialogWrapperProps) => <DialogWrapper {...props} />;
 
 export const Default = {
   ...Template.bind({}),
@@ -63,7 +63,7 @@ export const Default = {
 export const DefaultWithLogo = {
   ...Template.bind({}),
   args: {
-    title: (<h2>Dialog title</h2>),
+    title: (<h2>DialogWrapper title</h2>),
     children: (
       <div>
         {DIALOG_CONTENT}

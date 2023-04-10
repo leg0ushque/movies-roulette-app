@@ -2,12 +2,11 @@ import React from 'react';
 
 import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import ConfirmDialogWrapper, { type IConfirmDialogWrapperProps } from './ConfirmDialogWrapper';
 
-import ConfirmDialog, { type IConfirmDialogProps } from '../components/ConfirmDialog';
-
-const ConfirmDialogDialogStory: ComponentMeta<typeof ConfirmDialog> = {
+const ConfirmDialogDialogStory: ComponentMeta<typeof ConfirmDialogWrapper> = {
   title: 'Components/ConfirmDialog',
-  component: ConfirmDialog,
+  component: ConfirmDialogWrapper,
   decorators: [
     (Story) => (
       <>
@@ -21,7 +20,7 @@ const ConfirmDialogDialogStory: ComponentMeta<typeof ConfirmDialog> = {
 }
 export default ConfirmDialogDialogStory;
 
-const Template: ComponentStory<typeof ConfirmDialog> = (props: IConfirmDialogProps) => <ConfirmDialog {...props} />;
+const Template: ComponentStory<typeof ConfirmDialogWrapper> = (props: IConfirmDialogWrapperProps) => <ConfirmDialogWrapper {...props} />;
 
 export const DeleteMovie = {
   ...Template.bind({}),
