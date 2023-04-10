@@ -1,4 +1,3 @@
-import 'react-datepicker/dist/react-datepicker.css';
 import './styles.css';
 
 import React, { type FormEvent } from 'react';
