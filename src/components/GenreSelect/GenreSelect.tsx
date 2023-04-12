@@ -19,7 +19,7 @@ export interface IGenreSelectProps {
 
 const GenreSelect: React.FC<IGenreSelectProps> = (props) => {
   const selectGenre = (genreId: string): void => {
-    if (genreId.length > 0) {
+    if (genreId?.length) {
       props.onSelect(genreId);
     }
   };
@@ -38,7 +38,7 @@ const GenreSelect: React.FC<IGenreSelectProps> = (props) => {
 
   const genresButtons = [allGenre, ...props.genres].map((genre: IGenre) =>
     createGenreButton(genre,
-      (props.selectedGenreId.length > 0 && props.genres.length > 0
+      (props.selectedGenreId?.length && props.genres?.length
         ? props.selectedGenreId
         : DEFAULT_SELECTED_GENRE_ID) === genre.id));
 
