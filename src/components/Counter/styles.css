@@ -6,10 +6,10 @@ div.counter {
     text-align: center;
 }
 
-.incButton {
+div.counter .incButton {
   background-color: green;
 }
 
-.decButton {
+div.counter .decButton {
   background-color: indianred;
 }
