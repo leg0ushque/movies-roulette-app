@@ -1,69 +1,42 @@
 import './styles.css';
 
-import React, { type ChangeEvent, type FormEvent } from 'react';
+import React, { useState, type ChangeEvent, type FormEvent } from 'react';
 
 export const DEFAULT_VALUE = '';
 export const INPUT_PLACEHOLDER_TEXT = 'What do you want to watch?';
 export const INPUT_SUBMIT_TEXT = 'SEARCH';
 
 export interface ISearchFormProps {
-  initialValue: string
+  initialValue?: string
   onSearch: (value: string) => void
 }
 
-interface ISearchFormState {
-  value: string
-  onSearch: (value: string) => void
-}
+const SearchForm: React.FC<ISearchFormProps> = ({ initialValue, onSearch }) => {
+  const [value, setValue] = useState(initialValue ?? DEFAULT_VALUE);
 
-class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
-  state = {
-    value: DEFAULT_VALUE,
-    onSearch: (value: string) => {}
-  };
-
-  static defaultProps = {
-    value: DEFAULT_VALUE
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setValue(event.target.value);
   }
 
-  constructor (props: ISearchFormProps) {
-    super(props);
-    this.state.value = props.initialValue;
-    this.state.onSearch = props.onSearch;
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange (event: ChangeEvent<HTMLInputElement>): void {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit (event: FormEvent<HTMLFormElement>): void {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    this.state.onSearch(this.state.value);
-    this.setState((state) => {
-      return {
-        value: '',
-        onSearch: state.onSearch
-      };
-    });
+
+    onSearch(value);
+    setValue(DEFAULT_VALUE);
   }
 
-  render (): JSX.Element {
-    return (
-      <form onSubmit={this.handleSubmit} className="search">
-        <input
-          type="text"
-          placeholder={INPUT_PLACEHOLDER_TEXT}
-          value={this.state.value}
-          onChange={this.handleChange}
-          required
-        ></input>
-        <input type="submit" value={INPUT_SUBMIT_TEXT} />
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit} className="search">
+      <input
+        type="text"
+        placeholder={INPUT_PLACEHOLDER_TEXT}
+        value={value}
+        onChange={handleChange}
+        required
+      ></input>
+      <input type="submit" value={INPUT_SUBMIT_TEXT} />
+    </form>
+  );
 }
 
 export default SearchForm;
