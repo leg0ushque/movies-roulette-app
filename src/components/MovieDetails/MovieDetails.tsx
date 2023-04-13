@@ -3,6 +3,7 @@ import './styles.css';
 
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+
 import type IMovieModel from '../../models/IMovieModel';
 
 export interface IMovieDetailsProps {

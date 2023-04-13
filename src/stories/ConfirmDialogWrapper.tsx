@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+
 import ConfirmDialog from '../components/ConfirmDialog';
 
 export interface IConfirmDialogWrapperProps {
@@ -14,8 +15,8 @@ const ConfirmDialogWrapper: React.FC<React.PropsWithChildren<IConfirmDialogWrapp
 
   return (
     <>
-    <button onClick={() => { setDialogIsOpened(true); }}>Open dialog</button>
-    { dialogIsOpened &&
+      <button onClick={() => { setDialogIsOpened(true); }}>Open dialog</button>
+      {dialogIsOpened &&
         <ConfirmDialog
           title={props.title}
           text={props.text}
@@ -25,9 +26,9 @@ const ConfirmDialogWrapper: React.FC<React.PropsWithChildren<IConfirmDialogWrapp
             props.onClose();
           }}
         >
-        {props.children}
+          {props.children}
         </ConfirmDialog>
-    }
+      }
     </>
   );
 }

@@ -4,11 +4,11 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import type IMovieModel from '../../models/IMovieModel';
 import testData from '../../shared/constants/test-data';
-import type IGenre from '../../shared/types/IGenre';
 import MovieDetails from './MovieDetails';
 
+import type IMovieModel from '../../models/IMovieModel';
+import type IGenre from '../../shared/types/IGenre';
 describe('MovieDetails', () => {
   const movie = testData.movies[0];
   movie.genresList = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
