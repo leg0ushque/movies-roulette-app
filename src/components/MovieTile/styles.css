@@ -1,4 +1,4 @@
-.movieTile{
+.movieTile {
     font-family: 'Montserrat';
     margin-bottom: 50px;
     padding: 0px 10px;
@@ -6,6 +6,15 @@
 
 .movieTile .image {
     padding: 0;
+    position: relative;
+}
+
+.movieTile .image button.three-dots {
+    display: none !important;
+}
+
+.movieTile .image:hover button.three-dots {
+    display: block !important;
 }
 
 .movieTile .image img {

@@ -4,24 +4,21 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import type IMovieModel from '../../models/IMovieModel';
 import testData from '../../shared/constants/test-data';
-import type IGenre from '../../shared/types/IGenre';
-import MovieTile from './MovieTile';
 import { COMING_SOON_TEXT, EPMTY_RELEASE_YEAR, IMAGE_NOT_FOUND_SRC } from './constants';
+import MovieTile from './MovieTile';
+
+import type IMovieModel from '../../models/IMovieModel';
+import type IGenre from '../../shared/types/IGenre';
 
 describe('MovieTile', () => {
   const onClickMock = jest.fn();
-  const onContextMenu = jest.fn();
 
   const movie = testData.movies[0];
   movie.genresList = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
 
   test('has all items passed in props rendered', () => {
-    const { getByRole } = render(<MovieTile movie={movie}
-      onClick={onClickMock}
-      onContextMenu={onContextMenu}
-    />)
+    const { getByRole } = render(<MovieTile movie={movie} onClick={onClickMock} />)
 
     const imageElement = getByRole('image')
     const titleElement = getByRole('title')
@@ -35,10 +32,7 @@ describe('MovieTile', () => {
   });
 
   test('has onClick called when clicked', () => {
-    const { getByRole } = render(<MovieTile movie={movie}
-      onClick={onClickMock}
-      onContextMenu={onContextMenu}
-    />)
+    const { getByRole } = render(<MovieTile movie={movie} onClick={onClickMock} />)
 
     const movieTile = getByRole('movieTile')
 
@@ -46,19 +40,6 @@ describe('MovieTile', () => {
 
     expect(onClickMock).toBeCalledTimes(1);
     expect(onClickMock).toBeCalledWith(movie.id)
-  });
-
-  test('has onContextMenu called when right-clicked', () => {
-    const { getByRole } = render(<MovieTile movie={movie}
-      onClick={onClickMock}
-      onContextMenu={onContextMenu}
-    />)
-
-    const movieTile = getByRole('movieTile')
-
-    fireEvent.contextMenu(movieTile)
-
-    expect(onContextMenu).toBeCalledTimes(1);
   });
 
   test('has default values if no data provided', () => {
@@ -75,10 +56,7 @@ describe('MovieTile', () => {
       description: ''
     }
 
-    const { getByRole } = render(<MovieTile movie={emptyMovie}
-      onClick={onClickMock}
-      onContextMenu={onContextMenu}
-    />)
+    const { getByRole } = render(<MovieTile movie={emptyMovie} onClick={onClickMock} />)
 
     const image = getByRole('image')
     const title = getByRole('title')
@@ -89,5 +67,34 @@ describe('MovieTile', () => {
     expect(title.textContent).toBe(COMING_SOON_TEXT);
     expect(releaseYear.textContent).toBe(EPMTY_RELEASE_YEAR);
     expect(genresList.textContent).toBe('')
+  });
+
+  test('has MenuTile context menu shown on three-dots-button clicked', () => {
+    const { container, getByRole } = render(<MovieTile movie={movie} onClick={onClickMock} />)
+
+    const threeDotsButton = getByRole('three-dots-button')
+
+    fireEvent.click(threeDotsButton)
+
+    const contextMenu = container.getElementsByClassName('menu-tile-context-menu')[0]
+
+    expect(contextMenu).toBeInTheDocument();
+  });
+
+  test('has MenuTile context menu hidden after context menu item clicked', () => {
+    const { container, getByRole } = render(<MovieTile movie={movie} onClick={onClickMock} />)
+
+    const threeDotsButton = getByRole('three-dots-button')
+
+    fireEvent.click(threeDotsButton)
+
+    const contextMenu = container.getElementsByClassName('menu-tile-context-menu')[0]
+
+    console.log(contextMenu);
+    fireEvent.click(contextMenu.children[1])
+
+    const closedContextMenu = container.getElementsByClassName('menu-tile-context-menu')[0]
+
+    expect(closedContextMenu).toBe(undefined);
   });
 });

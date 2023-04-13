@@ -4,24 +4,25 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import ContextMenu from './ContextMenu';
+import MovieTileContextMenu from './MovieTileContextMenu';
 
-describe('ContextMenu', () => {
+describe('MovieTileContextMenu', () => {
   const firstHandlerMock = jest.fn();
   const secondHandlerMock = jest.fn();
   const hideMenuMock = jest.fn();
 
-  const menuItems = [
+  const MENU_ITEMS = [
     { name: 'first button', clickHandler: firstHandlerMock },
     { name: 'second button', clickHandler: secondHandlerMock }
   ];
 
-  const menuState = { id: 'testId', posX: 5, posY: 10, isVisible: true }
+  const TEST_ID = 'testId';
 
   test('has null returned when menu is not visible', () => {
-    const { container } = render(<ContextMenu
-      items={menuItems}
-      menuState={{ ...menuState, isVisible: false }}
+    const { container } = render(<MovieTileContextMenu
+      id={TEST_ID}
+      menuIsVisible={false}
+      items={MENU_ITEMS}
       hideMenu={hideMenuMock}
       />)
 
@@ -29,25 +30,27 @@ describe('ContextMenu', () => {
   });
 
   test('has all items passed in props rendered as buttons', () => {
-    const { getByRole } = render(<ContextMenu
-      items={menuItems}
-      menuState={menuState}
+    const { getByRole } = render(<MovieTileContextMenu
+      id={TEST_ID}
+      menuIsVisible={true}
+      items={MENU_ITEMS}
       hideMenu={hideMenuMock}
       />)
 
-    const ul = getByRole('context-menu')
+    const ul = getByRole('menu-tile-context-menu')
 
-    expect(ul.children.length).toBe(menuItems.length + 1); // close button is a child besides buttons
+    expect(ul.children.length).toBe(MENU_ITEMS.length + 1); // close button is a child besides buttons
   });
 
   test('has hideMenu called when close button clicked', () => {
-    const { getByRole } = render(<ContextMenu
-      items={menuItems}
-      menuState={menuState}
+    const { getByRole } = render(<MovieTileContextMenu
+      id={TEST_ID}
+      menuIsVisible={true}
+      items={MENU_ITEMS}
       hideMenu={hideMenuMock}
       />)
 
-    const closeButton = getByRole('context-menu-close-button')
+    const closeButton = getByRole('menu-tile-context-menu-close-button')
 
     fireEvent.click(closeButton);
 
@@ -57,18 +60,19 @@ describe('ContextMenu', () => {
   test('has hideMenu and item handler called when menu item clicked', () => {
     const clickedIndex = 1; // should be in range of menuItems
 
-    const { getByRole } = render(<ContextMenu
-      items={menuItems}
-      menuState={menuState}
+    const { getByRole } = render(<MovieTileContextMenu
+      id={TEST_ID}
+      menuIsVisible={true}
+      items={MENU_ITEMS}
       hideMenu={hideMenuMock}
       />)
 
-    const ul = getByRole('context-menu')
+    const ul = getByRole('menu-tile-context-menu')
 
     expect(hideMenuMock).toBeCalledTimes(1);
     fireEvent.click(ul.children[clickedIndex + 1]); // li elements start after first-child with close button
 
     expect(hideMenuMock).toBeCalledTimes(2); // called once before click and once after click
-    expect(menuItems[clickedIndex].clickHandler).toBeCalledWith(menuState.id)
+    expect(MENU_ITEMS[clickedIndex].clickHandler).toBeCalledWith(TEST_ID)
   });
 });
