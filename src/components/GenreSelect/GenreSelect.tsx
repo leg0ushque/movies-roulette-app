@@ -19,9 +19,7 @@ export interface IGenreSelectProps {
 
 const GenreSelect: React.FC<IGenreSelectProps> = (props) => {
   const selectGenre = (genreId: string): void => {
-    if (genreId?.length) {
-      props.onSelect(genreId);
-    }
+    props.onSelect(genreId);
   };
 
   const createGenreButton = (genre: IGenre, isSelected: boolean): JSX.Element => {
