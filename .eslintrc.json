@@ -21,6 +21,7 @@
     "rules": {
         "semi": "off",
         "@typescript-eslint/semi": "off",
-        "@typescript-eslint/strict-boolean-expressions": "off"
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/restrict-template-expressions": "off"
     }
 }
