@@ -54,7 +54,8 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
               name="title"
               placeholder={TitlePlaceholder}
               defaultValue={props.movie?.title}
-              tabIndex={0}></input>
+              tabIndex={0}
+              autoFocus></input>
           </Col>
           <Col md={4} xs={11} className='pr-0'>
             <label htmlFor="releaseDate">Release date</label>
@@ -117,7 +118,7 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
                 <input className="button button-black" type="reset" value={INPUT_RESET_TEXT} />
               </Col>
               <Col md={6} xs={6} >
-                <input className="button button-red" autoFocus type="submit" role="submitButton" value={INPUT_SUBMIT_TEXT} />
+                <input className="button button-red" type="submit" role="submitButton" value={INPUT_SUBMIT_TEXT} />
               </Col>
             </Row>
           </Col>
