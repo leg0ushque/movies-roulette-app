@@ -1,17 +1,12 @@
 
 import React, { useState } from 'react';
 
-import Dialog from '../components/Dialog';
+import Dialog, { type IDialogProps } from '../components/Dialog';
 
-export interface IDialogWrapperProps {
-  logo: string
-  title: JSX.Element | string
-  isNotification: boolean
-  isCentered: boolean
-  onClose: () => void
+export interface IDialogWrapperProps extends IDialogProps {
 }
 
-const DialogWrapper: React.FC<React.PropsWithChildren<IDialogWrapperProps>> = (props) => {
+const DialogWrapper: React.FC<React.PropsWithChildren<IDialogWrapperProps>> = ({ logo, title, isWide, isCentered, hasScrollableBody, onClose, children }) => {
   const [dialogIsOpened, setDialogIsOpened] = useState(false);
 
   const openDialog = (): void => { setDialogIsOpened(true) }
@@ -22,16 +17,17 @@ const DialogWrapper: React.FC<React.PropsWithChildren<IDialogWrapperProps>> = (p
     <button className="redFocusedButton" onClick={openDialog} >Open dialog</button>
     { dialogIsOpened &&
       <Dialog
-        logo={props.logo}
-        title={props.title}
-        isNotification={props.isNotification}
-        isCentered={props.isCentered}
+        logo={logo}
+        title={title}
+        isWide={isWide}
+        hasScrollableBody={hasScrollableBody}
+        isCentered={isCentered}
         onClose={() => {
           closeDialog();
-          props.onClose();
+          onClose();
         }}
       >
-        {props.children}
+        {children}
       </Dialog>
     }
     </>

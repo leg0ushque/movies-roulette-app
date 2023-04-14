@@ -12,21 +12,17 @@
     z-index: 100;
 }
 
-.dialog:not(.dialog.notification) {
-    top: 50%;
-}
-
 .dialog {
     z-index: 101;
     position: fixed;
     left: 50%;
-    
-    width: 81.3%;
+
     padding: 0 0 3% 0;
 
     background-color: var(--color3);
     font-family: 'Montserrat';
     color: var(--color5);
+    font-size: 1em;
 
     transform: translate(-50%, -50%);
     
@@ -36,48 +32,26 @@
         0px 10px 50px rgba(0, 0, 0, 0.05); 
 }
 
-.dialog.notification.centered {
-    text-align: center;
-}
-
-.dialog.notification {
-    top: 30%;
+.dialog:not(.wide) {
+    top: 50%;
     width: 50.17%;
 }
 
+.dialog.wide {
+    top: 50%;
+    width: 81.3%;
+}
+
+.dialog.centered {
+    text-align: center;
+} 
+
+/* Dialog elements below */
+
 .dialog-header {
+    font-size: x-large;
     padding: 10px;
     margin-bottom: 15px;
-}
-
-.dialog-logo {
-    padding: 0 0 0 0;
-    margin: 0 0 15px 0;
-
-    width: 50px;
-    border-radius: 100%;
-    border: 0;
-
-    text-align: center;
-    background-color: var(--color1);
-    font-family: 'Montserrat';
-    color: var(--color5);
-    line-height: 50px;
-
-    font-size: xx-large;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.dialog-title {
-    font-size: xx-large;
-    text-transform: uppercase;
-    margin-bottom: 2vh;
-}
-
-.dialog:not(.centered) .dialog-title {
-    margin-left: var(--modal-common-padding);
 }
 
 .dialog-close-button {
@@ -88,20 +62,25 @@
     font-size: x-large;
 }
 
-.dialog:not(.centered) .dialog-body {
-    padding: 20px var(--modal-common-padding);
+.dialog-title {
+    font-size: xx-large;
+    text-transform: uppercase;
+    margin-bottom: 2vh;
 }
 
-/* scroll in dialog-body */
-.dialog:not(.notification) .dialog-body {
+.dialog .dialog-body.scrollable {
     max-height: 60vh;
     overflow-y: scroll;
 }
 
-.dialog-body {
-    padding: 20px 3%;
+.dialog:not(.centered) .dialog-title {
+    margin-left: var(--modal-common-padding);
 }
 
-.dialog-body:last-child {
-    padding-bottom: 0;
+.dialog-body {
+    max-height: 60vh;
+}
+
+.dialog:not(.centered) .dialog-body {
+    padding: 20px var(--modal-common-padding);
 }

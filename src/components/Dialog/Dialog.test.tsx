@@ -3,6 +3,8 @@ import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
+
+import { Logo } from '../DialogLogo';
 import Dialog from './Dialog';
 
 describe('Dialog', () => {
@@ -16,9 +18,9 @@ describe('Dialog', () => {
   test('has all items passed in props rendered', () => {
     const { container } = render(
       <Dialog
-        logo={'!'}
+        logo={Logo.Check}
         title={TEST_TITLE}
-        isNotification={false}
+        isWide={true}
         isCentered={false}
         onClose={onCloseMock}
       >
@@ -35,9 +37,8 @@ describe('Dialog', () => {
   test('has to be centered when proper value passed in props', () => {
     const { container } = render(
       <Dialog
-        logo={'!'}
         title={TEST_TITLE}
-        isNotification={false}
+        isWide={true}
         isCentered={true}
         onClose={onCloseMock}
       >
@@ -52,9 +53,8 @@ describe('Dialog', () => {
   test('has onClose callback called on close button pressed', () => {
     const { getByRole } = render(
       <Dialog
-        logo={'!'}
         title={TEST_TITLE}
-        isNotification={false}
+        isWide={true}
         isCentered={false}
         onClose={onCloseMock}
       >
@@ -71,9 +71,8 @@ describe('Dialog', () => {
   test('has no logo rendered when it\'s not passed in props', () => {
     const { container } = render(
       <Dialog
-        logo={''}
         title={TEST_TITLE}
-        isNotification={false}
+        isWide={true}
         isCentered={false}
         onClose={onCloseMock}
       >

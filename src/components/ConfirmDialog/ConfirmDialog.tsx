@@ -3,6 +3,7 @@ import './styles.css';
 import React, { type FormEvent } from 'react';
 
 import Dialog from '../Dialog';
+import { Logo } from '../DialogLogo';
 
 const INPUT_SUBMIT_TEXT = 'Confirm'
 
@@ -16,9 +17,9 @@ export interface IConfirmDialogProps {
 const ConfirmDialog: React.FC<React.PropsWithChildren<IConfirmDialogProps>> = (props) => {
   return (
     <Dialog
-      logo={''}
+      logo={Logo.Question}
       title={props.title}
-      isNotification={true}
+      isWide={true}
       isCentered={false}
       onClose={props.onClose}>
       <form className="confirmDialogForm"

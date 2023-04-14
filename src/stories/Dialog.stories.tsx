@@ -3,6 +3,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
+import { Logo } from '../components/DialogLogo';
 import DialogWrapper, { type IDialogWrapperProps } from './DialogWrapper';
 
 const DIALOG_CONTENT: JSX.Element = (
@@ -29,6 +30,7 @@ const DIALOG_CONTENT: JSX.Element = (
 const DialogWrapperStory: ComponentMeta<typeof DialogWrapper> = {
   title: 'Components/Dialog',
   component: DialogWrapper,
+  argTypes: { logo: { control: 'radio', options: [undefined, Logo.Check, Logo.Plus, Logo.Question] } },
   decorators: [
     (Story) => (
       <>
@@ -48,15 +50,15 @@ export const Default = {
   ...Template.bind({}),
   args: {
     title: 'Dialog title',
+    isWide: true,
+    isCentered: false,
+    hasScrollableBody: true,
+    onClose: action('Dialog onclose called'),
     children: (
       <div>
         {DIALOG_CONTENT}
       </div>
-    ),
-    logo: null,
-    isNotification: false,
-    isCentered: false,
-    onClose: action('Dialog onclose called')
+    )
   }
 };
 
@@ -64,17 +66,16 @@ export const DefaultWithLogo = {
   ...Template.bind({}),
   args: {
     title: (<h2>DialogWrapper title</h2>),
+    logo: Logo.Check,
+    isWide: false,
+    isCentered: false,
+    hasScrollableBody: true,
+    onClose: action('Dialog onclose called'),
     children: (
       <div>
         {DIALOG_CONTENT}
       </div>
-    ),
-    logo: (
-      <span>+</span>
-    ),
-    isNotification: false,
-    isCentered: false,
-    onClose: action('Dialog onclose called')
+    )
   }
 };
 
@@ -87,11 +88,10 @@ export const DefaultNotificationWithLogo = {
         <p>The movie has been added to database successfully</p>
       </div>
     ),
-    logo: (
-      <span>&#10003;</span>
-    ),
-    isNotification: true,
+    logo: Logo.Check,
+    isWide: false,
     isCentered: true,
+    hasScrollableBody: false,
     onClose: action('Dialog onclose called')
   }
 };

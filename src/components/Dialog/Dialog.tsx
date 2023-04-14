@@ -4,44 +4,32 @@ import React from 'react';
 import FocusLock from 'react-focus-lock';
 import { Portal } from 'react-portal';
 
+import DialogLogo, { type Logo } from '../DialogLogo';
+
 export interface IDialogProps {
-  logo: string
+  logo?: Logo
   title: JSX.Element | string
-  isNotification: boolean
-  isCentered: boolean
+  isWide?: boolean
+  isCentered?: boolean
+  hasScrollableBody?: boolean
   onClose: () => void
 }
 
-const logo = (content: string | null): JSX.Element | null => {
-  if (content == null || content.length === 0) {
-    return null
-  }
-
-  return (
-    <div className="dialog-logo" role="dialog-logo">
-      {content}
-    </div>
-  )
-}
-
-const Dialog: React.FC<React.PropsWithChildren<IDialogProps>> = (props) => {
+const Dialog: React.FC<React.PropsWithChildren<IDialogProps>> = ({ logo, title, isWide, isCentered, hasScrollableBody, onClose, children }) => {
   return (
     <Portal>
         <FocusLock>
           <div className="dialog-overlay" />
-          <div className={
-            'dialog' +
-            (props.isNotification ? ' notification' : '') +
-            (props.isCentered ? ' centered' : '')} role="dialog">
+          <div className={`dialog${isWide ? ' wide' : ''}${(isCentered ? ' centered' : '')}`} role="dialog">
             <div className="dialog-header">
-                <button className="dialog-close-button" role="dialog-close-button" onClick={props.onClose}>&#10005;</button>
+                <button className="dialog-close-button" role="dialog-close-button" onClick={onClose}>&#10005;</button>
             </div>
-            {logo(props.logo)}
+            <DialogLogo char={logo}/>
             <div className="dialog-title" role="dialog-title">
-              {props.title}
+              {title}
               </div>
-            <div className="dialog-body" role="dialog-body">
-              {props.children}
+            <div className={`dialog-body${hasScrollableBody ? ' scrollable' : ''}`} role="dialog-body">
+              {children}
             </div>
           </div>
       </FocusLock>

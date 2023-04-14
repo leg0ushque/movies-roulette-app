@@ -4,11 +4,10 @@ import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
 import testData from '../shared/constants/test-data';
+import DialogWrapper from './DialogWrapper';
 import MovieFormWrapper, { type IMovieFormWrapperProps } from './MovieFormWrapper';
 
 import type IGenre from '../shared/types/IGenre';
-import DialogWrapper from './DialogWrapper';
-
 const MovieFormWrapperStory: ComponentMeta<typeof MovieFormWrapper> = {
   title: 'Compositions/MovieForm in Dialog',
   component: MovieFormWrapper
@@ -32,7 +31,7 @@ export const AddMovie = {
 AddMovie.decorators = [
   (Story) => (
   <div>
-    <DialogWrapper logo={''} title={'Add movie'} isNotification={false} isCentered={false}
+    <DialogWrapper title={'Add movie'} isWide={true} hasScrollableBody isCentered={false}
       onClose={action('Dialog close called')}
     >
       <Story />
@@ -53,7 +52,7 @@ export const EditMovie = {
 EditMovie.decorators = [
   (Story) => (
     <div>
-      <DialogWrapper logo={''} title={'Edit movie'} isNotification={false} isCentered={false}
+      <DialogWrapper title={'Edit movie'} isWide={true} isCentered={false}
         onClose={action('Dialog close called')}
       >
         <Story />
