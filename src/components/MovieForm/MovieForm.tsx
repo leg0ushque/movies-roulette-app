@@ -55,7 +55,7 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
               placeholder={TitlePlaceholder}
               defaultValue={props.movie?.title}
               tabIndex={0}
-              autoFocus></input>
+              autoFocus />
           </Col>
           <Col md={4} xs={11} className='pr-0'>
             <label htmlFor="releaseDate">Release date</label>
@@ -81,7 +81,7 @@ const MovieForm: React.FC<IMovieFormProps> = (props) => {
               name="rating"
               placeholder={ReleaseDatePlaceholder}
               defaultValue={props.movie?.rating}
-              tabIndex={3}></input>
+              tabIndex={3} />
           </Col>
         </Row>
         <Row className='form-row justify-content-center'>
