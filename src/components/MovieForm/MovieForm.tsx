@@ -26,20 +26,33 @@ export interface IMovieFormProps {
 const MovieForm: React.FC<IMovieFormProps> = (props) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    props.onSubmit(Object.fromEntries(new FormData(event.target as HTMLFormElement)))
+    const formData = new FormData(event.target as HTMLFormElement)
+
+    const genreCheckboxInputs = Array.from((event.target as HTMLFormElement).elements)
+      .filter((el: Element) => (el.getAttribute('type') === 'checkbox')) as HTMLInputElement[];
+
+    const checkedGenreIds = genreCheckboxInputs
+      .filter((el: HTMLInputElement) => el.checked)
+      .map(el => el.value)
+
+    const obj = {
+      ...Object.fromEntries(formData),
+      genreIds: checkedGenreIds
+    };
+
+    props.onSubmit(obj)
   }
 
   const genreDropdownItems = props.genres.map((item) => {
-    const itemKey = `d-item-${item.name}`;
-
     return (
       <Form.Check
-        id={itemKey}
-        key={itemKey}
+        id={item.id}
+        key={item.name}
         type='checkbox'
         checked={props.movie?.genreIds.some((x) => x === item.id)}
-        name={itemKey}
+        name='genreIds'
         label={item.name}
+        value={item.id}
         onChange={() => { props.recheckGenre(item.id); }}/>
     )
   });
