@@ -2,21 +2,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 import React, { useState } from 'react';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { Col, Row } from 'react-bootstrap';
 
+import { type IContextMenuItem, type IGenre, type IMovie } from '../../shared/types';
+import setMovieValues from '../../shared/utils/setMovieValues';
 import MovieTileContextMenu from '../MovieTileContextMenu';
-import { EDIT_DELETE_CONTEXT_MENU_ITEMS } from '../MovieTileContextMenu/constants';
 import ThreeDotsButton from '../ThreeDotsButton';
-import { COMING_SOON_TEXT, EPMTY_RELEASE_YEAR, IMAGE_NOT_FOUND_SRC } from './constants';
 
-import type IMovieModel from '../../models/IMovieModel';
 export interface IMovieTileProps {
-  movie: IMovieModel
+  movie?: IMovie
+  movieGenres?: IGenre[]
+  clickMenuItems: IContextMenuItem[]
   onClick: (genreId: string) => void
 }
 
-const MovieTile: React.FC<IMovieTileProps> = ({ movie, onClick }) => {
+const MovieTile: React.FC<IMovieTileProps> = ({ movie, movieGenres, clickMenuItems, onClick }) => {
+  const propsMovie = setMovieValues(movie);
+
   const [menuIsVisible, setMenuIsVisible] = useState(false);
 
   const showContextMenu = (): void => {
@@ -28,30 +30,35 @@ const MovieTile: React.FC<IMovieTileProps> = ({ movie, onClick }) => {
   }
 
   return (
-    <Col lg={4} className='movieTile prevent-select' role='movieTile' onClick={() => { onClick(movie.id) }}>
+    <Col lg={4} className='movieTile prevent-select' role='movieTile' onClick={() => {
+      if (propsMovie.id.length) {
+        onClick(propsMovie.id)
+      }
+    }}
+    >
       <Row>
         <Col className='image'>
           <MovieTileContextMenu
-            id={movie.id}
+            id={propsMovie.id}
             menuIsVisible={menuIsVisible}
             hideMenu={hideContextMenu}
-            items={EDIT_DELETE_CONTEXT_MENU_ITEMS}
+            items={clickMenuItems}
           />
           <ThreeDotsButton onClick={showContextMenu}></ThreeDotsButton>
-          <img src={movie.imageUrl?.length ? movie.imageUrl : IMAGE_NOT_FOUND_SRC} role='image'/>
+          <img src={propsMovie.imageUrl} role='image'/>
         </Col>
       </Row>
       <Row>
         <Col sm={10} className='title'>
-          <span role='title'>{movie.title?.length ? movie.title : COMING_SOON_TEXT}</span>
+          <span role='title'>{propsMovie.title}</span>
           </Col>
         <Col sm={2} className='releaseYear'>
-          <span role='releaseYear'>{movie.releaseDate?.getFullYear() ?? EPMTY_RELEASE_YEAR}</span>
+          <span role='releaseYear'>{propsMovie.releaseDate?.getFullYear()}</span>
           </Col>
       </Row>
       <Row>
         <Col className='genres'>
-          <span role='genresList'>{movie.genresList?.map(x => x.name).join(', ')}</span>
+          <span role='genresList'>{movieGenres?.map(x => x.name).join(', ')}</span>
         </Col>
       </Row>
     </Col>

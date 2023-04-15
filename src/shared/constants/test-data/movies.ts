@@ -1,13 +1,12 @@
-import type IMovieModel from '../../../models/IMovieModel';
+import type IMovie from '../../types/IMovie';
 
-const TEST_MOVIES: IMovieModel[] = [
+const TEST_MOVIES: IMovie[] = [
   {
     id: '3076',
     imageUrl: 'https://m.media-amazon.com/images/I/715QHVj8vaL._SL1302_.jpg',
     title: 'John Wick 4',
     releaseDate: new Date('24-Mar-2023'),
     genreIds: ['1', '6', '7'],
-    genresList: [],
     rating: 9.5,
     movieUrl: 'https://www.imdb.com/title/tt10366206/',
     duration: '2h 49m',

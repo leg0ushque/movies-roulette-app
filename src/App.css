@@ -5,6 +5,12 @@
   --color4: #555555;
   --color5: #ffffff;
   --color6: #323232F2;
+
+  /* Z-INDEXES USED IN APP*/
+
+  --dialog-overlay-zindex: 100;
+  --dialog-zindex: 101;
+  --dialog-dropdown-zindex: 102;
 }
 
 @font-face {
@@ -58,11 +64,13 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: var(--color2);
+  border-radius: 4px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--color4);
+  border-radius: 4px;
 }
 
 /* Handle on hover */

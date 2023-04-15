@@ -3,35 +3,31 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
+import MovieForm, { type IMovieFormProps } from '../components/MovieForm';
 import testData from '../shared/constants/test-data';
 import DialogWrapper from './DialogWrapper';
-import MovieFormWrapper, { type IMovieFormWrapperProps } from './MovieFormWrapper';
 
-import type IGenre from '../shared/types/IGenre';
-const MovieFormWrapperStory: ComponentMeta<typeof MovieFormWrapper> = {
+const MovieFormStory: ComponentMeta<typeof MovieForm> = {
   title: 'Compositions/MovieForm in Dialog',
-  component: MovieFormWrapper
+  component: MovieForm
 }
-export default MovieFormWrapperStory;
+export default MovieFormStory;
 
-const Template: ComponentStory<typeof MovieFormWrapper> = (props: IMovieFormWrapperProps) => <MovieFormWrapper {...props} />;
+const Template: ComponentStory<typeof MovieForm> = (props: IMovieFormProps) => <MovieForm {...props} />;
 
 const movie = testData.movies[0]
-movie.genresList = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
 
 export const AddMovie = {
   ...Template.bind({}),
   args: {
-    movie: null,
     genres: testData.genres,
     onClick: action('Movie tile clicked!')
   }
 }
-
 AddMovie.decorators = [
   (Story) => (
   <div>
-    <DialogWrapper title={'Add movie'} isWide={true} hasScrollableBody isCentered={false}
+    <DialogWrapper title={'Add movie'} isWide hasScrollableBody
       onClose={action('Dialog close called')}
     >
       <Story />
@@ -52,7 +48,7 @@ export const EditMovie = {
 EditMovie.decorators = [
   (Story) => (
     <div>
-      <DialogWrapper title={'Edit movie'} isWide={true} isCentered={false}
+      <DialogWrapper title={'Edit movie'} isWide hasScrollableBody
         onClose={action('Dialog close called')}
       >
         <Story />

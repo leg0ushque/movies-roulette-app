@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 import React from 'react';
 
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Logo } from '../DialogLogo';
 import Dialog from './Dialog';
@@ -16,7 +16,7 @@ describe('Dialog', () => {
   const TEST_BODY_TEXT = '<div><span>test body</span></div>'
 
   test('has all items passed in props rendered', () => {
-    const { container } = render(
+    render(
       <Dialog
         logo={Logo.Check}
         title={TEST_TITLE}
@@ -27,15 +27,30 @@ describe('Dialog', () => {
         {TEST_BODY}
       </Dialog>)
 
-    const dialogTitle = container.querySelector('.dialog-title')
-    const dialogBody = container.querySelector('.dialog-body')
+    const dialogTitle = screen.getByRole('dialog-title');
+    const dialogBody = screen.getByRole('dialog-body')
 
-    expect(dialogTitle).toContainHTML(TEST_TITLE_TEXT);
-    expect(dialogBody).toContainHTML(TEST_BODY_TEXT);
+    expect(dialogTitle).toMatchSnapshot(TEST_TITLE_TEXT);
+    expect(dialogBody).toMatchSnapshot(TEST_BODY_TEXT);
   });
 
   test('has to be centered when proper value passed in props', () => {
-    const { container } = render(
+    render(
+      <Dialog
+        title={TEST_TITLE}
+        isCentered={true}
+        onClose={onCloseMock}
+      >
+        {TEST_BODY}
+      </Dialog>)
+
+    const dialog = screen.getByRole('dialog')
+
+    expect(dialog).toHaveClass('centered');
+  });
+
+  test('has to be wider when proper value passed in props', () => {
+    render(
       <Dialog
         title={TEST_TITLE}
         isWide={true}
@@ -45,9 +60,24 @@ describe('Dialog', () => {
         {TEST_BODY}
       </Dialog>)
 
-    const dialog = container.querySelector('.dialog.centered')
+    const dialog = screen.getByRole('dialog')
 
-    expect(dialog).not.toBeNull();
+    expect(dialog).toHaveClass('wide');
+  });
+
+  test('has scrollable body when proper value passed in props', () => {
+    render(
+      <Dialog
+        title={TEST_TITLE}
+        hasScrollableBody
+        onClose={onCloseMock}
+      >
+        {TEST_BODY}
+      </Dialog>)
+
+    const dialogBody = screen.getByRole('dialog-body')
+
+    expect(dialogBody).toHaveClass('scrollable');
   });
 
   test('has onClose callback called on close button pressed', () => {

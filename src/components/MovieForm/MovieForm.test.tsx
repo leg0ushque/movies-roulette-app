@@ -5,23 +5,21 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
 import testData from '../../shared/constants/test-data';
-import type IGenre from '../../shared/types/IGenre';
 import formatInputDate from '../../shared/utils/dateFormat';
 import MovieForm from './MovieForm';
 
-describe('MovieTile', () => {
+describe('MovieForm', () => {
   const onSubmitMock = jest.fn();
-  const recheckGenreMock = jest.fn();
 
   const movie = testData.movies[0];
-  movie.genresList = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
 
   test('has all items passed in props rendered', () => {
-    const { container } = render(<MovieForm movie={movie}
-      genres={testData.genres}
-      onSubmit={onSubmitMock}
-      recheckGenre={recheckGenreMock}
-    />)
+    const { container } = render(
+      <MovieForm movie={movie}
+        genres={testData.genres}
+        onSubmit={onSubmitMock}
+      />
+    )
 
     const titleInput = container.querySelector('input[type=text][name=title]')
     const releaseDateInput = container.querySelector('input[type=date][name=releaseDate]')
@@ -39,11 +37,12 @@ describe('MovieTile', () => {
   });
 
   test('has onSubmit callback called when submit button pressed', () => {
-    const { getByRole } = render(<MovieForm movie={movie}
-      genres={testData.genres}
-      onSubmit={onSubmitMock}
-      recheckGenre={recheckGenreMock}
-    />)
+    const { getByRole } = render(
+      <MovieForm movie={movie}
+        genres={testData.genres}
+        onSubmit={onSubmitMock}
+      />
+    )
 
     const submitButton = getByRole('submitButton')
 
@@ -53,6 +52,7 @@ describe('MovieTile', () => {
     expect(onSubmitMock).toBeCalledWith({
       description: movie.description,
       movieUrl: movie.movieUrl,
+      genreIds: movie.genreIds,
       rating: movie.rating.toString(),
       releaseDate: formatInputDate(movie.releaseDate ?? new Date()),
       runtime: movie.duration,
@@ -60,25 +60,21 @@ describe('MovieTile', () => {
     })
   });
 
-  test('has recheckGenre callback called when dropdown-item clicked', () => {
-    const testGenre = testData.genres.find(x => x.id === movie.genreIds[0])
-    const itemKey = testGenre !== undefined ? `#d-item-${testGenre.name}` : '';
+  test('has dropdown-shown state changed on dropdown button clicked', () => {
+    const { getByRole, container } = render(
+      <MovieForm movie={movie}
+        genres={testData.genres}
+        onSubmit={onSubmitMock}
+      />
+    )
 
-    const { container } = render(<MovieForm movie={movie}
-      genres={testData.genres}
-      onSubmit={onSubmitMock}
-      recheckGenre={recheckGenreMock}
-    />)
+    const dropdownElement = container.getElementsByClassName('genresList')[0]
+    expect(dropdownElement).not.toHaveClass('shown')
 
-    const dropdownButton = container.querySelector('#dropdown-basic-button')
-    const dropdownItem = container.querySelector(itemKey)
+    const genresDropdownButton = getByRole('dropdown-button')
 
-    if (dropdownButton !== null && dropdownItem !== null) {
-      fireEvent.click(dropdownButton);
-      fireEvent.click(dropdownItem);
-    }
+    fireEvent.click(genresDropdownButton);
 
-    // expect(recheckGenreMock).toBeCalledTimes(1)
-    // expect(recheckGenreMock).toBeCalledWith(testGenre?.id)
+    expect(dropdownElement).toHaveClass('shown')
   });
 });

@@ -4,26 +4,30 @@ import './styles.css';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
-import type IMovieModel from '../../models/IMovieModel';
+import { type IGenre, type IMovie } from '../../shared/types';
+import setMovieValues from '../../shared/utils/setMovieValues';
 
 export interface IMovieDetailsProps {
-  movie: IMovieModel
+  movie?: IMovie
+  movieGenres: IGenre[]
 }
 
-const MovieDetails: React.FC<IMovieDetailsProps> = ({ movie }) => {
+const MovieDetails: React.FC<IMovieDetailsProps> = ({ movie, movieGenres }) => {
+  const propsMovie = setMovieValues(movie);
+
   return (
     <Container className='movieDetails'>
       <Row>
         <Col md={4} className='image'>
-          <img src={movie.imageUrl} role='image'/>
+          <img src={propsMovie.imageUrl} role='image'/>
         </Col>
         <Col md={7} className='info'>
-          <div className='title' role='title'>{movie.title}</div>
-          <div className='rating prevent-select' role='rating'>{movie.rating}</div>
-          <div className='genresList' role='genresList'>{movie.genresList.map(x => x.name).join(', ')}</div>
-          <div className='releaseYear' role='releaseYear'>{movie.releaseDate?.getFullYear()}</div>
-          <div className='duration' role='duration'>{movie.duration}</div>
-          <div className='description' role='description'>{movie.description}</div>
+          <div className='title' role='title'>{propsMovie.title}</div>
+          <div className='rating prevent-select' role='rating'>{propsMovie.rating}</div>
+          <div className='genresList' role='genresList'>{movieGenres.map(x => x.name).join(', ')}</div>
+          <div className='releaseYear' role='releaseYear'>{propsMovie.releaseDate?.getFullYear()}</div>
+          <div className='duration' role='duration'>{propsMovie.duration}</div>
+          <div className='description' role='description'>{propsMovie.description}</div>
         </Col>
       </Row>
     </Container>

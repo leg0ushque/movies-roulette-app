@@ -35,7 +35,7 @@
 .movieForm input[type=text], 
 .movieForm input[type=date],
 .movieForm input[type=number],
-.movieForm .dropdown button,
+.movieForm button.dropdown,
 .movieForm textarea.description {
     padding: 10px 1.5vw;
     display: block;
@@ -45,6 +45,7 @@
     font-size: medium;
     width: 100%;
     text-align: left;
+    border-radius: 4px;
 }
 
 .movieForm textarea.description {
@@ -53,29 +54,83 @@
     resize: none;
 }
 
-/* DROPDOWN STYLES BELOW */
-
-/* input with placeholder */
-.movieForm .dropdown {
+.movieForm:last-child  {
     width: 100%;
-    margin-bottom: 3vh;
+    height: 100%;
+    border-radius: 4px;
+    border: 2px var(--color1);
 }
 
-/* for active button */
-.movieForm .dropdown button:active {
+/* DROPDOWN STYLES BELOW */
+
+.movieForm button.dropdown {
+    width: 100%;
+}
+
+.movieForm button.dropdown:active {
     background-color: var(--color1);
 }
 
-/* form appearing after dropdown button clicked */
-.movieForm .dropdown-menu {
-    background-color: var(--color6);
-    width: 100%;
-    overflow-y: scroll;
-    max-height: 200px;
-    height: 150px;
+.movieForm .dropdown-col  {
+    position: relative;
 }
 
-/* form appearing after dropdown checkbox item */
+.movieForm .genresList.shown {
+    background-color: #232323EA;
+    position: absolute;
+    z-index: var(--dialog-dropdown-zindex);
+    left: 0;
+    width: 97%;
+    
+    overflow-y: scroll;
+    max-height: 150px;
+}
+.movieForm .genresList:not(.shown) {
+    display: none;
+    padding-right: 1.5vw;
+}
+
+.movieForm .genresList.shown .form-check {
+    line-height: 200%;
+    margin-left: 2.5%;
+    padding-left: 0;
+}
+
+.movieForm .genresList.shown .form-check label {
+    color: var(--color5);
+    font-size: medium;
+    text-transform: none;
+    letter-spacing: 1px;
+    padding-bottom: 0;
+}
+
+.movieForm .genresList.shown .form-check input[type=checkbox]{
+    border-color: var(--color1);
+}
+
+.movieForm .genresList.shown div.form-check:hover {
+    background-color: var(--color6);
+}
+
+.movieForm div.inputcheck-label {
+    width: 100%;
+}
+
+.movieForm .genresList.shown .form-check input[type=checkbox]{
+    border-color: var(--color1);
+    margin: 8px 5px 0 12px;
+}
+
+.movieForm .genresList.shown .form-check input[type=checkbox]:focus{
+    border-color: var(--color1);
+    box-shadow: 0 0 5px var(--color1);
+}
+
+.movieForm .genresList.shown .form-check input[type=checkbox]:checked{
+    background-color: var(--color1);
+} 
+
+/*
 .movieForm .dropdown-menu div {
     background-color: var(--color6);
     color: var(--color5);
@@ -83,43 +138,27 @@
     text-transform: none;
 }
 
-/* Dropdown item */
-.movieForm .dropdown .form-check{
-    padding: 7px 0 10px 45px;
-}
-
-/* Dropdown item label */ 
-.movieForm .dropdown .form-check label{
-    color: var(--color5);
-    font-size: smaller;
-    padding: 2px 0 0 0;
-    text-transform: none;
-}
-
 .movieForm .dropdown .form-check:hover{
     background-color: var(--color4);
 }
+*/
 
-/* Dropdown item V-square */ 
-.movieForm .dropdown .form-check input[type=checkbox]{
-    border-color: var(--color1);
+/* DROPDOWN BUTTON TRIANGLE STYLES */
+
+.movieForm button.dropdown::after {
+    color: var(--color1);
+    float: right;
+    font-size: x-large;
+    line-height: 70%;
+}
+.movieForm button.dropdown.down::after {
+    content: "▼";
+}
+.movieForm button.dropdown:not(.down):after {
+    content: "▲"; 
 }
 
-.movieForm .dropdown .form-check input[type=checkbox]:focus{
-    border-color: var(--color1);
-    box-shadow:  0 0 5px var(--color1);
-}
-
-.movieForm .dropdown .form-check input[type=checkbox]:checked{
-    background-color: var(--color1);
-}
-
-.movieForm:last-child  {
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    border: 2px var(--color1);
-}
+/* BUTTONS */
 
 .movieForm .button {
     width: 100%;

@@ -34,15 +34,13 @@ export default MovieTileStory;
 const Template: ComponentStory<typeof MovieTile> = (props: IMovieTileProps) => <MovieTile {...props} />;
 
 const movie = testData.movies[0]
-movie.genresList = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
+const movieGenres = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
+const onClick = action('Movie tile clicked!')
 
 export const NoDataProvided = {
   ...Template.bind({}),
   args: {
-    movie: {
-      id: '',
-      imageUrl: ''
-    }
+    onClick
   }
 };
 
@@ -50,6 +48,7 @@ export const DefaultSingle = {
   ...Template.bind({}),
   args: {
     movie,
-    onClick: action('Movie tile clicked!')
+    onClick,
+    movieGenres
   }
 };
