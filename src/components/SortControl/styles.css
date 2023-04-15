@@ -1,0 +1,70 @@
+.sortcontrol .label {
+  display: inline-block;
+  font-family: 'Montserrat';
+  text-align: center;
+  text-transform: uppercase;
+  
+  background-color: var(--color4);
+  color: var(--color5);
+
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  margin:0;
+  padding: 0;
+  z-index: 1;
+}
+
+.textHalfOpacity {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dropdown {
+  font-family: 'Montserrat';
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color5);
+
+  display: inline-block;
+}
+
+.dropdown-content {
+  list-style-type: none;
+  background-color: var(--color4);
+  color: var(--color5);
+
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  margin:0;
+  padding: 0;
+  z-index: 1;
+}
+
+.dropdown-content li {
+  padding: 16px;
+  width: 160px;
+}
+
+.dropdown-content li:hover {
+  background-color: var(--color1);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-triangle{
+  color: var(--color1)
+}
+
+.sortBtn {
+  font-family: 'Montserrat';
+  text-align: center;
+  text-transform: uppercase;
+
+  padding: 16px;
+  border: 0;
+  background-color: var(--color3);
+  display: inline;
+}

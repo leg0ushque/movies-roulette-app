@@ -1,0 +1,212 @@
+.movieForm {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.container {
+    padding: 0;
+}
+
+/* form-rows */
+.movieForm .form-row input,
+.movieForm .form-row textarea {
+    margin-bottom: 3vh;
+    border-radius: 4px;
+}
+
+.form-row input:focus {
+    border-color: var(--color1);
+}
+
+.movieForm label {
+    display: block;
+    color: var(--color1);
+    text-transform: uppercase;
+    font-size: small;
+    letter-spacing: 1px;
+    padding: 0 0 15px 0;
+}
+
+.movieForm input[type=date] {
+  color-scheme: dark
+}
+
+.movieForm input[type=text], 
+.movieForm input[type=date],
+.movieForm input[type=number],
+.movieForm button.dropdown,
+.movieForm textarea.description {
+    padding: 10px 1.5vw;
+    display: block;
+    background-color: var(--color6);
+    color: var(--color5);
+    border: 0;
+    font-size: medium;
+    width: 100%;
+    text-align: left;
+    border-radius: 4px;
+}
+
+.movieForm textarea.description {
+    color: var(--color5);
+    word-wrap: break-word;
+    resize: none;
+}
+
+.movieForm:last-child  {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border: 2px var(--color1);
+}
+
+/* DROPDOWN STYLES BELOW */
+
+.movieForm button.dropdown {
+    width: 100%;
+}
+
+.movieForm button.dropdown:active {
+    background-color: var(--color1);
+}
+
+.movieForm .dropdown-col  {
+    position: relative;
+}
+
+.movieForm .genresList.shown {
+    background-color: #232323EA;
+    position: absolute;
+    z-index: var(--dialog-dropdown-zindex);
+    left: 0;
+    width: 97%;
+    
+    overflow-y: scroll;
+    max-height: 150px;
+}
+.movieForm .genresList:not(.shown) {
+    display: none;
+    padding-right: 1.5vw;
+}
+
+.movieForm .genresList.shown .form-check {
+    line-height: 200%;
+    margin-left: 2.5%;
+    padding-left: 0;
+}
+
+.movieForm .genresList.shown .form-check label {
+    color: var(--color5);
+    font-size: medium;
+    text-transform: none;
+    letter-spacing: 1px;
+    padding-bottom: 0;
+}
+
+.movieForm .genresList.shown .form-check input[type=checkbox]{
+    border-color: var(--color1);
+}
+
+.movieForm .genresList.shown div.form-check:hover {
+    background-color: var(--color6);
+}
+
+.movieForm div.inputcheck-label {
+    width: 100%;
+}
+
+.movieForm .genresList.shown .form-check input[type=checkbox]{
+    border-color: var(--color1);
+    margin: 8px 5px 0 12px;
+}
+
+.movieForm .genresList.shown .form-check input[type=checkbox]:focus{
+    border-color: var(--color1);
+    box-shadow: 0 0 5px var(--color1);
+}
+
+.movieForm .genresList.shown .form-check input[type=checkbox]:checked{
+    background-color: var(--color1);
+} 
+
+/*
+.movieForm .dropdown-menu div {
+    background-color: var(--color6);
+    color: var(--color5);
+    font-size: large;
+    text-transform: none;
+}
+
+.movieForm .dropdown .form-check:hover{
+    background-color: var(--color4);
+}
+*/
+
+/* DROPDOWN BUTTON TRIANGLE STYLES */
+
+.movieForm button.dropdown::after {
+    color: var(--color1);
+    float: right;
+    font-size: x-large;
+    line-height: 70%;
+}
+.movieForm button.dropdown.down::after {
+    content: "▼";
+}
+.movieForm button.dropdown:not(.down):after {
+    content: "▲"; 
+}
+
+/* BUTTONS */
+
+.movieForm .button {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border: 2px solid var(--color1);
+    font-size: large;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.movieForm .button.button-black {
+    background-color: var(--color3);
+    color: var(--color1);
+}
+
+.movieForm .button.button-black:hover {
+    background-color: var(--color6);
+}
+
+.movieForm .button.button-red {
+    background-color: var(--color1);
+    color: var(--color5);
+}
+.movieForm .button.button-red:hover {
+    background-color: var(--color5);
+    color: var(--color2);
+}
+
+/* DROPDOWN TRIANGLE SYMBOL STYLES */ 
+
+/* triangle symbol of INACTIVE dropdown button */
+.movieForm .dropdown button::after {
+    color: var(--color1);
+    float: right;
+    margin-top: 10px;
+}
+
+/* triangle symbol of ACTIVE dropdown button */
+.movieForm .dropdown button:active::after {
+    color: var(--color5)
+}
+
+/* rotation animation when dropdown shown */
+
+.dropdown-toggle[aria-expanded="true"]:after {
+    transform: rotate(180deg); 
+}
+.dropdown-toggle:after { 
+    transition: 0.7s; 
+}

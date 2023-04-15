@@ -1,6 +1,7 @@
-interface Genre {
-  id: string
+import type IEntity from './IEntity'
+
+interface IGenre extends IEntity {
   name: string
 }
 
-export default Genre
+export default IGenre

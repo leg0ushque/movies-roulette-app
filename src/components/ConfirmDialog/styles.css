@@ -1,0 +1,11 @@
+.confirmDialogForm .align-right {
+    text-align: right;
+}
+
+.confirmDialogForm .button {
+    padding: 10px 20px !important;
+    height: fit-content;
+    width: fit-content !important;
+    margin-top: 5%;
+    font-size: medium;
+}

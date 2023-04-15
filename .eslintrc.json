@@ -4,6 +4,7 @@
         "es2021": true
     },
     "extends": [
+        "plugin:storybook/recommended",
         "plugin:react/recommended",
         "standard-with-typescript"
     ],
@@ -19,6 +20,8 @@
     ],
     "rules": {
         "semi": "off",
-        "@typescript-eslint/semi": "off"
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/restrict-template-expressions": "off"
     }
 }

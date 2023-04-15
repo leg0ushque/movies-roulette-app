@@ -4,18 +4,11 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
+import testData from '../../shared/constants/test-data';
 import GenreSelect from './GenreSelect';
 
 describe('GenreSelect', () => {
-  const testGenres = [
-    {
-      id: '3513',
-      name: 'Action'
-    },
-    {
-      id: '8537',
-      name: 'Adventure'
-    }];
+  const testGenres = testData.genres
 
   const onSelectCallbackMock = jest.fn(value => {});
 
@@ -73,6 +66,7 @@ describe('GenreSelect', () => {
 
     fireEvent.click(ul.children[itemToSelectIndex + 1])
 
+    expect(onSelectCallbackMock).toBeCalledTimes(1)
     expect(onSelectCallbackMock).toBeCalledWith(testGenres[itemToSelectIndex].id);
   })
 });

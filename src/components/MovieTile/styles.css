@@ -1,0 +1,65 @@
+.movieTile {
+    font-family: 'Montserrat';
+    margin-bottom: 50px;
+    padding: 0px 10px;
+}
+
+.movieTile .image {
+    padding: 0;
+    position: relative;
+}
+
+.movieTile .image button.three-dots {
+    display: none !important;
+}
+
+.movieTile .image:hover button.three-dots {
+    display: block !important;
+}
+
+.movieTile .image img {
+    display: block;
+    height: inherit;
+    width: inherit;
+}
+
+.movieTile .title {
+    display: inline;
+    padding: 15px 0px 0px 0px;
+    
+    font-size: large;
+    color: var(--color5);
+}
+
+.movieTile .releaseYear {
+    display: flex;
+    justify-content: right;
+    padding: 15px 0px 0px 0px;
+    
+    color: var(--color5);
+    opacity: 70%;
+    text-align: right; 
+
+    float: left;
+    text-align: right; 
+}
+
+.movieTile .releaseYear span {
+    padding: 3px 13px;
+    border: 2px solid var(--color4);
+    border-radius: 5px;
+
+    font-size: medium;
+
+    float: left;
+    text-align: right; 
+}
+
+.movieTile .genres {
+    padding-left: 0;
+}
+
+.movieTile .genres span {
+    color: var(--color5);
+    opacity: 50%;
+}

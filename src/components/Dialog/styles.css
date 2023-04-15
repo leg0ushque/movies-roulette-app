@@ -1,0 +1,86 @@
+:root {
+    --modal-common-padding: 5%;
+}
+
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: var(--dialog-overlay-zindex);
+}
+
+.dialog {
+    z-index: var(--dialog-zindex);
+    position: fixed;
+    left: 50%;
+
+    padding: 0 0 3% 0;
+
+    background-color: var(--color3);
+    font-family: 'Montserrat';
+    color: var(--color5);
+    font-size: 1em;
+
+    transform: translate(-50%, -50%);
+    
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), 
+        0px 2px 10px rgba(0, 0, 0, 0.07), 
+        0px 10px 20px rgba(0, 0, 0, 0.05), 
+        0px 10px 50px rgba(0, 0, 0, 0.05); 
+}
+
+.dialog:not(.wide) {
+    top: 50%;
+    width: 50.17%;
+}
+
+.dialog.wide {
+    top: 50%;
+    width: 81.3%;
+}
+
+.dialog.centered {
+    text-align: center;
+} 
+
+/* Dialog elements below */
+
+.dialog-header {
+    font-size: x-large;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.dialog-close-button {
+    float: right;
+    border: 0;
+    background-color: var(--color3);
+    color: var(--color5);
+    font-size: x-large;
+}
+
+.dialog-title {
+    font-size: xx-large;
+    text-transform: uppercase;
+    margin-bottom: 2vh;
+}
+
+.dialog .dialog-body.scrollable {
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
+.dialog:not(.centered) .dialog-title {
+    margin-left: var(--modal-common-padding);
+}
+
+.dialog-body {
+    max-height: 60vh;
+}
+
+.dialog:not(.centered) .dialog-body {
+    padding: 20px var(--modal-common-padding);
+}
