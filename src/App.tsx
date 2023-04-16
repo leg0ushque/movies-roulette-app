@@ -1,4 +1,5 @@
 import './App.css';
+import './assets/styles/fonts.css';
 
 import React, { useEffect, useState } from 'react';
 

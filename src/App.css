@@ -13,12 +13,6 @@
   --dialog-dropdown-zindex: 102;
 }
 
-@font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"),
-    url("../public/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
-}
-
 .prevent-select {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
