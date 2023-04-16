@@ -26,15 +26,40 @@
 
 /* HEADER */
 
-.movie-list-page .page-header {
-  height: 450px;
+.movie-list-page .app-name-col,
+.movie-list-page .add-movie-col {
+  padding-top: 3%;
+  padding-right: 0;
+}
+
+.movie-list-page .add-movie-col .search {
+  background-color: var(--color3);
+  border-radius: 100%;
+  border: 0;
+  height: 72px;
+  width: 72px;
+}
+
+.movie-list-page .page-header:not(.movie-details) {
   width: 100vw;
   padding: 0 var(--page-padding) 5% var(--page-padding);
-  margin: 0;
+  margin-left: -1%;
   
   background-image: url('../../../public/images/bg.png');
   background-repeat: repeat;
   background-size: 100% 100%;
+}
+
+.movie-list-page .page-header.movie-details {
+  width: 100vw;
+  padding: 0 var(--page-padding) 1% var(--page-padding);
+  margin-left: -1%;
+  
+  background-color: var(--color3);
+}
+
+.movie-list-page .page-header .app-name-addMovie {
+  padding-bottom: 36px;
 }
 
 .movie-list-page .page-header h1 {
@@ -45,7 +70,6 @@
   margin: 3% 0;
   padding-left: 7.5%
 }
-
 
 .movie-list-page .page-header button.add-movie {
   font-family: 'Montserrat';
