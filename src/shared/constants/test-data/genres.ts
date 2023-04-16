@@ -2,32 +2,80 @@ import type IGenre from '../../types/IGenre';
 
 const TEST_GENRES: IGenre[] = [
   {
-    id: '1',
-    name: 'Action'
-  },
-  {
-    id: '2',
-    name: 'Adventure'
-  },
-  {
-    id: '3',
-    name: 'Animation'
-  },
-  {
-    id: '4',
-    name: 'Family'
-  },
-  {
-    id: '5',
+    id: 'Drama',
     name: 'Drama'
   },
   {
-    id: '6',
+    id: 'Romance',
+    name: 'Romance'
+  },
+  {
+    id: 'Animation',
+    name: 'Animation'
+  },
+  {
+    id: 'Adventure',
+    name: 'Adventure'
+  },
+  {
+    id: 'Family',
+    name: 'Family'
+  },
+  {
+    id: 'Comedy',
+    name: 'Comedy'
+  },
+  {
+    id: 'Fantasy',
+    name: 'Fantasy'
+  },
+  {
+    id: 'Science Fiction',
+    name: 'Science Fiction'
+  },
+  {
+    id: 'Action',
+    name: 'Action'
+  },
+  {
+    id: 'Mystery',
+    name: 'Mystery'
+  },
+  {
+    id: 'Thriller',
     name: 'Thriller'
   },
   {
-    id: '7',
+    id: 'Music',
+    name: 'Music'
+  },
+  {
+    id: 'War',
+    name: 'War'
+  },
+  {
+    id: 'Crime',
     name: 'Crime'
+  },
+  {
+    id: 'History',
+    name: 'History'
+  },
+  {
+    id: 'Horror',
+    name: 'Horror'
+  },
+  {
+    id: 'Western',
+    name: 'Western'
+  },
+  {
+    id: 'Documentary',
+    name: 'Documentary'
+  },
+  {
+    id: 'TV Movie',
+    name: 'TV Movie'
   }
 ];
 
