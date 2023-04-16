@@ -17,8 +17,9 @@ const MovieTileContextMenu: React.FC<IMovieTileContextMenuProps> = ({ id, menuIs
   }
 
   const menuItems = items.map((item) =>
-    <li key={item.name} onClick={() => {
+    <li key={item.name} onClick={(event) => {
       hideMenu();
+      event.stopPropagation();
       item.clickHandler(id)
     }}>
       {item.name}

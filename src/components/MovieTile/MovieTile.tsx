@@ -30,7 +30,7 @@ const MovieTile: React.FC<IMovieTileProps> = ({ movie, movieGenres, clickMenuIte
   }
 
   return (
-    <Col lg={4} className='movieTile prevent-select' role='movieTile' onClick={() => {
+    <Col md={4} className='movieTile prevent-select' role='movieTile' onClick={() => {
       if (propsMovie.id.length) {
         onClick(propsMovie.id)
       }
@@ -44,11 +44,11 @@ const MovieTile: React.FC<IMovieTileProps> = ({ movie, movieGenres, clickMenuIte
             hideMenu={hideContextMenu}
             items={clickMenuItems}
           />
-          <ThreeDotsButton onClick={showContextMenu}></ThreeDotsButton>
+          <ThreeDotsButton onClick={showContextMenu} />
           <img src={propsMovie.imageUrl} role='image'/>
         </Col>
       </Row>
-      <Row>
+      <Row className='title-releaseYear'>
         <Col sm={10} className='title'>
           <span role='title'>{propsMovie.title}</span>
           </Col>

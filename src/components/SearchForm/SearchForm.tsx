@@ -1,6 +1,7 @@
 import './styles.css';
 
 import React, { useState, type ChangeEvent, type FormEvent } from 'react';
+import { Col, Row } from 'react-bootstrap';
 
 export const DEFAULT_VALUE = '';
 export const INPUT_PLACEHOLDER_TEXT = 'What do you want to watch?';
@@ -27,14 +28,20 @@ const SearchForm: React.FC<ISearchFormProps> = ({ initialValue, onSearch }) => {
 
   return (
     <form onSubmit={handleSubmit} className="search">
-      <input
-        type="text"
-        placeholder={INPUT_PLACEHOLDER_TEXT}
-        value={value}
-        onChange={handleChange}
-        required
-      ></input>
-      <input type="submit" value={INPUT_SUBMIT_TEXT} />
+      <Row>
+        <Col md={9} xs={12}>
+          <input
+            type="text"
+            placeholder={INPUT_PLACEHOLDER_TEXT}
+            value={value}
+            onChange={handleChange}
+            required
+          ></input>
+        </Col>
+        <Col md={3} xs={12}>
+          <input type="submit" value={INPUT_SUBMIT_TEXT} />
+        </Col>
+      </Row>
     </form>
   );
 }

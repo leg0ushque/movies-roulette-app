@@ -10,6 +10,6 @@ const root = ReactDOM.createRoot(
 )
 root.render(
   <React.StrictMode>
-    <App selectedGenreId='' />
+    <App />
   </React.StrictMode>
 )

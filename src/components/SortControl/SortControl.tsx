@@ -1,3 +1,5 @@
+import './styles.css';
+
 import React, { useEffect, useState } from 'react';
 
 export interface ISortWay {
@@ -6,13 +8,13 @@ export interface ISortWay {
 }
 
 export interface ISortControlProps {
-  selectedSortId: string
+  selectedSortId?: string
   sortWays: ISortWay[]
   onChange: (sort: string) => void
 }
 
 const SortControl: React.FunctionComponent<ISortControlProps> = (props) => {
-  const [selectedSortId, setSelectedSortId] = useState(props.selectedSortId)
+  const [selectedSortId, setSelectedSortId] = useState(props.selectedSortId ?? props.sortWays[0].id)
 
   useEffect(() => {
     props.onChange(selectedSortId);

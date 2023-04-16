@@ -13,7 +13,7 @@ const allGenre: IGenre = {
 
 export interface IGenreSelectProps {
   genres: IGenre[]
-  selectedGenreId: string
+  selectedGenreId?: string
   onSelect: (genreId: string) => void
 }
 

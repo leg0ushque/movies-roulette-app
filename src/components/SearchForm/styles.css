@@ -1,7 +1,9 @@
 form.search {
   font-family: 'Montserrat';
-  width: 75%;
+  width: 100%;
   height: 4vw;
+  margin: 1% 0 3% 0;
+  padding: 0 7.5% 0 7.5%
 }
 
 form.search input {
@@ -9,11 +11,10 @@ form.search input {
   font-size: 1.5vw;
   color: var(--color5);
 
-  width: 70%;
-  height: 100%;
+  width: 100%;
+  height: 200%;
   background: rgba(80,80,80, 0.8);
 
-  display: inline;
   padding-left: 1vw;
   padding-right: 1vw;
   border: 0;
@@ -37,11 +38,10 @@ form.search input::placeholder {
 }
 
 form.search input[type="submit"] {
-  height: inherit;
-  width: 20%;
+  width: 100%;
+  height: 200%;
   background-color: var(--color1);
 
-  margin-left: 10px;
 
   border: 0;
   border-radius: 4px;
@@ -55,4 +55,10 @@ form.search input[type="submit"] {
 
   text-align: center;
   text-transform: uppercase;
+  opacity: 1;
+}
+
+form.search input[type="submit"]:hover {
+  background-color: var(--color5);
+  color: var(--color1);
 }
