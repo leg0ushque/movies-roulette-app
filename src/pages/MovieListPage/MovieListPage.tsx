@@ -48,7 +48,6 @@ const MovieListPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
-    // const url = 'http://localhost:4000/movies';
     MovieService.getAll().then((response) => {
       setGenres(testData.genres)
 

@@ -8,7 +8,7 @@ import MovieListPage from './pages/MovieListPage';
 const App: React.FC = () => {
   return (
     <div className="App">
-      <MovieListPage/>
+      <MovieListPage />
     </div>
   );
 }
