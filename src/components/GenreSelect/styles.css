@@ -8,9 +8,10 @@ ul.genresList{
   padding: 0;
   overflow: hidden;
   display: inline;
+  position:relative
 }
 
-ul.genresList li {
+ul.genresList li:not(.in-dropdown) {
   background-color: var(--color3);
   font-family: 'Montserrat';
   text-align: center;
@@ -23,15 +24,59 @@ ul.genresList li {
   border-bottom: var(--genreButton-border-thickness) solid var(--color4);
 }
 
-ul.genresList li.selected{
+ul.genresList li:not(.in-dropdown).selected{
   border-bottom: var(--genreButton-border-thickness) solid var(--color1);
 }
 
-ul.genresList li.selected:hover{
+ul.genresList li:not(.in-dropdown).selected:hover{
   background-color: var(--color3);
   border-bottom: var(--genreButton-border-thickness) solid var(--color1);
 }
 
 ul.genresList li:hover {
   background-color: var(--color4);
+}
+
+ul.genresList .genres-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+  overflow-y: scroll;
+  display: none;
+  background-color: var(--color3);
+}
+
+ul.genresList li.in-dropdown {
+  background-color: var(--color3);
+  font-family: 'Montserrat';
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color5);
+
+  display: block;
+  padding: 8px;
+  border-bottom: 1px solid var(--color4);
+}
+
+ul.genresList li.in-dropdown.selected{
+  background-color: var(--color1);
+}
+
+ul.genresList li.in-dropdown:hover {
+  background-color: var(--color1);
+}
+
+ul.genresList li.other-genres:hover~.genres-dropdown {
+  display: block;
+}
+
+ul.genresList .genres-dropdown:hover {
+  display: block;
+}
+
+ul.genresList .genres-dropdown:focus-within {
+  display: block;
 }
