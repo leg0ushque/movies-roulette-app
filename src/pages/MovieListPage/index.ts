@@ -1,4 +1,3 @@
-import MovieListPage, { type IMovieListPageProps } from './MovieListPage';
+import MovieListPage from './MovieListPage';
 
-export type { IMovieListPageProps };
 export default MovieListPage;

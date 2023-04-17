@@ -1,19 +1,20 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 import GenreSelect from '../../components/GenreSelect';
 import MovieDetails from '../../components/MovieDetails';
 import MovieTile from '../../components/MovieTile';
 import SearchForm from '../../components/SearchForm';
-import SortControl from '../../components/SortControl/SortControl';
+import SortControl from '../../components/SortControl';
 import sortWays from '../../components/SortControl/sortWays';
-import testData from '../../shared/constants/test-data';
-import { type IContextMenuItem, type IGenre, type IMovie } from '../../shared/types';
+import useMovieListPageState from '../../hooks/useMovieListPageState';
+import { type IContextMenuItem, type IGenre } from '../../shared/types';
 
 import type IMovieTileContent from '../../shared/types/IMovieTileContent';
+
 const MOVIE_TILE_MENU_ITEMS: IContextMenuItem[] = [
   {
     name: 'Edit',
@@ -25,34 +26,25 @@ const MOVIE_TILE_MENU_ITEMS: IContextMenuItem[] = [
   }
 ];
 
-const generateMovieDetailsFromId = (selectedMovieId: string, movies: IMovieTileContent[] | undefined): JSX.Element => {
+const generateMovieDetailsFromId = (selectedMovieId?: string, movies?: IMovieTileContent[]): JSX.Element => {
   const selectedMovie = movies?.find(m => m.movie?.id === selectedMovieId) as IMovieTileContent;
 
   return <MovieDetails movie={selectedMovie.movie} movieGenres={selectedMovie.genres as IGenre[]} />
 }
 
 const MovieListPage: React.FC = () => {
-  const genres = testData.genres;
-  const movies = testData.movies;
-  const sortOptions = sortWays;
-  const movieTiles = movies.map((movie: IMovie) => {
-    const movieGenres = movie.genreIds.map((id: string) => genres.find((x: IGenre) => x.id === id)) as IGenre[]
-    const movieTileContent: IMovieTileContent = { movie, genres: movieGenres };
-    return movieTileContent;
-  })
-
-  const [selectedGenreId, setSelectedGenreId] = useState('0');
-  const [selectedMovieId, setSelectedMovieId] = useState<string | undefined>(undefined);
-  const [selectedSortId, setSelectedSortId] = useState(sortOptions[0].id);
-  const [searchQuery, setSearchQuery] = useState('')
-
-  useEffect(() => {
-    console.log(`selectedGenreId changed to: ${selectedGenreId}`);
-  }, [selectedGenreId])
-
-  useEffect(() => {
-    console.log(`selectedSortId changed to: ${selectedSortId}`);
-  }, [selectedSortId])
+  const {
+    searchQuery,
+    genres,
+    movieTiles,
+    selectedGenreId,
+    selectedMovieId,
+    selectedSortId,
+    setSearchQuery,
+    setSelectedGenreId,
+    setSelectedMovieId,
+    setSelectedSortId
+  } = useMovieListPageState()
 
   const handleSearch = (query: string): void => {
     setSearchQuery(query);
@@ -74,7 +66,7 @@ const MovieListPage: React.FC = () => {
     setSelectedMovieId(undefined);
   }
 
-  const movieTilesElement = movieTiles?.map((item: IMovieTileContent) =>
+  const movieTilesElement = (movieTiles ?? [])?.map((item: IMovieTileContent) =>
     (
     <MovieTile
       key={item.movie?.title}
@@ -89,7 +81,7 @@ const MovieListPage: React.FC = () => {
   return (
     <div className='movie-list-page'>
       <div className={`page-header${selectedMovieId ? ' movie-details' : ''}`}>
-        <Row className='app-name-addMovie'>
+        <Row className='app-name-addMovie' key='app-name'>
           <Col md={10} xs={12} className='app-name-col'>
             <span className='app-name prevent-select'><b>movies</b>roulette</span>
           </Col>
@@ -105,12 +97,12 @@ const MovieListPage: React.FC = () => {
         { selectedMovieId
           ? generateMovieDetailsFromId(selectedMovieId, movieTiles)
           : <>
-            <Row>
+            <Row key='header-title'>
               <Col xs={12} className='p-0 prevent-select'>
                 <h1>Find your movie</h1>
               </Col>
             </Row>
-            <SearchForm initialValue={searchQuery} onSearch={handleSearch} />
+            <SearchForm initialValue={searchQuery} onSearch={handleSearch} key='search-form'/>
           </>
         }
       </div>
