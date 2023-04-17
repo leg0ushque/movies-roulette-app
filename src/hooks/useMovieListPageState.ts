@@ -60,14 +60,6 @@ const useMovieListPageState = (): IUseMovieListPageState => {
   }, []);
 
   useEffect(() => {
-    console.log(`selectedGenreId changed to: ${selectedGenreId}`);
-  }, [selectedGenreId])
-
-  useEffect(() => {
-    console.log(`selectedSortId changed to: ${selectedSortId}`);
-  }, [selectedSortId])
-
-  useEffect(() => {
     if (!searchQuery) {
       return;
     }
