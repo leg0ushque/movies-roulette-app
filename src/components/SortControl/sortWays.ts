@@ -1,3 +1,3 @@
-const sortWays = [{ id: 'sort1', name: 'Release Date' }, { id: 'sort2', name: 'Title' }]
+const sortWays = [{ id: 'release_date', name: 'Release Date' }, { id: 'title', name: 'Title' }]
 
 export default sortWays

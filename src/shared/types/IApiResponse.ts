@@ -1,6 +1,6 @@
-interface IApiResponse<T> {
+interface IApiResponse<ResponseDataType> {
   totalAmount: number
-  data: T
+  data: ResponseDataType
   offset: number
   limit: number
 }

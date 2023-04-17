@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 import GenreSelect from '../../components/GenreSelect';
@@ -10,11 +10,8 @@ import MovieTile from '../../components/MovieTile';
 import SearchForm from '../../components/SearchForm';
 import SortControl from '../../components/SortControl';
 import sortWays from '../../components/SortControl/sortWays';
-import MovieService from '../../services/MovieService';
-import testData from '../../shared/constants/test-data';
-import { type IContextMenuItem, type IGenre, type IMovie } from '../../shared/types';
-
-import type IApiMovieModel from '../../shared/types/IApiMovieModel';
+import useMovieListPageState from '../../hooks/useMovieListPageState';
+import { type IContextMenuItem, type IGenre } from '../../shared/types';
 
 import type IMovieTileContent from '../../shared/types/IMovieTileContent';
 
@@ -29,76 +26,25 @@ const MOVIE_TILE_MENU_ITEMS: IContextMenuItem[] = [
   }
 ];
 
-const generateMovieDetailsFromId = (selectedMovieId: string, movies: IMovieTileContent[] | undefined): JSX.Element => {
+const generateMovieDetailsFromId = (selectedMovieId?: string, movies?: IMovieTileContent[]): JSX.Element => {
   const selectedMovie = movies?.find(m => m.movie?.id === selectedMovieId) as IMovieTileContent;
 
   return <MovieDetails movie={selectedMovie.movie} movieGenres={selectedMovie.genres as IGenre[]} />
 }
 
 const MovieListPage: React.FC = () => {
-  const sortOptions = sortWays;
-
-  const [movies, setMovies] = useState<IMovie[]>([])
-  const [genres, setGenres] = useState<IGenre[]>([])
-  const [movieTiles, setMovieTiles] = useState<IMovieTileContent[]>([])
-
-  const [selectedGenreId, setSelectedGenreId] = useState('0');
-  const [selectedMovieId, setSelectedMovieId] = useState<string | undefined>(undefined);
-  const [selectedSortId, setSelectedSortId] = useState(sortOptions[0].id);
-  const [searchQuery, setSearchQuery] = useState('')
-
-  useEffect(() => {
-    MovieService.getAll().then((response) => {
-      setGenres(testData.genres)
-
-      console.log('response.data')
-      console.log(response.data)
-
-      const { data } = response.data;
-      const apiMovies: IApiMovieModel[] = data;
-
-      console.log('apiMovies')
-      console.log(apiMovies)
-
-      const stateMovies: IMovie[] = apiMovies.map(x => {
-        return {
-          id: x.id.toString(),
-          title: x.title,
-          description: x.overview,
-          duration: `${x.runtime} min`,
-          releaseDate: new Date(x.release_date),
-          rating: x.vote_average,
-          genreIds: x.genres,
-          movieUrl: x.poster_path,
-          imageUrl: x.poster_path
-        }
-      }) as IMovie[];
-
-      console.log('STATE MOVIES:')
-      console.log(stateMovies)
-
-      setMovies(stateMovies);
-      setMovieTiles(movies.map((movie: IMovie) => {
-        const movieGenres = movie.genreIds.map((id: string) => genres.find((x: IGenre) => x.id === id)) as IGenre[]
-        const movieTileContent: IMovieTileContent = { movie, genres: movieGenres };
-        return movieTileContent;
-      }))
-    }).catch((error) => {
-      console.log(error)
-      return {
-        status: error.status,
-        data: error.response
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    console.log(`selectedGenreId changed to: ${selectedGenreId}`);
-  }, [selectedGenreId])
-
-  useEffect(() => {
-    console.log(`selectedSortId changed to: ${selectedSortId}`);
-  }, [selectedSortId])
+  const {
+    searchQuery,
+    genres,
+    movieTiles,
+    selectedGenreId,
+    selectedMovieId,
+    selectedSortId,
+    setSearchQuery,
+    setSelectedGenreId,
+    setSelectedMovieId,
+    setSelectedSortId
+  } = useMovieListPageState()
 
   const handleSearch = (query: string): void => {
     setSearchQuery(query);
@@ -120,7 +66,7 @@ const MovieListPage: React.FC = () => {
     setSelectedMovieId(undefined);
   }
 
-  const movieTilesElement = movieTiles?.map((item: IMovieTileContent) =>
+  const movieTilesElement = (movieTiles ?? [])?.map((item: IMovieTileContent) =>
     (
     <MovieTile
       key={item.movie?.title}
@@ -161,7 +107,7 @@ const MovieListPage: React.FC = () => {
         }
       </div>
       <div className='page-content'>
-        <Row className='genresList-sortControl' key='genresList-sortControl'>
+        <Row className='genresList-sortControl'>
           <Col md={9} xs={12} className='pr-0'>
             <GenreSelect genres={genres} selectedGenreId={selectedGenreId} onSelect={handleGenreSelect}/>
             <div className="filler">&nbsp;</div>
@@ -170,14 +116,14 @@ const MovieListPage: React.FC = () => {
             <SortControl sortWays={sortWays} selectedSortId={selectedSortId} onChange={handleSortChange}/>
           </Col>
         </Row>
-        <Row className='movies-amount' key='movieAmount'>
+        <Row className='movies-amount'>
           <span><b>{movieTiles?.length}</b> movies found</span>
         </Row>
-        <Row className='movieTiles' key='movieTiles'>
+        <Row className='movieTiles'>
           {movieTilesElement}
         </Row>
       </div>
-      <Row className='page-footer' key='page-footer'>
+      <Row className='page-footer'>
         <span className='app-name prevent-select'><b>movies</b>roulette</span>
       </Row>
     </div>

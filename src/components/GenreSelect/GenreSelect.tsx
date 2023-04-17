@@ -2,9 +2,9 @@ import './styles.css';
 
 import React from 'react';
 
-import type IGenre from '../../shared/types/IGenre';
+import { DEFAULT_SELECTED_GENRE_ID } from '../../shared/constants/genre';
 
-const DEFAULT_SELECTED_GENRE_ID: string = '0';
+import type IGenre from '../../shared/types/IGenre';
 
 const allGenre: IGenre = {
   id: DEFAULT_SELECTED_GENRE_ID,
