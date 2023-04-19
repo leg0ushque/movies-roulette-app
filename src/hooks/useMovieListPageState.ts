@@ -42,38 +42,7 @@ const useMovieListPageState = (): IUseMovieListPageState => {
     })
   }, [movies])
 
-  useEffect(() => {
-    cancelPreviousRequest();
-
-    MovieService.getAll({}, newCancelToken()).then((response) => {
-      setGenres(testData.genres)
-      setMovies(response);
-    }).catch((error) => {
-      if (isCancel(error)) return;
-
-      console.log(error)
-      return {
-        status: error.status,
-        data: error.response
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!searchQuery) {
-      return;
-    }
-
-    const query: IApiQuery = {
-      search: searchQuery,
-      searchBy: 'title',
-      filter: selectedGenreId !== DEFAULT_SELECTED_GENRE_ID ? selectedGenreId : '',
-      sortBy: selectedSortId,
-      sortOrder: 'asc'
-    }
-    console.log(query)
-
-    cancelPreviousRequest();
+  const movieServiceGetAll = (query?: IApiQuery): void => {
     MovieService.getAll(query, newCancelToken()).then((response) => {
       setMovies(response);
     }).catch((error) => {
@@ -85,7 +54,33 @@ const useMovieListPageState = (): IUseMovieListPageState => {
         data: error.response
       }
     });
-  }, [searchQuery])
+  }
+
+  useEffect(() => {
+    cancelPreviousRequest();
+
+    setGenres(testData.genres);
+
+    movieServiceGetAll();
+  }, []);
+
+  useEffect(() => {
+    if (!searchQuery) {
+      return;
+    }
+
+    cancelPreviousRequest();
+
+    const query: IApiQuery = {
+      search: searchQuery,
+      searchBy: 'title',
+      filter: selectedGenreId !== DEFAULT_SELECTED_GENRE_ID ? selectedGenreId : '',
+      sortBy: selectedSortId,
+      sortOrder: 'asc'
+    }
+
+    movieServiceGetAll(query);
+  }, [searchQuery, selectedGenreId, selectedSortId])
 
   return {
     searchQuery,
