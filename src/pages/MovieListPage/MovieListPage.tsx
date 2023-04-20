@@ -117,7 +117,7 @@ const MovieListPage: React.FC = () => {
           </Col>
         </Row>
         <Row className='movies-amount'>
-          <span><b>{movieTiles?.length}</b> movies found</span>
+          <span><b>{movieTiles?.length}</b> movie(s) found</span>
         </Row>
         <Row className='movieTiles'>
           {movieTilesElement}

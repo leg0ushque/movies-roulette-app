@@ -18,11 +18,29 @@ You will also see any lint errors in the console.
 
 Launches the JEST test runner with coverage results showed for every file\
 
+### `npm storybook`
+
+Runs the Storybook
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
+
 ## E2E Tests
 
-E2E testing is currently available for Counter component.
-To run e2e tests, use *npm start* command first, then use
+E2E testing is currently available for MovieList page.
+Before running e2e, please, make sure you've Backend API running at https://localhost:4000 (see the 'Backend API' docs below)
+
+To run e2e tests, use *npm start* command first - that will launch the application. Then use
 
 ### `npm run wdio`
 
 E2E tests will be run using Chromedriver.
+
+## Backend API
+
+1. Clone the backend repository from\
+https://github.com/VarvaraZadnepriak/MoviesAPI.ReactJS
+
+2. Navigate to the cloned repository folder and run "npm install" to install dependencies.\
+
+3. Run "npm start" command to start the backend server. It will start on https://localhost:4000 .\
+
+4. Make sure Swagger is available at http://localhost:4000/api-docs

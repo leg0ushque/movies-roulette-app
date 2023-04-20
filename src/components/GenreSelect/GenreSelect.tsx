@@ -30,11 +30,12 @@ const GenreSelect: React.FC<IGenreSelectProps> = (props) => {
   const createGenreButton = (genre: IGenre, isSelected: boolean, extraClass?: string): JSX.Element => {
     return (
       <li
-          key={genre.id}
-          className={`${isSelected ? 'selected ' : ''}${extraClass ? `${extraClass} ` : ''}prevent-select`}
-          onClick={() => { selectGenre(genre.id); }}
+        id={genre.id}
+        key={genre.id}
+        className={`${isSelected ? 'selected ' : ''}${extraClass ? `${extraClass} ` : ''}prevent-select`}
+        onClick={() => { selectGenre(genre.id); }}
       >
-          {genre.name}
+        {genre.name}
       </li>
     );
   }
