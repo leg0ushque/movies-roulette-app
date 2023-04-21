@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-import React, { useState } from 'react';
+import React, { useState, type SyntheticEvent } from 'react';
 import { Col, Row } from 'react-bootstrap';
 
+import { IMAGE_NOT_FOUND_SRC } from '../../shared/constants/movie';
 import { type IContextMenuItem, type IGenre, type IMovie } from '../../shared/types';
 import setMovieValues from '../../shared/utils/setMovieValues';
 import MovieTileContextMenu from '../MovieTileContextMenu';
@@ -19,20 +20,26 @@ export interface IMovieTileProps {
 const MovieTile: React.FC<IMovieTileProps> = ({ movie, movieGenres, clickMenuItems, onClick }) => {
   const propsMovie = setMovieValues(movie);
 
-  const [menuIsVisible, setMenuIsVisible] = useState(false);
-
-  const showContextMenu = (): void => {
-    setMenuIsVisible(true)
+  const replaceImage = (event: SyntheticEvent<HTMLImageElement, Event>): void => {
+    (event?.target as HTMLImageElement).src = IMAGE_NOT_FOUND_SRC;
   }
 
-  const hideContextMenu = (): void => {
-    setMenuIsVisible(false)
+  const [menuIsVisible, setMenuIsVisible] = useState(false);
+
+  const toggleContextMenu = (): void => {
+    setMenuIsVisible((prev) => !prev)
   }
 
   return (
-    <Col lg={4} className='movieTile prevent-select' role='movieTile' onClick={() => {
-      if (propsMovie.id.length) {
-        onClick(propsMovie.id)
+    <Col md={4} className='movieTile prevent-select' role='movieTile' onClick={() => {
+      if (!propsMovie.id.length) {
+        return;
+      }
+
+      onClick(propsMovie.id)
+
+      if (menuIsVisible) {
+        toggleContextMenu()
       }
     }}
     >
@@ -41,14 +48,14 @@ const MovieTile: React.FC<IMovieTileProps> = ({ movie, movieGenres, clickMenuIte
           <MovieTileContextMenu
             id={propsMovie.id}
             menuIsVisible={menuIsVisible}
-            hideMenu={hideContextMenu}
+            hideMenu={toggleContextMenu}
             items={clickMenuItems}
           />
-          <ThreeDotsButton onClick={showContextMenu}></ThreeDotsButton>
-          <img src={propsMovie.imageUrl} role='image'/>
+          <ThreeDotsButton onClick={toggleContextMenu} />
+          <img src={propsMovie.imageUrl} role='image' onError={replaceImage}/>
         </Col>
       </Row>
-      <Row>
+      <Row className='title-releaseYear'>
         <Col sm={10} className='title'>
           <span role='title'>{propsMovie.title}</span>
           </Col>

@@ -2,11 +2,13 @@
     font-family: 'Montserrat';
     margin-bottom: 50px;
     padding: 0px 10px;
+    padding-right: 5%;
 }
 
 .movieTile .image {
     padding: 0;
     position: relative;
+    height: 50%;
 }
 
 .movieTile .image button.three-dots {
@@ -19,8 +21,9 @@
 
 .movieTile .image img {
     display: block;
-    height: inherit;
-    width: inherit;
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
 }
 
 .movieTile .title {
