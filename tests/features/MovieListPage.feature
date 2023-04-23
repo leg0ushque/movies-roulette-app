@@ -11,7 +11,7 @@ Background:
 
     When I type "<value>" into Search input
     And I click Submit button in Search form
-    Then I should see "1 movie(s) found" under Genre buttons
+    Then I should see "1 movie(s) found by <value>" under Genre buttons
     And I should see "<value>" in movie tile "1" as title
     And I should see "<release year>" in movie tile "1" as release year
 
@@ -24,6 +24,7 @@ Background:
     When I click on the Search input
     And I type "<search>" into Search input
     And I click Submit button in Search form
+    And I move mouse cursor over Sort by button
     And I choose sorting by "<sort>"
     Then I should see "<1st movie>" in movie tile "1" as title
     And I should see "<1st movie year>" in movie tile "1" as release year
@@ -34,8 +35,8 @@ Background:
 
     Examples:
       | search | sort         | 1st movie            | 1st movie year | 2nd movie       | 2nd movie year | 3rd movie            | 3rd movie year |
-      | zoo    | title        | The Zookeeper's Wife | 2017           | We Bought a Zoo | 2011           | Zootopia             | 2016           |
-      | zoo    | release date | We Bought a Zoo      | 2011           | Zootopia        | 2016           | The Zookeeper's Wife | 2017           |
+      | zoo    | title        | Zootopia             | 2016           | We Bought a Zoo | 2011           | The Zookeeper's Wife | 2017           |
+      | zoo    | release date | We Bought a Zoo      | 2011           | Zootopia        | 2016            |The Zookeeper's Wife | 2017           |
 
   Scenario Outline: As a user, I can select genre
 
@@ -49,8 +50,8 @@ Background:
     And I should see "<2nd movie year>" in movie tile "2" as release year
 
     Examples:
-      | search | genre | 1st movie       | 1st movie year | 2nd movie            | 2nd movie year |
-      | zoo    | Drama | We Bought a Zoo | 2011           | The Zookeeper's Wife | 2017           |
+      | search | genre | 1st movie            | 1st movie year | 2nd movie       | 2nd movie year |
+      | zoo    | Drama | The Zookeeper's Wife | 2017           | We Bought a Zoo | 2011           | 
 
   Scenario Outline: As a user, I can click the movie tile to select a movie
 
@@ -63,7 +64,7 @@ Background:
 
     Examples:
       | movie                | release year |
-      | John Wick: Chapter 2 | 2017         |
+      | JOHN WICK: CHAPTER 2 | 2017         |
 
   Scenario Outline: As a user, I can click the search button to get back from movie details to Search form
 
@@ -79,5 +80,5 @@ Background:
 
     Examples:
       | movie                | release year |
-      | John Wick: Chapter 2 | 2017         |
+      | JOHN WICK: CHAPTER 2 | 2017         |
       
