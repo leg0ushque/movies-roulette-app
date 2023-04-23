@@ -32,10 +32,6 @@ const MovieTile: React.FC<IMovieTileProps> = ({ movie, movieGenres, clickMenuIte
 
   return (
     <Col md={4} className='movieTile prevent-select' role='movieTile' onClick={() => {
-      if (!propsMovie.id.length) {
-        return;
-      }
-
       onClick(propsMovie.id)
 
       if (menuIsVisible) {

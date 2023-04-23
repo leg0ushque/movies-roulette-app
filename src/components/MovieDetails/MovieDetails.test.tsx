@@ -2,15 +2,15 @@ import '@testing-library/jest-dom/extend-expect';
 
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
+import { IMAGE_NOT_FOUND_SRC } from '../../shared/constants/movie';
 import testData from '../../shared/constants/test-data';
 import { type IMovie } from '../../shared/types';
 import setMovieValues from '../../shared/utils/setMovieValues';
 import MovieDetails from './MovieDetails';
 
 import type IGenre from '../../shared/types/IGenre';
-
 describe('MovieDetails', () => {
   const movie = testData.movies[0];
   const movieGenres = movie.genreIds.map((id: string) => testData.genres.find((x: IGenre) => x.id === id)) as IGenre[];
@@ -43,5 +43,15 @@ describe('MovieDetails', () => {
     const releaseYearElement = getByRole('releaseYear')
 
     expect(releaseYearElement.textContent).toBe(movie.releaseDate?.getFullYear().toString());
+  });
+
+  test('has alternative image source rendered if the main source caused error', () => {
+    const { getByRole } = render(<MovieDetails movie={movie} movieGenres={movieGenres}/>)
+
+    const imageElement = getByRole('image')
+
+    fireEvent.error(imageElement);
+
+    expect((imageElement as HTMLImageElement).src).toBe(IMAGE_NOT_FOUND_SRC);
   });
 });
