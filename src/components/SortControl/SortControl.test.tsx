@@ -9,6 +9,7 @@ import sortWays from './sortWays';
 
 describe('SortControl', () => {
   const onChangeMock = jest.fn(value => {});
+  const toggleSortOrderMock = jest.fn();
   const selectedSortId = sortWays[0].id
 
   test('has all sort ways passed in props rendered as buttons', () => {
@@ -16,6 +17,8 @@ describe('SortControl', () => {
       selectedSortId={selectedSortId}
       sortWays={sortWays}
       onChange={onChangeMock}
+      isSortDesc={true}
+      toggleSortOrder={toggleSortOrderMock}
       />)
 
     const ul = getByRole('sortList')
@@ -30,6 +33,8 @@ describe('SortControl', () => {
       selectedSortId={selectedSortId}
       sortWays={sortWays}
       onChange={onChangeMock}
+      isSortDesc={true}
+      toggleSortOrder={toggleSortOrderMock}
       />)
 
     const ul = getByRole('sortList')

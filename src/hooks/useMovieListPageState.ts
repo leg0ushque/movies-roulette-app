@@ -13,14 +13,15 @@ export interface IUseMovieListPageState {
   genres: IGenre[]
   movieTiles: IMovieTileContent[]
   selectedGenreId: string
-  selectedMovieId?: string
   selectedSortId: string
+  isSortDescending: boolean
   setGenres: (genres: IGenre[]) => void
   setMovies: (movies: IMovie[]) => void
   setSearchQuery: (value: string) => void
   setSelectedGenreId: (id: string) => void
-  setSelectedMovieId: (id?: string) => void
   setSelectedSortId: (id: string) => void
+  toggleSortOrder: () => void
+  updateMovieTiles: () => void
 }
 
 const useMovieListPageState = (): IUseMovieListPageState => {
@@ -43,10 +44,15 @@ const useMovieListPageState = (): IUseMovieListPageState => {
     queryParams.updateQueryParameter('filter', value)
   }
 
+  const toggleSortOrder = (): void => {
+    const newValue = queryParams.sortOrder === 'asc' ? 'desc' : 'asc'
+
+    updateMovieTiles({ ...queryParams, sortOrder: newValue });
+    queryParams.updateQueryParameter('sortOrder', newValue)
+  }
+
   const [movies, setMovies] = useState<IMovie[]>([])
   const [genres, setGenres] = useState<IGenre[]>([])
-
-  const [selectedMovieId, setSelectedMovieId] = useState<string>();
 
   const movieTiles = useMemo(() => {
     return movies.map((movie: IMovie) => {
@@ -77,6 +83,11 @@ const useMovieListPageState = (): IUseMovieListPageState => {
     setGenres(testData.genres);
   }, []);
 
+  const updateMovieTilesForCurrentQuery = (): void => {
+    cancelPreviousRequest();
+    movieServiceGetAll(queryParams);
+  }
+
   const updateMovieTiles = (query: IApiQuery): void => {
     cancelPreviousRequest();
     movieServiceGetAll(query);
@@ -88,14 +99,15 @@ const useMovieListPageState = (): IUseMovieListPageState => {
     genres,
     movieTiles,
     selectedGenreId: queryParams.filter ?? DEFAULT_SELECTED_GENRE_ID,
-    selectedMovieId,
     selectedSortId: queryParams.sortBy,
+    isSortDescending: queryParams.sortOrder === 'desc',
     setGenres,
     setMovies,
     setSearchQuery,
     setSelectedGenreId,
-    setSelectedMovieId,
-    setSelectedSortId
+    setSelectedSortId,
+    toggleSortOrder,
+    updateMovieTiles: updateMovieTilesForCurrentQuery
   };
 }
 

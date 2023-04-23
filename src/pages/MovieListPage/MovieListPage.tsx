@@ -1,18 +1,22 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import {
+  Outlet,
+  createSearchParams,
+  useNavigate, useSearchParams,
+  type ParamKeyValuePair
+} from 'react-router-dom';
 
 import AppName from '../../components/AppName/AppName';
 import GenreSelect from '../../components/GenreSelect';
-import MovieDetails from '../../components/MovieDetails';
 import MovieTile from '../../components/MovieTile';
-import SearchForm from '../../components/SearchForm';
 import SortControl from '../../components/SortControl';
 import sortWays from '../../components/SortControl/sortWays';
 import { useMovieListPageState } from '../../hooks';
-import { type IContextMenuItem, type IGenre } from '../../shared/types';
+import { type IContextMenuItem } from '../../shared/types';
 
 import type IMovieTileContent from '../../shared/types/IMovieTileContent';
 
@@ -27,33 +31,35 @@ const MOVIE_TILE_MENU_ITEMS: IContextMenuItem[] = [
   }
 ];
 
-const generateMovieDetailsFromId = (selectedMovieId?: string, movies?: IMovieTileContent[]): JSX.Element => {
-  const selectedMovie = movies?.find(m => m.movie?.id === selectedMovieId) as IMovieTileContent;
-
-  return <MovieDetails movie={selectedMovie.movie} movieGenres={selectedMovie.genres as IGenre[]} />
-}
-
 const MovieListPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+
+  const navigate = useNavigate();
+
   const {
     searchQuery,
     genres,
     movieTiles,
     selectedGenreId,
-    selectedMovieId,
     selectedSortId,
-    setSearchQuery,
+    isSortDescending,
     setSelectedGenreId,
-    setSelectedMovieId,
-    setSelectedSortId
+    setSelectedSortId,
+    toggleSortOrder,
+    updateMovieTiles
   } = useMovieListPageState()
 
-  const APP_NAME: JSX.Element = (
-    <AppName onClick={() => { setSearchQuery('') }} />
-  )
-
-  const handleSearch = (query: string): void => {
-    setSearchQuery(query);
+  const clearMovieSelection = (): void => {
+    const params: ParamKeyValuePair[] = [['search', '']]
+    navigate({
+      pathname: '/',
+      search: `${createSearchParams(params)}`
+    });
   }
+
+  const APP_NAME: JSX.Element = (
+    <AppName onClick={clearMovieSelection} />
+  )
 
   const handleSortChange = (id: string): void => {
     setSelectedSortId(id);
@@ -64,11 +70,15 @@ const MovieListPage: React.FC = () => {
   }
 
   const handleMovieTileClick = (id: string): void => {
-    setSelectedMovieId(id)
-  }
+    const queryParams: ParamKeyValuePair[] = Array.from(searchParams.entries()).map(x => {
+      const keyValuePair: ParamKeyValuePair = [x[0], x[1]]
+      return keyValuePair;
+    });
 
-  const clearMovieSelection = (): void => {
-    setSelectedMovieId(undefined);
+    navigate({
+      pathname: `${id}`,
+      search: `${createSearchParams(queryParams)}`
+    });
   }
 
   const movieTilesElement = (movieTiles ?? [])?.map((item: IMovieTileContent) =>
@@ -83,34 +93,13 @@ const MovieListPage: React.FC = () => {
     )
   );
 
+  useEffect(() => {
+    updateMovieTiles();
+  }, [searchQuery])
+
   return (
     <div className='movie-list-page'>
-      <div className={`page-header${selectedMovieId ? ' movie-details' : ''}`}>
-        <Row className='app-name-addMovie'>
-          <Col md={10} xs={12} className='app-name-col'>
-            { APP_NAME }
-          </Col>
-          <Col md={2} xs={12} className='right-header-button-col'>
-            { selectedMovieId
-              ? <button className='search' onClick={clearMovieSelection}>
-                  <svg height="36px" width="36px" fill='#f65261' stroke='#232323' version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490.4 490.4" xmlSpace="preserve" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796 s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z"></path> </g> </g></svg>
-                </button>
-              : <button className='button b-0 button-gray add-movie'>+ Add movie</button>
-            }
-          </Col>
-        </Row>
-        { selectedMovieId
-          ? generateMovieDetailsFromId(selectedMovieId, movieTiles)
-          : <>
-            <Row key='header-title'>
-              <Col xs={12} className='p-0 prevent-select'>
-                <h1>Find your movie</h1>
-                <SearchForm initialValue={searchQuery} onSearch={handleSearch} key='search-form'/>
-              </Col>
-            </Row>
-          </>
-        }
-      </div>
+      <Outlet />
       <div className='page-content'>
         <Row className='genresList-sortControl'>
           <Col md={9} xs={12} className='pr-0'>
@@ -118,7 +107,8 @@ const MovieListPage: React.FC = () => {
             <div className="filler">&nbsp;</div>
           </Col>
           <Col md={3} className='pl-0'>
-            <SortControl sortWays={sortWays} selectedSortId={selectedSortId} onChange={handleSortChange}/>
+            <SortControl sortWays={sortWays} selectedSortId={selectedSortId} onChange={handleSortChange}
+              isSortDesc={isSortDescending} toggleSortOrder={toggleSortOrder} />
           </Col>
         </Row>
         <Row className='movies-amount'>
