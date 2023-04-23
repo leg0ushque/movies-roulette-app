@@ -31,9 +31,6 @@ const getApiMovieById = async (id?: string, cancelToken?: CancelToken): Promise<
 const getById = async (id?: string, cancelToken?: CancelToken): Promise<IMovie> => {
   const movieResponse = await getApiMovieById(id, cancelToken)
 
-  console.log('movieResponse')
-  console.log(movieResponse)
-
   const movie = mapApiMovieToMovie(movieResponse)
   return movie;
 }
