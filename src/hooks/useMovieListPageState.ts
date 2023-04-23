@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import sortWays from '../components/SortControl/sortWays';
 import MovieService from '../services/MovieService';
 import { DEFAULT_SELECTED_GENRE_ID } from '../shared/constants/genre';
 import testData from '../shared/constants/test-data';
 import { type IApiQuery, type IGenre, type IMovie, type IMovieTileContent } from '../shared/types';
 import { useCancelToken } from './useCancelToken';
+import useQueryParams from './useQueryParams';
 
 export interface IUseMovieListPageState {
-  searchQuery: string
+  searchQuery?: string
   movies: IMovie[]
   genres: IGenre[]
   movieTiles: IMovieTileContent[]
@@ -26,13 +26,27 @@ export interface IUseMovieListPageState {
 const useMovieListPageState = (): IUseMovieListPageState => {
   const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
 
+  const queryParams = useQueryParams();
+
+  const setSearchQuery = (value: string): void => {
+    updateMovieTiles({ ...queryParams, search: value });
+    queryParams.updateQueryParameter('search', value)
+  }
+
+  const setSelectedSortId = (value: string): void => {
+    updateMovieTiles({ ...queryParams, sortBy: value });
+    queryParams.updateQueryParameter('sortBy', value)
+  }
+
+  const setSelectedGenreId = (value: string): void => {
+    updateMovieTiles({ ...queryParams, filter: value });
+    queryParams.updateQueryParameter('filter', value)
+  }
+
   const [movies, setMovies] = useState<IMovie[]>([])
   const [genres, setGenres] = useState<IGenre[]>([])
 
-  const [selectedGenreId, setSelectedGenreId] = useState('0');
   const [selectedMovieId, setSelectedMovieId] = useState<string>();
-  const [selectedSortId, setSelectedSortId] = useState(sortWays[0].id);
-  const [searchQuery, setSearchQuery] = useState('')
 
   const movieTiles = useMemo(() => {
     return movies.map((movie: IMovie) => {
@@ -44,6 +58,9 @@ const useMovieListPageState = (): IUseMovieListPageState => {
 
   const movieServiceGetAll = (query?: IApiQuery): void => {
     MovieService.getAll(query, newCancelToken()).then((response) => {
+      console.log('get all called with query')
+      console.log(query)
+
       setMovies(response);
     }).catch((error) => {
       if (isCancel(error)) return;
@@ -57,39 +74,22 @@ const useMovieListPageState = (): IUseMovieListPageState => {
   }
 
   useEffect(() => {
-    cancelPreviousRequest();
-
     setGenres(testData.genres);
-
-    movieServiceGetAll();
   }, []);
 
-  useEffect(() => {
-    if (!searchQuery) {
-      return;
-    }
-
+  const updateMovieTiles = (query: IApiQuery): void => {
     cancelPreviousRequest();
-
-    const query: IApiQuery = {
-      search: searchQuery,
-      searchBy: 'title',
-      filter: selectedGenreId !== DEFAULT_SELECTED_GENRE_ID ? selectedGenreId : '',
-      sortBy: selectedSortId,
-      sortOrder: 'asc'
-    }
-
     movieServiceGetAll(query);
-  }, [searchQuery, selectedGenreId, selectedSortId])
+  }
 
   return {
-    searchQuery,
+    searchQuery: queryParams.search,
     movies,
     genres,
     movieTiles,
-    selectedGenreId,
+    selectedGenreId: queryParams.filter ?? DEFAULT_SELECTED_GENRE_ID,
     selectedMovieId,
-    selectedSortId,
+    selectedSortId: queryParams.sortBy,
     setGenres,
     setMovies,
     setSearchQuery,
