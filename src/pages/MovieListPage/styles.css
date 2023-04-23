@@ -10,29 +10,14 @@
   overflow-x: hidden;
 }
 
-.movie-list-page span.app-name {
-  font-family: 'Montserrat';
-  font-weight: 300;
-  font-size: 25px;
-  line-height: 24px;
-
-  color: var(--color1);
-}
-
-.movie-list-page span.app-name b {
-  font-family: 'Montserrat-ExtraBold';
-  color: var(--color1);
-}
-
 /* HEADER */
 
 .movie-list-page .app-name-col,
-.movie-list-page .add-movie-col {
-  padding-top: 3%;
-  padding-right: 0;
+.movie-list-page .right-header-button-col {
+  padding: 3% 0 0 0;
 }
 
-.movie-list-page .add-movie-col .search {
+.movie-list-page .right-header-button-col .search {
   background-color: var(--color3);
   border-radius: 100%;
   border: 0;
@@ -43,7 +28,6 @@
 .movie-list-page .page-header:not(.movie-details) {
   width: 100vw;
   padding: 0 var(--page-padding) 5% var(--page-padding);
-  margin-left: -1%;
   
   background-image: url('../../../public/images/bg.png');
   background-repeat: repeat;
@@ -53,9 +37,12 @@
 .movie-list-page .page-header.movie-details {
   width: 100vw;
   padding: 0 var(--page-padding) 1% var(--page-padding);
-  margin-left: -1%;
   
   background-color: var(--color3);
+}
+
+.movie-list-page .page-header .movieDetails {
+  padding-left: 0;
 }
 
 .movie-list-page .page-header .app-name-addMovie {
@@ -117,7 +104,11 @@
   font-weight: 1000;
   font-size: large;
 }
-
+.movie-list-page .page-content .movies-amount i {
+  color: var(--color1);
+  font-weight: 1000;
+  font-size: large;
+}
 .movie-list-page .page-content .movieTiles {
   margin-right: -5%;
 }
