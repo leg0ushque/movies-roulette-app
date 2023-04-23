@@ -19,7 +19,7 @@ const SearchFormHeader: React.FC = () => {
   }
 
   const clearMovieSelection = (): void => {
-    redirectWithCurrentQuery('/')
+    redirectWithCurrentQuery('/', [['search', '']])
   }
 
   return (
