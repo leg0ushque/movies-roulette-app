@@ -14,9 +14,11 @@ const useNavigateRedirections = (): INavigateRedirectionsReturn => {
   const [searchParams] = useSearchParams();
 
   const redirectTo = (path: string, params?: ParamKeyValuePair[]): void => {
+    const searchParams = `${createSearchParams(params)}`
+
     navigate({
       pathname: path,
-      search: params?.length ? `?${createSearchParams(params)}` : ''
+      search: searchParams
     });
   }
 
@@ -27,7 +29,18 @@ const useNavigateRedirections = (): INavigateRedirectionsReturn => {
         return keyValuePair;
       })
 
-    redirectTo(path, params?.length ? queryParams.concat(params) : queryParams)
+    params?.forEach(x => {
+      const foundValue = queryParams.find(q => q[0] === x[0])
+      const index = foundValue ? queryParams.indexOf(foundValue) : -1
+
+      if (index !== -1) {
+        queryParams[index] = [x[0], x[1]]
+      } else {
+        queryParams.push([x[0], x[1]])
+      }
+    })
+
+    redirectTo(path, queryParams)
   };
 
   const retValue: INavigateRedirectionsReturn = {

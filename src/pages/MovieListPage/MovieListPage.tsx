@@ -3,19 +3,14 @@ import './styles.css';
 
 import React, { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import {
-  Outlet,
-  createSearchParams,
-  useNavigate, useSearchParams,
-  type ParamKeyValuePair
-} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import AppName from '../../components/AppName/AppName';
 import GenreSelect from '../../components/GenreSelect';
 import MovieTile from '../../components/MovieTile';
 import SortControl from '../../components/SortControl';
 import sortWays from '../../components/SortControl/sortWays';
-import { useMovieListPageState } from '../../hooks';
+import { useMovieListPageState, useNavigateRedirections } from '../../hooks';
 import { type IContextMenuItem } from '../../shared/types';
 
 import type IMovieTileContent from '../../shared/types/IMovieTileContent';
@@ -32,9 +27,7 @@ const MOVIE_TILE_MENU_ITEMS: IContextMenuItem[] = [
 ];
 
 const MovieListPage: React.FC = () => {
-  const [searchParams] = useSearchParams();
-
-  const navigate = useNavigate();
+  const { redirectWithCurrentQuery } = useNavigateRedirections();
 
   const {
     searchQuery,
@@ -50,11 +43,7 @@ const MovieListPage: React.FC = () => {
   } = useMovieListPageState()
 
   const clearMovieSelection = (): void => {
-    const params: ParamKeyValuePair[] = [['search', '']]
-    navigate({
-      pathname: '/',
-      search: `${createSearchParams(params)}`
-    });
+    redirectWithCurrentQuery('/', [['search', '']])
   }
 
   const APP_NAME: JSX.Element = (
@@ -70,15 +59,7 @@ const MovieListPage: React.FC = () => {
   }
 
   const handleMovieTileClick = (id: string): void => {
-    const queryParams: ParamKeyValuePair[] = Array.from(searchParams.entries()).map(x => {
-      const keyValuePair: ParamKeyValuePair = [x[0], x[1]]
-      return keyValuePair;
-    });
-
-    navigate({
-      pathname: `${id}`,
-      search: `${createSearchParams(queryParams)}`
-    });
+    redirectWithCurrentQuery(`${id}`)
   }
 
   const movieTilesElement = (movieTiles ?? [])?.map((item: IMovieTileContent) =>

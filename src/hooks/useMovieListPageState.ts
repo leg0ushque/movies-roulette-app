@@ -31,24 +31,24 @@ const useMovieListPageState = (): IUseMovieListPageState => {
 
   const setSearchQuery = (value: string): void => {
     updateMovieTiles({ ...queryParams, search: value });
-    queryParams.updateQueryParameter('search', value)
+    queryParams.updateParameter('search', value)
   }
 
   const setSelectedSortId = (value: string): void => {
     updateMovieTiles({ ...queryParams, sortBy: value });
-    queryParams.updateQueryParameter('sortBy', value)
+    queryParams.updateParameter('sortBy', value)
   }
 
   const setSelectedGenreId = (value: string): void => {
     updateMovieTiles({ ...queryParams, filter: value });
-    queryParams.updateQueryParameter('filter', value)
+    queryParams.updateParameter('filter', value)
   }
 
   const toggleSortOrder = (): void => {
     const newValue = queryParams.sortOrder === 'asc' ? 'desc' : 'asc'
 
     updateMovieTiles({ ...queryParams, sortOrder: newValue });
-    queryParams.updateQueryParameter('sortOrder', newValue)
+    queryParams.updateParameter('sortOrder', newValue)
   }
 
   const [movies, setMovies] = useState<IMovie[]>([])
@@ -64,9 +64,6 @@ const useMovieListPageState = (): IUseMovieListPageState => {
 
   const movieServiceGetAll = (query?: IApiQuery): void => {
     MovieService.getAll(query, newCancelToken()).then((response) => {
-      console.log('get all called with query')
-      console.log(query)
-
       setMovies(response);
     }).catch((error) => {
       if (isCancel(error)) return;
