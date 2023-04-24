@@ -22,17 +22,26 @@ class MovieListPage extends BasePage {
   // sorting
   get sortByButton () { return $('div.sortControl div.dropdown div.sortBtn') }
 
-  async clickSort(sort) { 
-    if(sort==='title') { 
-      await $('div.sortControl ul.dropdown-content :nth-child(2)').click() // title sort
-    } else {
-      await $('div.sortControl ul.dropdown-content :nth-child(1)').click() // release year sort
+  getSortSelector(sort) {
+    return sort==='title' 
+      ? ('div.sortControl ul.dropdown-content :nth-child(2)') // title sort
+      : ('div.sortControl ul.dropdown-content :nth-child(1)') // release year sort
     } 
+
+  async getSort(sort) { 
+    return await $(this.getSortSelector(sort)) 
   }
+  
+  async clickSort(sort) { 
+    const sortButton = await this.getSort(sort)
+    await sortButton.click() 
+  }
+  
 
   // switching genres,
   get allGenresButton () { return $('ul.genresList :nth-child(1)')}
   async getGenreButtonById(id) { return await $(`ul.genresList li#${id}`) }
+  async getSelectedGenreButton() { return await $(`ul.genresList li.selected`) }
 
   // movieTiles
   get foundMoviesAmount () { return $('div.movies-amount span') }

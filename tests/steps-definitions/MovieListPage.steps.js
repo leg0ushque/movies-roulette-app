@@ -6,6 +6,10 @@ Given(/^I am on the MovieList page$/, async () => {
   await MovieListPage.open();
 });
 
+Given(/^I am on the page "(.*)"$/, async (address) => {
+  await browser.url(address);
+});
+
 // WHEN
 
 When(/^I click on the Search input$/, async () => {
@@ -89,8 +93,20 @@ Then(/^I should not see Search input$/, async () => {
 });
 
 Then(/^I should see "(.*)" in browser URL$/, async (address) => {
-  setInterval({}, 2000)
   const url = await browser.getUrl();
   await expect(url).toBe(address);
 });
 
+Then(/^I should see Search form with typed data "(.*)" in Search input$/, async (text) => {
+  await expect(MovieListPage.searchFormInput).toHaveValue(text);
+});
+
+Then(/^I should see "(.*)" genre selected$/, async (genre) => {
+  const selectedGenreButton = await MovieListPage.getSelectedGenreButton(genre);
+  await expect(selectedGenreButton).toHaveAttribute('id', genre);
+});
+
+Then(/^I should see "(.*)" sort selected$/, async (sort) => {
+  const sortButton = await MovieListPage.sortByButton;
+  await expect((await sortButton.getText()).startsWith(sort)).toBe(true);
+});
