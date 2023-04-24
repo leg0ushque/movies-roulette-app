@@ -54,6 +54,14 @@ When(/^I move mouse cursor over Sort by button$/, async () => {
   await button.moveTo();
 });
 
+When(/^I can see "(.*)" in movie tile "(.*)" as title$/, async (value, number) => {
+  await expect(await MovieListPage.getMovieTileTitle(number)).toHaveTextContaining(value);
+});
+
+When(/^I can see "(.*)" in movie tile "(.*)" as release year$/, async (value, number) => {
+  await expect(await MovieListPage.getMovieTileReleaseYear(number)).toHaveTextContaining(value);
+});
+
 // THEN
 
 Then(/^I see "(.*)" in movie details section as title$/, async (value) => {
@@ -104,9 +112,4 @@ Then(/^I should see Search form with typed data "(.*)" in Search input$/, async 
 Then(/^I should see "(.*)" genre selected$/, async (genre) => {
   const selectedGenreButton = await MovieListPage.getSelectedGenreButton(genre);
   await expect(selectedGenreButton).toHaveAttribute('id', genre);
-});
-
-Then(/^I should see "(.*)" sort selected$/, async (sort) => {
-  const sortButton = await MovieListPage.sortByButton;
-  await expect((await sortButton.getText()).startsWith(sort)).toBe(true);
 });
