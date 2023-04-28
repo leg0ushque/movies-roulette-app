@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 interface IUpdatableSearchParams {
@@ -8,12 +9,12 @@ interface IUpdatableSearchParams {
 const useUpdatableSearchParams = (): IUpdatableSearchParams => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const updateParameter = (key: string, value: string): void => {
-    setSearchParams(searchParams => {
-      searchParams.set(key, value);
-      return searchParams;
+  const updateParameter = useCallback((key: string, value: string): void => {
+    setSearchParams(p => {
+      p.set(key, value);
+      return p;
     })
-  }
+  }, [setSearchParams])
 
   return { searchParams, updateParameter }
 }

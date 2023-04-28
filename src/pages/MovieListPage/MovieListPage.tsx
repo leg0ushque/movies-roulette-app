@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 
@@ -38,8 +38,7 @@ const MovieListPage: React.FC = () => {
     isSortDescending,
     setSelectedGenreId,
     setSelectedSortId,
-    toggleSortOrder,
-    updateMovieTiles
+    toggleSortOrder
   } = useMovieListPageState()
 
   const clearMovieSelection = (): void => {
@@ -73,10 +72,6 @@ const MovieListPage: React.FC = () => {
     />
     )
   );
-
-  useEffect(() => {
-    updateMovieTiles();
-  }, [searchQuery])
 
   return (
     <div className='movie-list-page'>

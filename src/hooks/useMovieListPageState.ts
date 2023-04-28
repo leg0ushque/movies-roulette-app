@@ -21,34 +21,29 @@ export interface IUseMovieListPageState {
   setSelectedGenreId: (id: string) => void
   setSelectedSortId: (id: string) => void
   toggleSortOrder: () => void
-  updateMovieTiles: () => void
 }
 
 const useMovieListPageState = (): IUseMovieListPageState => {
   const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
 
-  const queryParams = useQueryParams();
+  const { query, updateParameter } = useQueryParams();
 
   const setSearchQuery = (value: string): void => {
-    updateMovieTiles({ ...queryParams, search: value });
-    queryParams.updateParameter('search', value)
+    updateParameter('search', value)
   }
 
   const setSelectedSortId = (value: string): void => {
-    updateMovieTiles({ ...queryParams, sortBy: value });
-    queryParams.updateParameter('sortBy', value)
+    updateParameter('sortBy', value)
   }
 
   const setSelectedGenreId = (value: string): void => {
-    updateMovieTiles({ ...queryParams, filter: value });
-    queryParams.updateParameter('filter', value)
+    updateParameter('filter', value)
   }
 
   const toggleSortOrder = (): void => {
-    const newValue = queryParams.sortOrder === 'asc' ? 'desc' : 'asc'
+    const newValue = query.sortOrder === 'asc' ? 'desc' : 'asc'
 
-    updateMovieTiles({ ...queryParams, sortOrder: newValue });
-    queryParams.updateParameter('sortOrder', newValue)
+    updateParameter('sortOrder', newValue)
   }
 
   const [movies, setMovies] = useState<IMovie[]>([])
@@ -80,31 +75,26 @@ const useMovieListPageState = (): IUseMovieListPageState => {
     setGenres(testData.genres);
   }, []);
 
-  const updateMovieTilesForCurrentQuery = (): void => {
-    cancelPreviousRequest();
-    movieServiceGetAll(queryParams);
-  }
-
-  const updateMovieTiles = (query: IApiQuery): void => {
+  useEffect(() => {
+    console.log(query);
     cancelPreviousRequest();
     movieServiceGetAll(query);
-  }
+  }, [query]);
 
   return {
-    searchQuery: queryParams.search,
+    searchQuery: query.search,
     movies,
     genres,
     movieTiles,
-    selectedGenreId: queryParams.filter ?? DEFAULT_SELECTED_GENRE_ID,
-    selectedSortId: queryParams.sortBy,
-    isSortDescending: queryParams.sortOrder === 'desc',
+    selectedGenreId: query.filter ?? DEFAULT_SELECTED_GENRE_ID,
+    selectedSortId: query.sortBy,
+    isSortDescending: query.sortOrder === 'desc',
     setGenres,
     setMovies,
     setSearchQuery,
     setSelectedGenreId,
     setSelectedSortId,
-    toggleSortOrder,
-    updateMovieTiles: updateMovieTilesForCurrentQuery
+    toggleSortOrder
   };
 }
 
