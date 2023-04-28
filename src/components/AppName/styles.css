@@ -1,0 +1,22 @@
+
+span.app-name {
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 24px;
+
+  color: var(--color1);
+}
+
+span.app-name b {
+  font-family: 'Montserrat-ExtraBold';
+  color: var(--color1);
+}
+
+span.app-name:hover {
+  color: var(--color5);
+  cursor: pointer;
+}
+span.app-name:hover b {
+  color: var(--color5);
+}

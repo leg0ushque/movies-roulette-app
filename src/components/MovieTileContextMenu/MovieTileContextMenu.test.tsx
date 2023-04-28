@@ -37,7 +37,7 @@ describe('MovieTileContextMenu', () => {
       hideMenu={hideMenuMock}
       />)
 
-    const ul = getByRole('menu-tile-context-menu')
+    const ul = getByRole('movie-tile-context-menu')
 
     expect(ul.children.length).toBe(MENU_ITEMS.length + 1); // close button is a child besides buttons
   });
@@ -50,7 +50,7 @@ describe('MovieTileContextMenu', () => {
       hideMenu={hideMenuMock}
       />)
 
-    const closeButton = getByRole('menu-tile-context-menu-close-button')
+    const closeButton = getByRole('movie-tile-context-menu-close-button')
 
     fireEvent.click(closeButton);
 
@@ -67,7 +67,7 @@ describe('MovieTileContextMenu', () => {
       hideMenu={hideMenuMock}
       />)
 
-    const ul = getByRole('menu-tile-context-menu')
+    const ul = getByRole('movie-tile-context-menu')
 
     expect(hideMenuMock).toBeCalledTimes(1);
     fireEvent.click(ul.children[clickedIndex + 1]); // li elements start after first-child with close button

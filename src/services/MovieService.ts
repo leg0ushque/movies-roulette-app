@@ -6,22 +6,10 @@
 import { type CancelToken } from 'axios';
 
 import { type IApiMovieModel, type IApiQuery, type IApiResponse, type IMovie } from '../shared/types';
+import mapApiMovieToMovie from '../shared/utils/mappers/movie.mapper';
 import apiRequest from './apiRequest';
 
-const mapToModel = (fromModel: IApiMovieModel): IMovie => {
-  const movie: IMovie = {
-    id: fromModel.id.toString(),
-    title: fromModel.title,
-    description: fromModel.overview,
-    duration: `${fromModel.runtime} min`,
-    releaseDate: new Date(fromModel.release_date),
-    rating: fromModel.vote_average,
-    genreIds: fromModel.genres,
-    movieUrl: fromModel.poster_path,
-    imageUrl: fromModel.poster_path
-  };
-  return movie
-}
+// GET ALL
 
 const getAllApiMovies = async (query?: IApiQuery, cancelToken?: CancelToken): Promise<IApiResponse<IApiMovieModel[]>> => {
   return await apiRequest('get', 'movies', query, cancelToken);
@@ -31,11 +19,27 @@ const getAll = async (query?: IApiQuery, cancelToken?: CancelToken): Promise<IMo
   const moviesResponse = await getAllApiMovies(query, cancelToken)
   const movies = Array.from(moviesResponse.data);
 
-  return (movies ?? []).map(x => mapToModel(x));
+  return (movies ?? []).map(x => mapApiMovieToMovie(x));
 }
 
+// GET BY ID
+
+const getApiMovieById = async (id?: string, cancelToken?: CancelToken): Promise<IApiMovieModel> => {
+  return await apiRequest('get', `movies/${id}`, cancelToken);
+}
+
+const getById = async (id?: string, cancelToken?: CancelToken): Promise<IMovie> => {
+  const movieResponse = await getApiMovieById(id, cancelToken)
+
+  const movie = mapApiMovieToMovie(movieResponse)
+  return movie;
+}
+
+// EXPORTS
+
 const MovieService = {
-  getAll
+  getAll,
+  getById
 }
 
 export default MovieService;

@@ -1,78 +1,115 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { browser } = require('@wdio/globals');
 const MovieListPage = require('../pages/MovieListPage');
 
-Given(/^I am on the MovieList page$/, () => {
-  MovieListPage.open();
+Given(/^I am on the MovieList page$/, async () => {
+  await MovieListPage.open();
+});
+
+Given(/^I am on the page "(.*)"$/, async (address) => {
+  await browser.url(address);
 });
 
 // WHEN
 
-When(/^I click on the Search input$/, () => {
-  MovieListPage.searchFormInput.click();
+When(/^I click on the Search input$/, async () => {
+  const input = await MovieListPage.searchFormInput
+  await input.click();
 });
 
-When(/^I type "(.*)" into Search input$/, (value) => {
-  MovieListPage.searchFormInput.setValue(value);
+When(/^I type "(.*)" into Search input$/, async (value) => {
+  await MovieListPage.searchFormInput.setValue(value);
 });
 
-When(/^I click Submit button in Search form$/, () => {
-  MovieListPage.searchFormSubmitButton.click();
+When(/^I click Submit button in Search form$/, async () => {
+  const button = await MovieListPage.searchFormSubmitButton
+  await button.click();
 });
 
-When(/^I choose sorting by "(.*)"$/, (sort) => {
-  MovieListPage.clickSort(sort);
+When(/^I choose sorting by "(.*)"$/, async (sort) => {
+  await MovieListPage.clickSort(sort);
 });
 
-When(/^I click "(.*)" genre button$/, (genre) => {
-  MovieListPage.getGenreButtonById(genre);
+When(/^I click "(.*)" genre button$/, async (genre) => {
+  const button = await MovieListPage.getGenreButtonById(genre);
+  await button.click();
 });
 
-When(/^I click on the movie tile "(.*)"$/, (number) => {
-  MovieListPage.getMovieTile(number).click();
+When(/^I click on the movie tile "(.*)"$/, async (number) => {
+  const movieTile = await MovieListPage.getMovieTile(number);
+  await movieTile.click();
 });
 
 When(/^I clicked the Search button with magnifier icon$/, async () => {
-  (await MovieListPage.pageHeaderMovieDetailsSearchButton).click();
+  const button = await MovieListPage.pageHeaderMovieDetailsSearchButton;
+  await button.click();
 });
 
-When(/^I don't see Search input$/, () => {
-  expect(MovieListPage.searchFormInput).not.toExist();
+When(/^I don't see Search input$/, async () => {
+  await expect(MovieListPage.searchFormInput).not.toExist();
 });
 
-Then(/^I see "(.*)" in movie details section as title$/, (value) => {
-  expect(MovieListPage.pageHeaderMovieDetailsTitle).toHaveTextContaining(value);
+When(/^I move mouse cursor over Sort by button$/, async () => {
+  const button = await MovieListPage.sortByButton
+  await button.moveTo();
 });
 
-Then(/^I see "(.*)" in movie details section as release year$/, (value) => {
-  expect(MovieListPage.pageHeaderMovieDetailsReleaseYear).toHaveTextContaining(value);
+When(/^I can see "(.*)" in movie tile "(.*)" as title$/, async (value, number) => {
+  await expect(await MovieListPage.getMovieTileTitle(number)).toHaveTextContaining(value);
+});
+
+When(/^I can see "(.*)" in movie tile "(.*)" as release year$/, async (value, number) => {
+  await expect(await MovieListPage.getMovieTileReleaseYear(number)).toHaveTextContaining(value);
 });
 
 // THEN
 
-Then(/^I should see "(.*)" under Genre buttons$/, (value) => {
-  expect(MovieListPage.foundMoviesAmount).toHaveTextContaining(value);
+Then(/^I see "(.*)" in movie details section as title$/, async (value) => {
+  await expect(MovieListPage.pageHeaderMovieDetailsTitle).toHaveTextContaining(value);
 });
 
-Then(/^I should see "(.*)" in movie tile "(.*)" as title$/, (value, number) => {
-  expect(MovieListPage.getMovieTileTitle(number)).toHaveTextContaining(value);
+Then(/^I see "(.*)" in movie details section as release year$/, async (value) => {
+  await expect(MovieListPage.pageHeaderMovieDetailsReleaseYear).toHaveTextContaining(value);
+});
+Then(/^I should see "(.*)" under Genre buttons$/, async (value) => {
+  const foundMoviesElement = await MovieListPage.foundMoviesAmount;
+  await expect(foundMoviesElement).toHaveTextContaining(value);
 });
 
-Then(/^I should see "(.*)" in movie tile "(.*)" as release year$/, (value, number) => {
-  expect(MovieListPage.getMovieTileReleaseYear(number)).toHaveTextContaining(value);
+Then(/^I should see "(.*)" in movie tile "(.*)" as title$/, async (value, number) => {
+  await expect(await MovieListPage.getMovieTileTitle(number)).toHaveTextContaining(value);
 });
 
-Then(/^I should see Search input with placeholder "(.*)"$/, (placeholderValue) => {
-  expect(MovieListPage.searchFormInput).toHaveAttribute('placeholder', placeholderValue);
+Then(/^I should see "(.*)" in movie tile "(.*)" as release year$/, async (value, number) => {
+  await expect(await MovieListPage.getMovieTileReleaseYear(number)).toHaveTextContaining(value);
 });
 
-Then(/^I should see "(.*)" in movie details section as title$/, (value) => {
-  expect(MovieListPage.pageHeaderMovieDetailsTitle).toHaveTextContaining(value);
+Then(/^I should see Search input with placeholder "(.*)"$/, async (placeholderValue) => {
+  await expect(MovieListPage.searchFormInput).toHaveAttribute('placeholder', placeholderValue);
 });
 
-Then(/^I should see "(.*)" in movie details section as release year$/, (value) => {
-  expect(MovieListPage.pageHeaderMovieDetailsReleaseYear).toHaveTextContaining(value);
+Then(/^I should see "(.*)" in movie details section as title$/, async (value) => {
+  await expect(MovieListPage.pageHeaderMovieDetailsTitle).toHaveTextContaining(value);
 });
 
-Then(/^I should not see Search input$/, () => {
-  expect(MovieListPage.searchFormInput).not.toExist();
+Then(/^I should see "(.*)" in movie details section as release year$/, async (value) => {
+  await expect(MovieListPage.pageHeaderMovieDetailsReleaseYear).toHaveTextContaining(value);
+});
+
+Then(/^I should not see Search input$/, async () => {
+  await expect(MovieListPage.searchFormInput).not.toExist();
+});
+
+Then(/^I should see "(.*)" in browser URL$/, async (address) => {
+  const url = await browser.getUrl();
+  await expect(url).toBe(address);
+});
+
+Then(/^I should see Search form with typed data "(.*)" in Search input$/, async (text) => {
+  await expect(MovieListPage.searchFormInput).toHaveValue(text);
+});
+
+Then(/^I should see "(.*)" genre selected$/, async (genre) => {
+  const selectedGenreButton = await MovieListPage.getSelectedGenreButton(genre);
+  await expect(selectedGenreButton).toHaveAttribute('id', genre);
 });

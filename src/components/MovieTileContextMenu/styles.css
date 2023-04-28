@@ -1,4 +1,4 @@
-ul.menu-tile-context-menu {
+ul.movie-tile-context-menu {
     font-family: 'Montserrat';
     font-size: 110%;
     background: var(--color2);
@@ -19,35 +19,35 @@ ul.menu-tile-context-menu {
     list-style: none;
 }
   
-ul.menu-tile-context-menu li {
+ul.movie-tile-context-menu li {
     cursor: pointer;
     margin-bottom: 0;
     padding-left: 25px;
     padding-right: 10px;
     line-height: 45px;
 }
-ul.menu-tile-context-menu li::content{
+ul.movie-tile-context-menu li::content{
     padding-bottom: 15px;
 }
-ul.menu-tile-context-menu li:hover {
+ul.movie-tile-context-menu li:hover {
     background: var(--color1);
     cursor: pointer;
 }
 
 /* CLOSE BUTTON */
-ul.menu-tile-context-menu :first-child {
+ul.movie-tile-context-menu :first-child {
     text-align: right;
     padding-right:4px;
     padding-top: 4px
 }
 
-ul.menu-tile-context-menu div span {
+ul.movie-tile-context-menu div span {
     cursor: pointer;
     margin: 0;
     padding: 0;
 }
 
-ul.menu-tile-context-menu div span:hover {
+ul.movie-tile-context-menu div span:hover {
     color: var(--color1);
     cursor: pointer;
 }

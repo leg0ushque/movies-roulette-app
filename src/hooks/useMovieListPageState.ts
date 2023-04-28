@@ -1,38 +1,53 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import sortWays from '../components/SortControl/sortWays';
 import MovieService from '../services/MovieService';
 import { DEFAULT_SELECTED_GENRE_ID } from '../shared/constants/genre';
 import testData from '../shared/constants/test-data';
 import { type IApiQuery, type IGenre, type IMovie, type IMovieTileContent } from '../shared/types';
 import { useCancelToken } from './useCancelToken';
+import useQueryParams from './useQueryParams';
 
 export interface IUseMovieListPageState {
-  searchQuery: string
+  searchQuery?: string
   movies: IMovie[]
   genres: IGenre[]
   movieTiles: IMovieTileContent[]
   selectedGenreId: string
-  selectedMovieId?: string
   selectedSortId: string
+  isSortDescending: boolean
   setGenres: (genres: IGenre[]) => void
   setMovies: (movies: IMovie[]) => void
   setSearchQuery: (value: string) => void
   setSelectedGenreId: (id: string) => void
-  setSelectedMovieId: (id?: string) => void
   setSelectedSortId: (id: string) => void
+  toggleSortOrder: () => void
 }
 
 const useMovieListPageState = (): IUseMovieListPageState => {
   const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
 
+  const { query, updateParameter } = useQueryParams();
+
+  const setSearchQuery = (value: string): void => {
+    updateParameter('search', value)
+  }
+
+  const setSelectedSortId = (value: string): void => {
+    updateParameter('sortBy', value)
+  }
+
+  const setSelectedGenreId = (value: string): void => {
+    updateParameter('filter', value)
+  }
+
+  const toggleSortOrder = (): void => {
+    const newValue = query.sortOrder === 'asc' ? 'desc' : 'asc'
+
+    updateParameter('sortOrder', newValue)
+  }
+
   const [movies, setMovies] = useState<IMovie[]>([])
   const [genres, setGenres] = useState<IGenre[]>([])
-
-  const [selectedGenreId, setSelectedGenreId] = useState('0');
-  const [selectedMovieId, setSelectedMovieId] = useState<string>();
-  const [selectedSortId, setSelectedSortId] = useState(sortWays[0].id);
-  const [searchQuery, setSearchQuery] = useState('')
 
   const movieTiles = useMemo(() => {
     return movies.map((movie: IMovie) => {
@@ -57,45 +72,29 @@ const useMovieListPageState = (): IUseMovieListPageState => {
   }
 
   useEffect(() => {
-    cancelPreviousRequest();
-
     setGenres(testData.genres);
-
-    movieServiceGetAll();
   }, []);
 
   useEffect(() => {
-    if (!searchQuery) {
-      return;
-    }
-
+    console.log(query);
     cancelPreviousRequest();
-
-    const query: IApiQuery = {
-      search: searchQuery,
-      searchBy: 'title',
-      filter: selectedGenreId !== DEFAULT_SELECTED_GENRE_ID ? selectedGenreId : '',
-      sortBy: selectedSortId,
-      sortOrder: 'asc'
-    }
-
     movieServiceGetAll(query);
-  }, [searchQuery, selectedGenreId, selectedSortId])
+  }, [query]);
 
   return {
-    searchQuery,
+    searchQuery: query.search,
     movies,
     genres,
     movieTiles,
-    selectedGenreId,
-    selectedMovieId,
-    selectedSortId,
+    selectedGenreId: query.filter ?? DEFAULT_SELECTED_GENRE_ID,
+    selectedSortId: query.sortBy,
+    isSortDescending: query.sortOrder === 'desc',
     setGenres,
     setMovies,
     setSearchQuery,
     setSelectedGenreId,
-    setSelectedMovieId,
-    setSelectedSortId
+    setSelectedSortId,
+    toggleSortOrder
   };
 }
 

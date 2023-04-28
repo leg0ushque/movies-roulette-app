@@ -29,10 +29,13 @@ const MovieTileContextMenu: React.FC<IMovieTileContextMenuProps> = ({ id, menuIs
   return (
     <>
       <ul
-        className='menu-tile-context-menu prevent-select' role='menu-tile-context-menu'
+        className='movie-tile-context-menu prevent-select' role='movie-tile-context-menu'
       >
         <div key='close'>
-          <span onClick={() => { hideMenu() }} role='menu-tile-context-menu-close-button'>
+          <span onClick={(event) => {
+            event.stopPropagation();
+            hideMenu()
+          }} role='movie-tile-context-menu-close-button'>
             &#10006;
           </span>
         </div>

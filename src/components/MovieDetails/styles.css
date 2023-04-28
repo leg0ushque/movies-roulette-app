@@ -67,6 +67,7 @@
     display: inline-block;
     color: var(--color1);
     font-size: larger;
+    margin-right: 5%;
 }
 
 .movieDetails .info .description{

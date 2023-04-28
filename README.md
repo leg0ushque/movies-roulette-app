@@ -34,6 +34,8 @@ To run e2e tests, use *npm start* command first - that will launch the applicati
 
 E2E tests will be run using Chromedriver.
 
+**Note: Remember that the opened Chrome window should be active in your OS to allow tests pass correctly. Please, don't let the e2e pass in the background (inactive Chrome window) - in this case the results may be faulty.**
+
 ## Backend API
 
 1. Clone the backend repository from\

@@ -6,7 +6,7 @@ This module can be imported and called from the child classes.
 */
 
 module.exports = class BasePage {
-    open (path) {
-        browser.url(path);
+    async open (path) {
+        await browser.url(path);
     }
 }
