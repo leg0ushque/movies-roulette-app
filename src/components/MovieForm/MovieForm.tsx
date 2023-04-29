@@ -1,7 +1,7 @@
 import './styles.css';
 
 import React, { useState, type FormEvent } from 'react';
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 
 import { FORM_RESET_BUTTON_TEXT, FORM_SUBMIT_BUTTON_TEXT } from '../../shared/constants/form';
 import {
@@ -24,6 +24,11 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
 
   const showHideGenres = (): void => {
     setGenreDropdownIsShown(!genreDropdownIsShown);
+  }
+
+  const toggleInputCheckbox = (query: string): void => {
+    const element = document.querySelector(query) as HTMLInputElement
+    element.checked = !element.checked;
   }
 
   const propsMovie: IMovie = setMovieValues(movie);
@@ -49,21 +54,30 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
   }
 
   const genreDropdownItems = genres.map((item) =>
-    <Form.Check
-      id={item.id}
-      key={item.name}
-      type='checkbox'
-      defaultChecked={movie?.genreIds.some((x) => x === item.id)}
-      name='genreIds'
-      label={`  ${item.name}`}
-      value={item.id}/>
+    <div className="form-check" key={item.name}>
+      <input
+        id={item.name}
+        name="genreIds"
+        type="checkbox"
+        className="form-check-input"
+        value={item.name}
+      />
+      <label
+        title=""
+        htmlFor={item.name}
+        className="form-check-label"
+        onClick={() => { toggleInputCheckbox(`input[id='${item.name}']`) }}
+      >
+        &nbsp;{item.name}
+      </label>
+    </div>
   );
 
   return (
     <form onSubmit={handleSubmit} className="movieForm">
-      <Container>
+      <Container className='p-0'>
         <Row className='form-row justify-content-center'>
-          <Col md={8} xs={12}>
+          <Col md={8} xs={12} className=''>
             <label htmlFor="title">Title</label>
             <input type="text"
               name="title"
@@ -71,6 +85,7 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
               defaultValue={propsMovie?.title}
               tabIndex={0}
               autoFocus />
+            <p className='error-message'>Error message</p>
           </Col>
           <Col md={4} xs={12} className='pr-0'>
             <label htmlFor="releaseDate">Release date</label>
@@ -79,6 +94,7 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
               name='releaseDate'
               defaultValue={formatInputDate(propsMovie?.releaseDate ?? new Date())}
               tabIndex={1}/>
+              <p className='error-message'>Error message</p>
           </Col>
         </Row>
         <Row className='form-row justify-content-center'>
@@ -89,6 +105,7 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
               placeholder={MovieUrlPlaceholder}
               defaultValue={propsMovie?.movieUrl}
               tabIndex={2}></input>
+              <p className='error-message'>Error message</p>
           </Col>
           <Col md={4} xs={12} className='pr-0'>
             <label htmlFor="rating">Rating</label>
@@ -97,21 +114,23 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
               placeholder={ReleaseDatePlaceholder}
               defaultValue={propsMovie?.rating}
               tabIndex={3} />
+              <p className='error-message'>Error message</p>
           </Col>
         </Row>
         <Row className='form-row justify-content-center'>
           <Col md={8} xs={12} className='dropdown-col prevent-select'>
             <label htmlFor="genre">Genre</label>
-            <button
-              className={`dropdown${genreDropdownIsShown ? ' down' : ''}`}
+            <div
+              className={`button-dropdown${genreDropdownIsShown ? ' down' : ''}`}
               onClick={showHideGenres}
               role="dropdown-button"
               >
                 {GenrePlaceholder}
-              </button>
+              </div>
             <div className={`genresList${genreDropdownIsShown ? ' shown' : ''}`}>
               {genreDropdownItems}
             </div>
+            <p className='error-message'>Error message</p>
           </Col>
           <Col md={4} xs={12} className='pr-0'>
             <label htmlFor="runtime">Runtime</label>
@@ -120,6 +139,7 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
               placeholder={RuntimePlaceholder}
               defaultValue={propsMovie?.duration}
               tabIndex={3}/>
+            <p className='error-message'>Error message</p>
           </Col>
         </Row>
         <Row className='form-row justify-content-center'>
@@ -131,6 +151,7 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
               placeholder={OverviewPlaceholder}
               defaultValue={propsMovie?.description}
               tabIndex={3}/>
+            <p className='error-message'>Error message</p>
           </Col>
         </Row>
         <Row className='form-row'>

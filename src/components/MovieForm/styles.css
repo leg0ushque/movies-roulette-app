@@ -9,14 +9,18 @@
 }
 
 /* form-rows */
-.movieForm .form-row input,
-.movieForm .form-row textarea {
+.movieForm .form-row {
     margin-bottom: 3vh;
     border-radius: 4px;
 }
 
 .form-row input:focus {
     border-color: var(--color1);
+}
+
+.movieForm p.error-message{
+    color: var(--color1);
+    margin: 0;
 }
 
 .movieForm label {
@@ -35,7 +39,7 @@
 .movieForm input[type=text], 
 .movieForm input[type=date],
 .movieForm input[type=number],
-.movieForm button.dropdown,
+.movieForm div.button-dropdown,
 .movieForm textarea.description {
     padding: 10px 1.5vw;
     display: block;
@@ -63,11 +67,11 @@
 
 /* DROPDOWN STYLES BELOW */
 
-.movieForm button.dropdown {
+.movieForm div.button-dropdown {
     width: 100%;
 }
 
-.movieForm button.dropdown:active {
+.movieForm div.button-dropdown:active {
     background-color: var(--color1);
 }
 
@@ -145,16 +149,16 @@
 
 /* DROPDOWN BUTTON TRIANGLE STYLES */
 
-.movieForm button.dropdown::after {
+.movieForm div.button-dropdown::after {
     color: var(--color1);
     float: right;
     font-size: x-large;
     line-height: 70%;
 }
-.movieForm button.dropdown.down::after {
+.movieForm div.button-dropdown.down::after {
     content: "▼";
 }
-.movieForm button.dropdown:not(.down):after {
+.movieForm div.button-dropdown:not(.down):after {
     content: "▲"; 
 }
 
@@ -166,7 +170,6 @@
     border-radius: 4px;
     border: 2px solid var(--color1);
     font-size: large;
-    line-height: normal;
     text-transform: uppercase;
 }
 

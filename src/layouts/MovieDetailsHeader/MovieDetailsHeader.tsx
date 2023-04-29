@@ -4,10 +4,10 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 
+import AppName from '../../components/AppName';
+import MovieDetails from '../../components/MovieDetails';
 import { useNavigateRedirections } from '../../hooks';
 import { type IGenre, type IMovieTileContent } from '../../shared/types';
-import AppName from '../AppName';
-import MovieDetails from '../MovieDetails/MovieDetails';
 
 const MovieDetailsHeader: React.FC = () => {
   const movieTileContent = useLoaderData() as IMovieTileContent;
