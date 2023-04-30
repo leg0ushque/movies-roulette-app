@@ -12,10 +12,12 @@ import {
 } from '../../shared/constants/form/placeholders';
 import URL_PATTERN from '../../shared/constants/regex';
 import testData from '../../shared/constants/test-data';
+import { type IMovie } from '../../shared/types';
 import CheckboxGroup from '../CheckboxGroup';
 import CustomDatePicker from '../CustomDatePicker';
 
 import type IGenre from '../../shared/types/IGenre';
+
 interface IFormValues {
   title: string
   description: string
@@ -28,7 +30,7 @@ interface IFormValues {
 
 export interface IOtherProps {
   genres: IGenre[]
-  onSubmit: (formData: object) => void
+  onSubmit: (formData: IMovie) => void
 }
 
 const InnerForm = (props: IOtherProps & FormikProps<IFormValues>): JSX.Element => {
@@ -171,7 +173,7 @@ export interface IMovieFormInitialValues {
   initialRating?: number
   initialGenreIds?: string[]
   initialMovieUrl?: string
-  onSubmit: (formData: object) => void
+  onSubmit: (formData: IMovie) => void
 }
 
 const MovieForm = withFormik<IMovieFormInitialValues, IFormValues>({
@@ -200,7 +202,7 @@ const MovieForm = withFormik<IMovieFormInitialValues, IFormValues>({
   }),
 
   handleSubmit: (values, formikBag) => {
-    formikBag.props.onSubmit(values);
+    formikBag.props.onSubmit(values as IMovie);
   }
 
 })(InnerForm);

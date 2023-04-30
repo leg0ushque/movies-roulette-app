@@ -15,7 +15,7 @@ export interface IMovieFormDialogProps {
 
 const MovieFormDialog: React.FC<IMovieFormDialogProps> = ({ title }) => {
   const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
-  const { redirectWithCurrentQuery } = useNavigateRedirections();
+  const { redirectTo, redirectWithCurrentQuery } = useNavigateRedirections();
 
   const movieTileContent = useLoaderData() as IMovieTileContent;
 
@@ -42,7 +42,7 @@ const MovieFormDialog: React.FC<IMovieFormDialogProps> = ({ title }) => {
     cancelPreviousRequest();
 
     MovieService.update(movie, newCancelToken()).then((response) => {
-      redirectWithCurrentQuery(`/${response}`)
+      redirectTo(`/${response}`)
     }).catch((error) => {
       if (isCancel(error)) return;
       console.log(error)
@@ -53,11 +53,11 @@ const MovieFormDialog: React.FC<IMovieFormDialogProps> = ({ title }) => {
     });
   }
 
-  const handleSubmit = (formData: object): void => {
-    if (movieTileContent) {
-      movieServiceCreate(formData as IMovie)
+  const handleSubmit = (formData: IMovie): void => {
+    if (movieTileContent?.movie?.id) {
+      movieServiceUpdate({ ...formData, id: movieTileContent.movie.id })
     } else {
-      movieServiceUpdate(formData as IMovie)
+      movieServiceCreate(formData)
     }
   }
 
