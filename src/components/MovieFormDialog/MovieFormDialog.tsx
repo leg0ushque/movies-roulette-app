@@ -1,9 +1,11 @@
 
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 import { useCancelToken, useNavigateRedirections } from '../../hooks';
 import MovieService from '../../services/MovieService';
-import { type IMovie } from '../../shared/types';
+import { EMPTY_INPUT, MIN_DURATION, MIN_RATING } from '../../shared/constants/form';
+import { type IMovie, type IMovieTileContent } from '../../shared/types';
 import Dialog from '../Dialog';
 import MovieForm from '../MovieForm';
 
@@ -14,6 +16,8 @@ export interface IMovieFormDialogProps {
 const MovieFormDialog: React.FC<IMovieFormDialogProps> = ({ title }) => {
   const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
   const { redirectWithCurrentQuery } = useNavigateRedirections();
+
+  const movieTileContent = useLoaderData() as IMovieTileContent;
 
   const handleClose = (): void => {
     redirectWithCurrentQuery('/')
@@ -34,25 +38,42 @@ const MovieFormDialog: React.FC<IMovieFormDialogProps> = ({ title }) => {
     });
   }
 
+  const movieServiceUpdate = (movie: IMovie): void => {
+    cancelPreviousRequest();
+
+    MovieService.update(movie, newCancelToken()).then((response) => {
+      redirectWithCurrentQuery(`/${response}`)
+    }).catch((error) => {
+      if (isCancel(error)) return;
+      console.log(error)
+      return {
+        status: error.status,
+        data: error.response
+      }
+    });
+  }
+
   const handleSubmit = (formData: object): void => {
-    movieServiceCreate(formData as IMovie)
+    if (movieTileContent) {
+      movieServiceCreate(formData as IMovie)
+    } else {
+      movieServiceUpdate(formData as IMovie)
+    }
   }
 
   return (
-    <>
-      <Dialog title={title} isWide hasScrollableBody onClose={handleClose}>
-        <MovieForm
-          initialTitle=''
-          initialDescription=''
-          initialDuration=''
-          initialMovieUrl=''
-          initialRating={0.0}
-          InitialReleaseDate={new Date()}
-          initialGenreIds={[]}
-          onSubmit={ handleSubmit }
-        />
-      </Dialog>
-    </>
+    <Dialog title={title} isWide hasScrollableBody onClose={handleClose}>
+      <MovieForm
+        initialTitle={movieTileContent?.movie?.title ?? EMPTY_INPUT}
+        initialDescription={movieTileContent?.movie?.description ?? EMPTY_INPUT}
+        initialDuration={movieTileContent?.movie?.duration ?? MIN_DURATION}
+        initialMovieUrl={movieTileContent?.movie?.movieUrl ?? EMPTY_INPUT}
+        initialRating={movieTileContent?.movie?.rating ?? MIN_RATING}
+        InitialReleaseDate={movieTileContent?.movie?.releaseDate ?? new Date()}
+        initialGenreIds={movieTileContent?.movie?.genreIds ?? []}
+        onSubmit={ handleSubmit }
+      />
+    </Dialog>
   );
 }
 

@@ -6,7 +6,7 @@ const mapMovieToApiMovie = (source: IMovie, idRequired: boolean): IApiMovieModel
   const body: IApiMovieModelBody = {
     title: source.title,
     overview: source.description,
-    runtime: parseInt(source.duration),
+    runtime: source.duration,
     release_date: source.releaseDate ?? new Date(),
     vote_average: source.rating,
     genres: source.genreIds,

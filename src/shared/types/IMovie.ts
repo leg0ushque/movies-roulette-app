@@ -3,7 +3,7 @@ import type IEntity from './IEntity'
 interface IMovie extends IEntity {
   title: string
   description: string
-  duration: string
+  duration: number
   releaseDate: Date | null
   rating: number
   genreIds: string[]

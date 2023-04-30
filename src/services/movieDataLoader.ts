@@ -5,7 +5,7 @@ import testData from '../shared/constants/test-data';
 import { type IGenre, type IMovieTileContent } from '../shared/types';
 import MovieService from './MovieService';
 
-const movieDataLoader = async ({ params }: LoaderFunctionArgs): Promise<IMovieTileContent | undefined> => {
+const movieTileContentLoader = async ({ params }: LoaderFunctionArgs): Promise<IMovieTileContent | undefined> => {
   const movieId: string = params?.movieId ?? '';
 
   if (!movieId?.length) {
@@ -19,4 +19,4 @@ const movieDataLoader = async ({ params }: LoaderFunctionArgs): Promise<IMovieTi
   return { movie, genres }
 }
 
-export default movieDataLoader
+export default movieTileContentLoader

@@ -52,12 +52,35 @@ const create = async (movie: IMovie, cancelToken?: CancelToken): Promise<number>
   return response.id;
 }
 
+// UPDATE
+
+const updateMovie = async (movie: IApiMovieModelBody, cancelToken?: CancelToken): Promise<IApiMovieModel> => {
+  const body = { ...movie, release_date: movie.release_date.toISOString() };
+
+  return await apiRequest('put', 'movies', {}, body, cancelToken);
+}
+
+const update = async (movie: IMovie, cancelToken?: CancelToken): Promise<number> => {
+  const requestBody = mapMovieToApiMovie(movie, true);
+  const response = await updateMovie(requestBody, cancelToken);
+
+  return response.id;
+}
+
+// DELETE
+
+const deleteMovie = async (id?: string, cancelToken?: CancelToken): Promise<void> => {
+  await apiRequest('delete', `movies/${id}`, cancelToken);
+}
+
 // EXPORTS
 
 const MovieService = {
   create,
   getAll,
-  getById
+  getById,
+  update,
+  delete: deleteMovie
 }
 
 export default MovieService;

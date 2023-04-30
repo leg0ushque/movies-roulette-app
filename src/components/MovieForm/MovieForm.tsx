@@ -9,18 +9,17 @@ import { FORM_RESET_BUTTON_TEXT, FORM_SUBMIT_BUTTON_TEXT } from '../../shared/co
 import {
   GenrePlaceholder, MovieUrlPlaceholder, OverviewPlaceholder, RatingPlaceholder,
   RuntimePlaceholder, TitlePlaceholder
-} from '../../shared/constants/placeholders';
+} from '../../shared/constants/form/placeholders';
 import URL_PATTERN from '../../shared/constants/regex';
 import testData from '../../shared/constants/test-data';
 import CheckboxGroup from '../CheckboxGroup';
 import CustomDatePicker from '../CustomDatePicker';
 
 import type IGenre from '../../shared/types/IGenre';
-
 interface IFormValues {
   title: string
   description: string
-  duration: string
+  duration: number
   releaseDate: Date | null
   rating: number
   genreIds: string[]
@@ -122,7 +121,7 @@ const InnerForm = (props: IOtherProps & FormikProps<IFormValues>): JSX.Element =
           </Col>
           <Col md={4} xs={12} className='pr-0'>
             <label htmlFor="duration">Runtime</label>
-            <input type="text" min={1} max={500} step={1}
+            <input type="number" min={1} max={500} step={1}
               name="duration"
               placeholder={RuntimePlaceholder}
               onChange={handleChange}
@@ -167,7 +166,7 @@ const InnerForm = (props: IOtherProps & FormikProps<IFormValues>): JSX.Element =
 export interface IMovieFormInitialValues {
   initialTitle?: string
   initialDescription?: string
-  initialDuration?: string
+  initialDuration?: number
   InitialReleaseDate?: Date | null
   initialRating?: number
   initialGenreIds?: string[]
@@ -180,7 +179,7 @@ const MovieForm = withFormik<IMovieFormInitialValues, IFormValues>({
     const values: IFormValues = {
       title: props.initialTitle ?? '',
       description: props.initialDescription ?? '',
-      duration: props.initialDuration ?? '0',
+      duration: props.initialDuration ?? 1,
       releaseDate: props.InitialReleaseDate ?? new Date(),
       rating: props.initialRating ?? 0.0,
       genreIds: props.initialGenreIds ?? [],
