@@ -1,4 +1,4 @@
-import MovieForm, { type IMovieFormProps } from './MovieForm';
+import MovieForm, { type IMovieFormInitialValues } from './MovieForm';
 
-export type { IMovieFormProps };
+export type { IMovieFormInitialValues };
 export default MovieForm

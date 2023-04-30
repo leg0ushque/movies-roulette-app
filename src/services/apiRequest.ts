@@ -14,7 +14,9 @@ const apiRequest = async<T> (method: Method, url: string, params: unknown = {}, 
     return res.data;
   } catch (e) {
     const error = e as AxiosError;
+
     console.error(`Error! A response '${error.code}: ${error.message}' was received on '${method}' request to API/${url}`)
+    console.error(`Message: ${(error.response?.data as { messages: string[] }).messages?.join('. ')}'`)
 
     return await Promise.reject(error);
   }
