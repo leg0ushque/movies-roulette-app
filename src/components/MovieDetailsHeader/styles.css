@@ -1,0 +1,42 @@
+
+.page-header .app-name-col,
+.page-header .right-header-button-col {
+  padding: 3% 0 0 0;
+}
+
+.page-header .right-header-button-col .search {
+  background-color: var(--color3);
+  border-radius: 100%;
+  border: 0;
+  height: 72px;
+  width: 72px;
+}
+
+.page-header.search-form {
+  width: 100vw;
+  padding: 0 var(--page-padding) 5% var(--page-padding);
+  
+  background-image: url('../../../public/images/bg.png');
+  background-repeat: repeat;
+  background-size: 100% 100%;
+}
+
+.page-header.movie-details {
+  width: 100vw;
+  padding: 0 var(--page-padding) 1% var(--page-padding);
+  
+  background-color: var(--color3);
+}
+
+.page-header .movieDetails {
+  padding-left: 0;
+}
+
+.page-header h1 {
+  color: var(--color5);
+  text-transform: uppercase;
+  font-family: 'Montserrat-ExtraLight';
+  font-size: 7vh;
+  margin: 3% 0;
+  padding-left: 7.5%
+}
