@@ -9,7 +9,7 @@ const TEST_MOVIES: IMovie[] = [
     genreIds: ['Action', 'Thriller', 'Crime'],
     rating: 9.5,
     movieUrl: 'https://www.imdb.com/title/tt10366206/',
-    duration: '2h 49m',
+    duration: 169,
     description: 'John Wick (Keanu Reeves) uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nisi sunt odio libero magni assumenda soluta consectetur quia eveniet cumque error sit deserunt temporibus recusandae similique, enim fugit qui autem?'
   },
   {
@@ -20,7 +20,7 @@ const TEST_MOVIES: IMovie[] = [
     genreIds: ['Horror', 'Western', 'Documentary'],
     rating: 9.5,
     movieUrl: 'https://www.imdb.com/title/tt10366206/',
-    duration: '2h 49m',
+    duration: 169,
     description: 'John Wick (Keanu Reeves) uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nisi sunt odio libero magni assumenda soluta consectetur quia eveniet cumque error sit deserunt temporibus recusandae similique, enim fugit qui autem?'
   },
   {
@@ -31,7 +31,7 @@ const TEST_MOVIES: IMovie[] = [
     genreIds: ['TV Movie', 'Mystery', 'Action'],
     rating: 9.5,
     movieUrl: 'https://www.imdb.com/title/tt10366206/',
-    duration: '2h 49m',
+    duration: 169,
     description: 'John Wick (Keanu Reeves) uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nisi sunt odio libero magni assumenda soluta consectetur quia eveniet cumque error sit deserunt temporibus recusandae similique, enim fugit qui autem?'
   },
   {
@@ -42,7 +42,7 @@ const TEST_MOVIES: IMovie[] = [
     genreIds: ['Action', 'Thriller', 'Crime'],
     rating: 9.5,
     movieUrl: 'https://www.imdb.com/title/tt10366206/',
-    duration: '2h 49m',
+    duration: 169,
     description: 'John Wick (Keanu Reeves) uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nisi sunt odio libero magni assumenda soluta consectetur quia eveniet cumque error sit deserunt temporibus recusandae similique, enim fugit qui autem?'
   },
   {
@@ -53,7 +53,7 @@ const TEST_MOVIES: IMovie[] = [
     genreIds: ['Mysic', 'War', 'Comedy'],
     rating: 9.5,
     movieUrl: 'https://www.imdb.com/title/tt10366206/',
-    duration: '2h 49m',
+    duration: 169,
     description: 'John Wick (Keanu Reeves) uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nisi sunt odio libero magni assumenda soluta consectetur quia eveniet cumque error sit deserunt temporibus recusandae similique, enim fugit qui autem?'
   }
 ];

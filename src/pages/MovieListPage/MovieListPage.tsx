@@ -14,18 +14,6 @@ import { useMovieListPageState, useNavigateRedirections } from '../../hooks';
 import { type IContextMenuItem } from '../../shared/types';
 
 import type IMovieTileContent from '../../shared/types/IMovieTileContent';
-
-const MOVIE_TILE_MENU_ITEMS: IContextMenuItem[] = [
-  {
-    name: 'Edit',
-    clickHandler: (id: string) => { console.log(`EDIT: ${id}`) }
-  },
-  {
-    name: 'Delete',
-    clickHandler: (id: string) => { console.log(`DELETE: ${id}`) }
-  }
-];
-
 const MovieListPage: React.FC = () => {
   const { redirectWithCurrentQuery } = useNavigateRedirections();
 
@@ -40,6 +28,17 @@ const MovieListPage: React.FC = () => {
     setSelectedSortId,
     toggleSortOrder
   } = useMovieListPageState()
+
+  const MOVIE_TILE_MENU_ITEMS: IContextMenuItem[] = [
+    {
+      name: 'Edit',
+      clickHandler: (id: string) => { redirectWithCurrentQuery(`/${id}/edit`) }
+    },
+    {
+      name: 'Delete',
+      clickHandler: (id: string) => { redirectWithCurrentQuery(`/${id}/confirm-delete`) }
+    }
+  ];
 
   const clearMovieSelection = (): void => {
     redirectWithCurrentQuery('/', [['search', '']])

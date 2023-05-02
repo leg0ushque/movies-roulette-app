@@ -9,14 +9,18 @@
 }
 
 /* form-rows */
-.movieForm .form-row input,
-.movieForm .form-row textarea {
+.movieForm .form-row {
     margin-bottom: 3vh;
     border-radius: 4px;
 }
 
 .form-row input:focus {
     border-color: var(--color1);
+}
+
+.movieForm p.error-message{
+    color: var(--color1);
+    margin: 0;
 }
 
 .movieForm label {
@@ -35,7 +39,7 @@
 .movieForm input[type=text], 
 .movieForm input[type=date],
 .movieForm input[type=number],
-.movieForm button.dropdown,
+.movieForm div.button-dropdown,
 .movieForm textarea.description {
     padding: 10px 1.5vw;
     display: block;
@@ -46,6 +50,14 @@
     width: 100%;
     text-align: left;
     border-radius: 4px;
+}
+
+.movieForm input[type=text].incorrect, 
+.movieForm input[type=date].incorrect,
+.movieForm input[type=number].incorrect,
+.movieForm div.button-dropdown.incorrect,
+.movieForm textarea.description.incorrect {
+    border: 1px solid var(--color1);
 }
 
 .movieForm textarea.description {
@@ -63,11 +75,11 @@
 
 /* DROPDOWN STYLES BELOW */
 
-.movieForm button.dropdown {
+.movieForm div.button-dropdown {
     width: 100%;
 }
 
-.movieForm button.dropdown:active {
+.movieForm div.button-dropdown:active {
     background-color: var(--color1);
 }
 
@@ -90,13 +102,13 @@
     padding-right: 1.5vw;
 }
 
-.movieForm .genresList.shown .form-check {
+.movieForm .genresList.shown .checkbox-label {
     line-height: 200%;
     margin-left: 2.5%;
     padding-left: 0;
 }
 
-.movieForm .genresList.shown .form-check label {
+.movieForm .genresList.shown .checkbox-label {
     color: var(--color5);
     font-size: medium;
     text-transform: none;
@@ -104,11 +116,11 @@
     padding-bottom: 0;
 }
 
-.movieForm .genresList.shown .form-check input[type=checkbox]{
+.movieForm .genresList.shown .checkbox-label input[type=checkbox]{
     border-color: var(--color1);
 }
 
-.movieForm .genresList.shown div.form-check:hover {
+.movieForm .genresList.shown .checkbox-label:hover {
     background-color: var(--color6);
 }
 
@@ -116,45 +128,33 @@
     width: 100%;
 }
 
-.movieForm .genresList.shown .form-check input[type=checkbox]{
+.movieForm .genresList.shown .checkbox-label input[type=checkbox]{
     border-color: var(--color1);
     margin: 8px 5px 0 12px;
 }
 
-.movieForm .genresList.shown .form-check input[type=checkbox]:focus{
+.movieForm .genresList.shown .checkbox-label input[type=checkbox]:focus{
     border-color: var(--color1);
     box-shadow: 0 0 5px var(--color1);
 }
 
-.movieForm .genresList.shown .form-check input[type=checkbox]:checked{
+.movieForm .genresList.shown .checkbox-label input[type=checkbox]:checked{
     background-color: var(--color1);
+    accent-color: var(--color1);
 } 
-
-/*
-.movieForm .dropdown-menu div {
-    background-color: var(--color6);
-    color: var(--color5);
-    font-size: large;
-    text-transform: none;
-}
-
-.movieForm .dropdown .form-check:hover{
-    background-color: var(--color4);
-}
-*/
 
 /* DROPDOWN BUTTON TRIANGLE STYLES */
 
-.movieForm button.dropdown::after {
+.movieForm div.button-dropdown::after {
     color: var(--color1);
     float: right;
     font-size: x-large;
     line-height: 70%;
 }
-.movieForm button.dropdown.down::after {
+.movieForm div.button-dropdown.down::after {
     content: "▼";
 }
-.movieForm button.dropdown:not(.down):after {
+.movieForm div.button-dropdown:not(.down):after {
     content: "▲"; 
 }
 
@@ -166,7 +166,6 @@
     border-radius: 4px;
     border: 2px solid var(--color1);
     font-size: large;
-    line-height: normal;
     text-transform: uppercase;
 }
 

@@ -6,9 +6,11 @@
 import { type CancelToken } from 'axios';
 
 import { type IApiMovieModel, type IApiQuery, type IApiResponse, type IMovie } from '../shared/types';
+import mapMovieToApiMovie from '../shared/utils/mappers/apiMovie.mapper';
 import mapApiMovieToMovie from '../shared/utils/mappers/movie.mapper';
 import apiRequest from './apiRequest';
 
+import type IApiMovieModelBody from '../shared/types/IApiMovieModelBody';
 // GET ALL
 
 const getAllApiMovies = async (query?: IApiQuery, cancelToken?: CancelToken): Promise<IApiResponse<IApiMovieModel[]>> => {
@@ -35,11 +37,50 @@ const getById = async (id?: string, cancelToken?: CancelToken): Promise<IMovie> 
   return movie;
 }
 
+// CREATE
+
+const createMovie = async (movie: IApiMovieModelBody, cancelToken?: CancelToken): Promise<IApiMovieModel> => {
+  const body = { ...movie, release_date: movie.release_date.toISOString() };
+
+  return await apiRequest('post', 'movies', {}, body, cancelToken);
+}
+
+const create = async (movie: IMovie, cancelToken?: CancelToken): Promise<number> => {
+  const requestBody = mapMovieToApiMovie(movie, false);
+  const response = await createMovie(requestBody, cancelToken);
+
+  return response.id;
+}
+
+// UPDATE
+
+const updateMovie = async (movie: IApiMovieModelBody, cancelToken?: CancelToken): Promise<IApiMovieModel> => {
+  const body = { ...movie, release_date: movie.release_date.toISOString() };
+
+  return await apiRequest('put', 'movies', {}, body, cancelToken);
+}
+
+const update = async (movie: IMovie, cancelToken?: CancelToken): Promise<number> => {
+  const requestBody = mapMovieToApiMovie(movie, true);
+  const response = await updateMovie(requestBody, cancelToken);
+
+  return response.id;
+}
+
+// DELETE
+
+const deleteMovie = async (id?: string, cancelToken?: CancelToken): Promise<void> => {
+  await apiRequest('delete', `movies/${id}`, cancelToken);
+}
+
 // EXPORTS
 
 const MovieService = {
+  create,
   getAll,
-  getById
+  getById,
+  update,
+  delete: deleteMovie
 }
 
 export default MovieService;

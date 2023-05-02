@@ -1,84 +1,80 @@
 import './styles.css';
 
-import React, { useState, type FormEvent } from 'react';
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import { withFormik, type FormikProps } from 'formik';
+import React, { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import * as Yup from 'yup';
 
 import { FORM_RESET_BUTTON_TEXT, FORM_SUBMIT_BUTTON_TEXT } from '../../shared/constants/form';
 import {
-  GenrePlaceholder, MovieUrlPlaceholder, OverviewPlaceholder, ReleaseDatePlaceholder,
+  GenrePlaceholder, MovieUrlPlaceholder, OverviewPlaceholder, RatingPlaceholder,
   RuntimePlaceholder, TitlePlaceholder
-} from '../../shared/constants/placeholders';
-import formatInputDate from '../../shared/utils/dateFormat';
-import setMovieValues from '../../shared/utils/setMovieValues';
+} from '../../shared/constants/form/placeholders';
+import URL_PATTERN from '../../shared/constants/regex';
+import testData from '../../shared/constants/test-data';
+import { type IMovie } from '../../shared/types';
+import CheckboxGroup from '../CheckboxGroup';
+import CustomDatePicker from '../CustomDatePicker';
 
 import type IGenre from '../../shared/types/IGenre';
-import type IMovie from '../../shared/types/IMovie';
-export interface IMovieFormProps {
-  movie?: IMovie
-  genres: IGenre[]
-  onSubmit: (formData: object) => void
+
+interface IFormValues {
+  title: string
+  description: string
+  duration: number
+  releaseDate: Date | null
+  rating: number
+  genreIds: string[]
+  movieUrl: string
 }
 
-const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
+export interface IOtherProps {
+  genres: IGenre[]
+  onSubmit: (formData: IMovie) => void
+}
+
+const InnerForm = (props: IOtherProps & FormikProps<IFormValues>): JSX.Element => {
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting
+  } = props;
+
   const [genreDropdownIsShown, setGenreDropdownIsShown] = useState(false);
 
   const showHideGenres = (): void => {
     setGenreDropdownIsShown(!genreDropdownIsShown);
   }
 
-  const propsMovie: IMovie = setMovieValues(movie);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target as HTMLFormElement)
-
-    const genreCheckboxInputs = Array.from((event.target as HTMLFormElement).elements)
-      .filter((el: Element) => (el.getAttribute('type') === 'checkbox')) as HTMLInputElement[];
-
-    const checkedGenreIds = genreCheckboxInputs
-      .filter((el: HTMLInputElement) => el.checked)
-      .map(el => el.value)
-
-    const objectFromEntries = {
-      ...Object.fromEntries(formData),
-      genreIds: checkedGenreIds
-    };
-
-    onSubmit(objectFromEntries)
-  }
-
-  const genreDropdownItems = genres.map((item) =>
-    <Form.Check
-      id={item.id}
-      key={item.name}
-      type='checkbox'
-      defaultChecked={movie?.genreIds.some((x) => x === item.id)}
-      name='genreIds'
-      label={`  ${item.name}`}
-      value={item.id}/>
+  const genreDropdownItems = testData.genres.map((item) =>
+    <CheckboxGroup.Item label={item.name} value={item.name} key={item.name} />
   );
 
   return (
-    <form onSubmit={handleSubmit} className="movieForm">
-      <Container>
+    <form onSubmit={ handleSubmit } className="movieForm">
+      <Container className='p-0'>
         <Row className='form-row justify-content-center'>
-          <Col md={8} xs={12}>
+          <Col md={8} xs={12} className=''>
             <label htmlFor="title">Title</label>
             <input type="text"
               name="title"
               placeholder={TitlePlaceholder}
-              defaultValue={propsMovie?.title}
               tabIndex={0}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.title}
+              className={errors.title ? 'incorrect' : ''}
               autoFocus />
+            {touched.title && errors.title && <p className='error-message'>{errors.title}</p>}
           </Col>
           <Col md={4} xs={12} className='pr-0'>
             <label htmlFor="releaseDate">Release date</label>
-            <input
-              type='date'
-              name='releaseDate'
-              defaultValue={formatInputDate(propsMovie?.releaseDate ?? new Date())}
-              tabIndex={1}/>
+            <CustomDatePicker name="releaseDate" />
+            {touched.releaseDate && errors.releaseDate && <p className='error-message'>{errors.releaseDate}</p>}
           </Col>
         </Row>
         <Row className='form-row justify-content-center'>
@@ -87,39 +83,55 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
             <input type="text"
               name="movieUrl"
               placeholder={MovieUrlPlaceholder}
-              defaultValue={propsMovie?.movieUrl}
-              tabIndex={2}></input>
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.movieUrl}
+              className={errors.movieUrl ? 'incorrect' : ''}
+              tabIndex={2}
+            />
+            {touched.movieUrl && errors.movieUrl && <p className='error-message'>{errors.movieUrl}</p>}
           </Col>
           <Col md={4} xs={12} className='pr-0'>
             <label htmlFor="rating">Rating</label>
             <input type="number" min={0.0} max={10.0} step={0.1}
               name="rating"
-              placeholder={ReleaseDatePlaceholder}
-              defaultValue={propsMovie?.rating}
+              placeholder={RatingPlaceholder}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.rating}
+              className={errors.rating ? 'incorrect' : ''}
               tabIndex={3} />
+              {touched.rating && errors.rating && <p className='error-message'>{errors.rating}</p>}
           </Col>
         </Row>
         <Row className='form-row justify-content-center'>
           <Col md={8} xs={12} className='dropdown-col prevent-select'>
             <label htmlFor="genre">Genre</label>
-            <button
-              className={`dropdown${genreDropdownIsShown ? ' down' : ''}`}
+            <div
+              className={`button-dropdown${genreDropdownIsShown ? ' down' : ''}${errors.genreIds ? ' incorrect' : ''}`}
               onClick={showHideGenres}
               role="dropdown-button"
               >
                 {GenrePlaceholder}
-              </button>
+              </div>
             <div className={`genresList${genreDropdownIsShown ? ' shown' : ''}`}>
-              {genreDropdownItems}
+              <CheckboxGroup name="genreIds">
+                {genreDropdownItems}
+              </CheckboxGroup>
             </div>
+            {touched.genreIds && errors.genreIds && <p className='error-message'>{errors.genreIds}</p>}
           </Col>
           <Col md={4} xs={12} className='pr-0'>
-            <label htmlFor="runtime">Runtime</label>
-            <input type="text" min={0.0} max={10.0} step={0.1}
-              name="runtime"
+            <label htmlFor="duration">Runtime</label>
+            <input type="number" min={1} max={500} step={1}
+              name="duration"
               placeholder={RuntimePlaceholder}
-              defaultValue={propsMovie?.duration}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.duration}
+              className={errors.duration ? 'incorrect' : ''}
               tabIndex={3}/>
+              {touched.duration && errors.duration && <p className='error-message'>{errors.duration}</p>}
           </Col>
         </Row>
         <Row className='form-row justify-content-center'>
@@ -127,10 +139,13 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
             <label htmlFor="description">Overview</label>
             <textarea
               name="description"
-              className="description"
+              className={`description${errors.description ? ' incorrect' : ''}`}
               placeholder={OverviewPlaceholder}
-              defaultValue={propsMovie?.description}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.description}
               tabIndex={3}/>
+              {touched.description && errors.description && <p className='error-message'>{errors.description}</p>}
           </Col>
         </Row>
         <Row className='form-row'>
@@ -140,7 +155,7 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
                 <input className="button button-black" type="reset" value={FORM_RESET_BUTTON_TEXT} />
               </Col>
               <Col md={6} xs={6} >
-                <input className="button button-red" type="submit" role="submitButton" value={FORM_SUBMIT_BUTTON_TEXT} />
+                <input className="button button-red" disabled={isSubmitting} type="submit" role="submitButton" value={FORM_SUBMIT_BUTTON_TEXT} />
               </Col>
             </Row>
           </Col>
@@ -149,5 +164,47 @@ const MovieForm: React.FC<IMovieFormProps> = ({ movie, genres, onSubmit }) => {
     </form>
   );
 };
+
+export interface IMovieFormInitialValues {
+  initialTitle?: string
+  initialDescription?: string
+  initialDuration?: number
+  InitialReleaseDate?: Date | null
+  initialRating?: number
+  initialGenreIds?: string[]
+  initialMovieUrl?: string
+  onSubmit: (formData: IMovie) => void
+}
+
+const MovieForm = withFormik<IMovieFormInitialValues, IFormValues>({
+  mapPropsToValues: props => {
+    const values: IFormValues = {
+      title: props.initialTitle ?? '',
+      description: props.initialDescription ?? '',
+      duration: props.initialDuration ?? 1,
+      releaseDate: props.InitialReleaseDate ?? new Date(),
+      rating: props.initialRating ?? 0.0,
+      genreIds: props.initialGenreIds ?? [],
+      movieUrl: props.initialMovieUrl ?? ''
+    }
+
+    return values;
+  },
+
+  validationSchema: Yup.object().shape({
+    title: Yup.string().required('Title is required'),
+    description: Yup.string().required('Description is required'),
+    duration: Yup.string().required('Duration is required'),
+    releaseDate: Yup.date().required('Release date is required'),
+    rating: Yup.number().required('Rating is required'),
+    genreIds: Yup.array().of(Yup.string()).min(1, 'At least one genre must be selected'),
+    movieUrl: Yup.string().matches(URL_PATTERN, 'Enter correct URL!').required('Please enter website')
+  }),
+
+  handleSubmit: (values, formikBag) => {
+    formikBag.props.onSubmit(values as IMovie);
+  }
+
+})(InnerForm);
 
 export default MovieForm;

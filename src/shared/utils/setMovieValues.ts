@@ -1,3 +1,4 @@
+import { MIN_DURATION, MIN_RATING } from '../constants/form';
 import { IMAGE_NOT_FOUND_SRC } from '../constants/movie';
 import { type IMovie } from '../types';
 
@@ -10,9 +11,9 @@ const setMovieValues = (movie?: IMovie): IMovie => {
     id: setValue('', movie?.id),
     title: setValue('', movie?.title),
     description: setValue('', movie?.description),
-    duration: setValue('0 min', movie?.duration),
+    duration: movie?.duration ? movie.duration : MIN_DURATION,
     releaseDate: movie?.releaseDate ? movie?.releaseDate : new Date(),
-    rating: movie?.rating ? movie.rating : 0.0,
+    rating: movie?.rating ? movie.rating : MIN_RATING,
     genreIds: movie?.genreIds ? movie.genreIds : [],
     movieUrl: setValue('', movie?.movieUrl),
     imageUrl: setValue(IMAGE_NOT_FOUND_SRC, movie?.imageUrl)

@@ -5,7 +5,7 @@ const mapApiMovieToMovie = (fromModel: IApiMovieModel): IMovie => {
     id: fromModel.id.toString(),
     title: fromModel.title,
     description: fromModel.overview,
-    duration: `${fromModel.runtime} min`,
+    duration: fromModel.runtime,
     releaseDate: new Date(fromModel.release_date),
     rating: fromModel.vote_average,
     genreIds: fromModel.genres,
