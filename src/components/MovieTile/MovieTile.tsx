@@ -1,12 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-import React, { useState, type SyntheticEvent } from 'react';
+import Image from 'next/image';
+import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-import { IMAGE_NOT_FOUND_SRC } from '../../shared/constants/movie';
-import { type IContextMenuItem, type IGenre, type IMovie } from '../../shared/types';
-import setMovieValues from '../../shared/utils/setMovieValues';
+import { IMAGE_NOT_FOUND_SRC } from '@/shared/constants/movie';
+import { IContextMenuItem, IGenre, IMovie } from '@/shared/types';
+import setMovieValues from '@/shared/utils/setMovieValues';
+
 import MovieTileContextMenu from '../MovieTileContextMenu';
 import ThreeDotsButton from '../ThreeDotsButton';
 
@@ -18,10 +20,12 @@ export interface IMovieTileProps {
 }
 
 const MovieTile: React.FC<IMovieTileProps> = ({ movie, movieGenres, clickMenuItems, onClick }) => {
+  const [src, setSrc] = React.useState(movie?.imageUrl);
+
   const propsMovie = setMovieValues(movie);
 
-  const replaceImage = (event: SyntheticEvent<HTMLImageElement, Event>): void => {
-    (event?.target as HTMLImageElement).src = IMAGE_NOT_FOUND_SRC;
+  const replaceImage = (): void => {
+    setSrc(IMAGE_NOT_FOUND_SRC);
   }
 
   const [menuIsVisible, setMenuIsVisible] = useState(false);
@@ -40,7 +44,7 @@ const MovieTile: React.FC<IMovieTileProps> = ({ movie, movieGenres, clickMenuIte
     }}
     >
       <Row>
-        <Col className='image'>
+        <Col className='image-col'>
           <MovieTileContextMenu
             id={propsMovie.id}
             menuIsVisible={menuIsVisible}
@@ -48,7 +52,7 @@ const MovieTile: React.FC<IMovieTileProps> = ({ movie, movieGenres, clickMenuIte
             items={clickMenuItems}
           />
           <ThreeDotsButton onClick={toggleContextMenu} />
-          <img src={propsMovie.imageUrl} role='image' onError={replaceImage}/>
+          <Image className='image' src={src ?? IMAGE_NOT_FOUND_SRC} alt='tile image' width={300} height={200}  role='image' onError={replaceImage}/>
         </Col>
       </Row>
       <Row className='title-releaseYear'>

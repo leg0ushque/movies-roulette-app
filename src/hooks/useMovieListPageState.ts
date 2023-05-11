@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import MovieService from '../services/MovieService';
-import { DEFAULT_SELECTED_GENRE_ID } from '../shared/constants/genre';
-import testData from '../shared/constants/test-data';
-import { type IApiQuery, type IGenre, type IMovie, type IMovieTileContent } from '../shared/types';
+import MovieService from '@/services/MovieService';
+import { DEFAULT_SELECTED_GENRE_ID } from '@/shared/constants/genre';
+import testData from '@/shared/constants/test-data';
+import { IApiQuery, IGenre, IMovie, IMovieTileContent } from '@/shared/types';
+
 import { useCancelToken } from './useCancelToken';
 import useQueryParams from './useQueryParams';
 
@@ -21,12 +22,13 @@ export interface IUseMovieListPageState {
   setSelectedGenreId: (id: string) => void
   setSelectedSortId: (id: string) => void
   toggleSortOrder: () => void
+  redirectWithCurrentQuery: (path: string, key?: string, newValue?: string)  => void
 }
 
 const useMovieListPageState = (): IUseMovieListPageState => {
   const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
 
-  const { query, updateParameter } = useQueryParams();
+  const { query, updateParameter, redirectWithCurrentQuery } = useQueryParams();
 
   const setSearchQuery = (value: string): void => {
     updateParameter('search', value)
@@ -94,7 +96,8 @@ const useMovieListPageState = (): IUseMovieListPageState => {
     setSearchQuery,
     setSelectedGenreId,
     setSelectedSortId,
-    toggleSortOrder
+    toggleSortOrder,
+    redirectWithCurrentQuery
   };
 }
 

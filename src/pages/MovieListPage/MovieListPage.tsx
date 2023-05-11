@@ -1,21 +1,22 @@
+'use client'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Outlet } from 'react-router-dom';
 
-import AppName from '../../components/AppName/AppName';
-import GenreSelect from '../../components/GenreSelect';
-import MovieTile from '../../components/MovieTile';
-import SortControl from '../../components/SortControl';
-import sortWays from '../../components/SortControl/sortWays';
-import { useMovieListPageState, useNavigateRedirections } from '../../hooks';
-import { type IContextMenuItem } from '../../shared/types';
+import AppName from '@/components/AppName/AppName';
+import GenreSelect from '@/components/GenreSelect';
+import MovieTile from '@/components/MovieTile';
+import SortControl from '@/components/SortControl';
+import sortWays from '@/components/SortControl/sortWays';
+import useMovieListPageState from '@/hooks/useMovieListPageState';
+import IMovieTileContent from '@/shared/types/IMovieTileContent';
 
-import type IMovieTileContent from '../../shared/types/IMovieTileContent';
-const MovieListPage: React.FC = () => {
-  const { redirectWithCurrentQuery } = useNavigateRedirections();
+import { IContextMenuItem } from '../../shared/types';
+
+const MovieListPage: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   const {
     searchQuery,
@@ -26,7 +27,8 @@ const MovieListPage: React.FC = () => {
     isSortDescending,
     setSelectedGenreId,
     setSelectedSortId,
-    toggleSortOrder
+    toggleSortOrder,
+    redirectWithCurrentQuery
   } = useMovieListPageState()
 
   const MOVIE_TILE_MENU_ITEMS: IContextMenuItem[] = [
@@ -41,7 +43,7 @@ const MovieListPage: React.FC = () => {
   ];
 
   const clearMovieSelection = (): void => {
-    redirectWithCurrentQuery('/', [['search', '']])
+    redirectWithCurrentQuery('/', 'search')
   }
 
   const APP_NAME: JSX.Element = (
@@ -74,7 +76,7 @@ const MovieListPage: React.FC = () => {
 
   return (
     <div className='movie-list-page'>
-      <Outlet />
+      { children }
       <div className='page-content'>
         <Row className='genresList-sortControl'>
           <Col md={9} xs={12} className='pr-0'>

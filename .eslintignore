@@ -1,9 +1,0 @@
-node_modules/
-build/
-images/
-instrumented/
-.github/
-.nyc_output/
-coverage/
-wdio.conf.ts
-tests/**/*.js

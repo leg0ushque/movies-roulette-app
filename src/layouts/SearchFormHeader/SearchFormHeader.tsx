@@ -1,21 +1,22 @@
+'use client';
+
 import './styles.css';
 
+import Link from 'next/link';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Outlet, useSearchParams } from 'react-router-dom';
+
+import { useQueryParams } from '@/hooks';
 
 import AppName from '../../components/AppName';
 import SearchForm from '../../components/SearchForm';
-import { useNavigateRedirections } from '../../hooks';
 
-const SearchFormHeader: React.FC = () => {
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('search')
-
-  const { redirectWithCurrentQuery } = useNavigateRedirections();
+const SearchFormHeader: React.FC<React.PropsWithChildren> = ({children}) => {
+  const { query, updateParameter, redirectWithCurrentQuery } = useQueryParams();
+  const searchQuery = query.search
 
   const handleSearch = (value: string): void => {
-    redirectWithCurrentQuery('/', [['search', value]])
+    redirectWithCurrentQuery('/', 'search', value)
   }
 
   const addMovieHandler = (): void => {
@@ -23,7 +24,7 @@ const SearchFormHeader: React.FC = () => {
   }
 
   const clearMovieSelection = (): void => {
-    redirectWithCurrentQuery('/', [['search', '']])
+    redirectWithCurrentQuery('/', 'search')
   }
 
   return (
@@ -34,7 +35,9 @@ const SearchFormHeader: React.FC = () => {
             <AppName onClick={clearMovieSelection} />
           </Col>
           <Col md={2} xs={12} className='right-header-button-col'>
-            <button className='button b-0 button-gray add-movie' onClick={addMovieHandler}>+ Add movie</button>
+            <Link href="/new">
+              <button className='button b-0 button-gray add-movie' onClick={addMovieHandler}>+ Add movie</button>
+            </Link>
           </Col>
         </Row>
         <Row key='header-title'>
@@ -44,7 +47,7 @@ const SearchFormHeader: React.FC = () => {
           </Col>
         </Row>
       </div>
-      <Outlet/>
+      {children}
     </>
   );
 }

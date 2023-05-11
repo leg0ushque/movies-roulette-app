@@ -11,7 +11,7 @@
   width: 72px;
 }
 
-.page-header .page-header.search-form {
+.page-header.search-form {
   width: 100vw;
   padding: 0 var(--page-padding) 5% var(--page-padding);
   

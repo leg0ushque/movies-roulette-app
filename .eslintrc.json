@@ -1,27 +1,3 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "plugin:storybook/recommended",
-        "plugin:react/recommended",
-        "standard-with-typescript"
-    ],
-    "overrides": [
-    ],
-    "parserOptions": {
-        "project": ["tsconfig.json"],
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "semi": "off",
-        "@typescript-eslint/semi": "off",
-        "@typescript-eslint/strict-boolean-expressions": "off",
-        "@typescript-eslint/restrict-template-expressions": "off"
-    }
+  "extends": "next/core-web-vitals"
 }

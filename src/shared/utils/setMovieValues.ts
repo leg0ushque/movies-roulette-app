@@ -1,6 +1,6 @@
 import { MIN_DURATION, MIN_RATING } from '../constants/form';
 import { IMAGE_NOT_FOUND_SRC } from '../constants/movie';
-import { type IMovie } from '../types';
+import { IMovie } from '../types';
 
 const setValue = (defaultValue: string, value?: string): string => {
   return value?.length ? value : defaultValue

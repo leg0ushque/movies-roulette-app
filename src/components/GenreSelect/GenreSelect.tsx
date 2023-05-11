@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import './styles.css';
 
 import React from 'react';
 
-import { DEFAULT_SELECTED_GENRE_ID } from '../../shared/constants/genre';
+import { DEFAULT_SELECTED_GENRE_ID } from '@/shared/constants/genre';
 
-import type IGenre from '../../shared/types/IGenre';
-
+import type IGenre from '@/shared/types/IGenre';
 const OTHER_GENRE_BUTTON_TEXT = 'Other'
 
 const allGenre: IGenre = {
