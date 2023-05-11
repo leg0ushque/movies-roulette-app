@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog has all items passed in props rendered: <div><span>test body</span></div> 1`] = `
+<div
+  class="dialog-body"
+  role="dialog-body"
+>
+  <div>
+    <span>
+      test body
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Dialog has all items passed in props rendered: <h2>test title</h2> 1`] = `
+<div
+  class="dialog-title"
+  role="dialog-title"
+>
+  <h2>
+    test title
+  </h2>
+</div>
+`;

@@ -1,29 +1,28 @@
 .movieTile {
     font-family: 'Montserrat';
     margin-bottom: 50px;
-    padding: 0px 10px;
-    padding-right: 5%;
+    padding-right: 5% !important;
 }
 
-.movieTile .image {
+.movieTile .image-col {
     padding: 0;
     position: relative;
     height: 50%;
 }
 
-.movieTile .image button.three-dots {
+.movieTile .image-col button.three-dots {
     display: none !important;
 }
 
-.movieTile .image:hover button.three-dots {
+.movieTile .image-col:hover button.three-dots {
     display: block !important;
 }
 
-.movieTile .image img {
+.movieTile .image-col .image {
     display: block;
-    height: 500px;
+    height: 600px;
     width: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 
 .movieTile .title {

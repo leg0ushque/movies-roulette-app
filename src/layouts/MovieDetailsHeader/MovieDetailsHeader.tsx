@@ -1,18 +1,23 @@
+'use client';
 import './styles.css';
 
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Outlet, useLoaderData } from 'react-router-dom';
+
+import { useQueryParams } from '@/hooks';
+import movieTileContentLoader from '@/services/movieTileContentLoader';
 
 import AppName from '../../components/AppName';
 import MovieDetails from '../../components/MovieDetails';
-import { useNavigateRedirections } from '../../hooks';
-import { type IGenre, type IMovieTileContent } from '../../shared/types';
+import { IGenre, IMovieTileContent } from '../../shared/types';
 
-const MovieDetailsHeader: React.FC = () => {
-  const movieTileContent = useLoaderData() as IMovieTileContent;
+interface IMovieDetailsHeaderProps {
+  movieId: string
+}
 
-  const { redirectWithCurrentQuery } = useNavigateRedirections();
+const MovieDetailsHeader: React.FC<PropsWithChildren<IMovieDetailsHeaderProps>> = ({ children, movieId }) => {
+  const movieTileContent = movieTileContentLoader(movieId) as IMovieTileContent;
+  const {redirectWithCurrentQuery} = useQueryParams();
 
   const handleRedirectClick = (): void => {
     redirectWithCurrentQuery('/')
@@ -33,7 +38,7 @@ const MovieDetailsHeader: React.FC = () => {
         </Row>
         <MovieDetails movie={movieTileContent.movie} movieGenres={movieTileContent.genres as IGenre[]} />
       </div>
-      <Outlet/>
+      {children}
     </>
   );
 }

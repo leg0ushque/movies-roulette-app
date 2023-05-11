@@ -1,7 +1,7 @@
 
 span.app-name {
-  font-family: 'Montserrat';
-  font-weight: 300;
+  font-family: 'Montserrat-ExtraLight';
+  font-weight: lighter;
   font-size: 25px;
   line-height: 24px;
 
@@ -9,7 +9,8 @@ span.app-name {
 }
 
 span.app-name b {
-  font-family: 'Montserrat-ExtraBold';
+  font-family: 'Montserrat-Bold';
+  font-weight: bold;
   color: var(--color1);
 }
 

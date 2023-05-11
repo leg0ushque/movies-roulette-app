@@ -1,48 +1,38 @@
-# Getting Started with Create React App
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
 
-## Available Scripts
+First, run the development server:
 
-In the project directory, you can run:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-### `npm run start`
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-### `npm run test`
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-Launches the JEST test runner with coverage results showed for every file\
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-### `npm run storybook`
+## Learn More
 
-Runs the Storybook
-Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
+To learn more about Next.js, take a look at the following resources:
 
-## E2E Tests
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-E2E testing is currently available for MovieList page.
-Before running e2e, please, make sure you've Backend API running at https://localhost:4000 (see the 'Backend API' docs below)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-To run e2e tests, use *npm start* command first - that will launch the application. Then use
+## Deploy on Vercel
 
-### `npm run wdio`
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-E2E tests will be run using Chromedriver.
-
-**Note: Remember that the opened Chrome window should be active in your OS to allow tests pass correctly. Please, don't let the e2e pass in the background (inactive Chrome window) - in this case the results may be faulty.**
-
-## Backend API
-
-1. Clone the backend repository from\
-https://github.com/VarvaraZadnepriak/MoviesAPI.ReactJS
-
-2. Navigate to the cloned repository folder and run "npm install" to install dependencies.
-
-3. Run "npm start" command to start the backend server. It will start on https://localhost:4000 .
-
-4. Make sure Swagger is available at http://localhost:4000/api-docs
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

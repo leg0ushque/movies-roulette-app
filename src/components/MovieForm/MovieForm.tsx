@@ -1,7 +1,9 @@
+'use client';
+
 import './styles.css';
 
-import { withFormik, type FormikProps } from 'formik';
-import React, { useState } from 'react';
+import { FormikProps, withFormik } from 'formik';
+import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import * as Yup from 'yup';
 
@@ -12,7 +14,7 @@ import {
 } from '../../shared/constants/form/placeholders';
 import URL_PATTERN from '../../shared/constants/regex';
 import testData from '../../shared/constants/test-data';
-import { type IMovie } from '../../shared/types';
+import { IMovie } from '../../shared/types';
 import CheckboxGroup from '../CheckboxGroup';
 import CustomDatePicker from '../CustomDatePicker';
 

@@ -1,5 +1,5 @@
 import { useField } from 'formik';
-import React, { type ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import Item from './CheckboxGroupItem';
 import { CheckboxProvider } from './useCheckboxContext';

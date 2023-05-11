@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useRef } from 'react';
 
-import { type CancelToken, type IUseCancelToken, type SourceRef } from '../shared/types/IUseCancelToken';
+import { CancelToken, IUseCancelToken, SourceRef } from '../shared/types/IUseCancelToken';
 
 /**
  * When a component unmounts, we need to cancel any potentially

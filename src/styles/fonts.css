@@ -1,0 +1,35 @@
+/* sorted by ascending weight */
+
+@font-face {
+  font-family: "Montserrat-ExtraLight";
+  font-weight: 0;
+  src: url("../../asset/Montserrat/Montserrat-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat-Light";
+  font-weight: light;
+  src: local("Montserrat-Light"),
+    url("../../asset/Montserrat/Montserrat-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: normal;
+  src: local("Montserrat"),
+    url("../../asset/Montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat-Bold";
+  font-weight: bold;
+  src: local("Montserrat-Bold"),
+    url("../../asset/Montserrat/Montserrat-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat-ExtraBold";
+  font-weight: bolder;
+  src: local("Montserrat-ExtraBold"),
+    url("../../asset/Montserrat/Montserrat-ExtraBold.ttf") format("truetype");
+}

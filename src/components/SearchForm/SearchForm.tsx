@@ -1,6 +1,6 @@
 import './styles.css';
 
-import React, { useState, type ChangeEvent, type FormEvent } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 export const DEFAULT_VALUE = '';
