@@ -10,7 +10,9 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
     },
     plugins: [
-        new ESLintPlugin(),
+        new ESLintPlugin({
+            extensions: ['ts', 'tsx']
+        }),
         new HtmlWebpackPlugin({
             template: "./src/index.html",
         }),
