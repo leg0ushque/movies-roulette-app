@@ -1,12 +1,9 @@
 
 import React, { useState } from 'react';
 
-import Dialog, { type IDialogProps } from '../components/Dialog';
+import Dialog, { IDialogProps } from '../components/Dialog';
 
-export interface IDialogWrapperProps extends IDialogProps {
-}
-
-const DialogWrapper: React.FC<React.PropsWithChildren<IDialogWrapperProps>> = ({ logo, title, isWide, isCentered, hasScrollableBody, onClose, children }) => {
+const DialogWrapper: React.FC<React.PropsWithChildren<IDialogProps>> = ({ logo, title, isWide, isCentered, hasScrollableBody, onClose, children }) => {
   const [dialogIsOpened, setDialogIsOpened] = useState(false);
 
   const openDialog = (): void => { setDialogIsOpened(true) }

@@ -8,7 +8,7 @@
     "dev": "webpack server --open",
     "build": "webpack --config webpack.config.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .ts,.tsx",
+    "lint": "eslint ./src/**/*.ts{,x}",
     "lint:fix": "npm run lint -- --fix"
   },
   "repository": {

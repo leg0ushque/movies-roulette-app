@@ -6,7 +6,7 @@
         //Type checking configuration
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
-        "exactOptionalPropertyTypes": true,
+        "exactOptionalPropertyTypes": false,
         "noFallthroughCasesInSwitch": true,
         "noImplicitThis": true,
         "noUnusedLocals": true,
