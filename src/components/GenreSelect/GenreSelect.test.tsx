@@ -10,7 +10,7 @@ import GenreSelect from './GenreSelect';
 describe('GenreSelect', () => {
   const testGenres = testData.genres
 
-  const onSelectCallbackMock = jest.fn(value => {});
+  const onSelectCallbackMock = jest.fn();
 
   test('has all genres passed in props rendered', () => {
     const { getByRole } = render(<GenreSelect
