@@ -2,7 +2,3 @@
 . node_modules/husky/husky.sh
 
 npm run lint
-
-exec 1>&2
-echo "No commit for you"
-exit 1
