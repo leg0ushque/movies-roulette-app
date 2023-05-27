@@ -1,4 +1,8 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+. node_modules/husky/lib/husky.sh
 
-npx lint-staged
+npm run lint
+
+exec 1>&2
+echo "No commit for you"
+exit 1
