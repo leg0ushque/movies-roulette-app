@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import MovieService from '../services/MovieService';
 import { DEFAULT_SELECTED_GENRE_ID } from '../shared/constants/genre';
 import testData from '../shared/constants/test-data';
-import { type IApiQuery, type IGenre, type IMovie, type IMovieTileContent } from '../shared/types';
+import { IApiQuery, IGenre, IMovie, IMovieTileContent } from '../shared/types';
 import { useCancelToken } from './useCancelToken';
 import useQueryParams from './useQueryParams';
 

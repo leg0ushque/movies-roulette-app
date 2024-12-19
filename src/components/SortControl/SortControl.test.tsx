@@ -8,7 +8,7 @@ import SortControl from './SortControl';
 import sortWays from './sortWays';
 
 describe('SortControl', () => {
-  const onChangeMock = jest.fn(value => {});
+  const onChangeMock = jest.fn();
   const toggleSortOrderMock = jest.fn();
   const selectedSortId = sortWays[0].id
 

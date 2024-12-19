@@ -11,7 +11,7 @@ const ErrorPage: React.FC = () => {
   // const routeError = useRouteError();
 
   const APP_NAME: JSX.Element = (
-    <AppName onClick={() => {}} />
+    <AppName onClick={() => {console.log('appname clicked on error page')}} />
   )
 
   return (

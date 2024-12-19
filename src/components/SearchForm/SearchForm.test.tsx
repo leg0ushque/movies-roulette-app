@@ -10,7 +10,7 @@ describe('SearchForm', () => {
   const testInitialValue = 'test initial value';
   const inputValue = 'input value';
 
-  const onSearchCallbackMock = jest.fn(value => {});
+  const onSearchCallbackMock = jest.fn();
 
   let inputElement: HTMLElement;
   let submitButton: HTMLElement;

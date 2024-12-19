@@ -1,12 +1,11 @@
 import {
-  createSearchParams,
-  useNavigate, useSearchParams,
-  type ParamKeyValuePair
+  createSearchParams, ParamKeyValuePair,
+  useNavigate, useSearchParams
 } from 'react-router-dom';
 
 interface INavigateRedirectionsReturn {
   redirectTo: (path: string, params?: ParamKeyValuePair[]) => void
-  redirectWithCurrentQuery: (path: string, params?: ParamKeyValuePair[]) => any
+  redirectWithCurrentQuery: (path: string, params?: ParamKeyValuePair[]) => void
 }
 
 const useNavigateRedirections = (): INavigateRedirectionsReturn => {

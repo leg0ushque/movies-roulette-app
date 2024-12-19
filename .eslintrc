@@ -4,14 +4,15 @@
         "es2021": true
     },
     "extends": [
-        "plugin:storybook/recommended",
+        "eslint:recommended",
         "plugin:react/recommended",
-        "standard-with-typescript"
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
     ],
     "overrides": [
     ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project": ["tsconfig.json"],
         "ecmaVersion": "latest",
         "sourceType": "module"
     },

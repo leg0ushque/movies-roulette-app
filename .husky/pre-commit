@@ -1,0 +1,4 @@
+#!/bin/sh
+. node_modules/husky/husky.sh
+
+npm run lint

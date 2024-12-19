@@ -7,3 +7,4 @@ instrumented/
 coverage/
 wdio.conf.ts
 tests/**/*.js
+webpack.config.js

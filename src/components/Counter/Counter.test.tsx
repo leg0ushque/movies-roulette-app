@@ -7,7 +7,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import Counter from './Counter';
 
 describe('Counter', () => {
-  const testInitialValue: number = 132;
+  const testInitialValue = 132;
 
   beforeEach(() => {
     render(<Counter initialValue={testInitialValue} />)

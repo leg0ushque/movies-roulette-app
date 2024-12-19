@@ -4,7 +4,7 @@ import React from 'react';
 import FocusLock from 'react-focus-lock';
 import { Portal } from 'react-portal';
 
-import DialogLogo, { type Logo } from '../DialogLogo';
+import DialogLogo, { Logo } from '../DialogLogo';
 
 export interface IDialogProps {
   logo?: Logo
