@@ -4,6 +4,8 @@ sidebar_label: 'Prerequisites'
 title: 'Prerequisites'
 ---
 
+[Back to Contents](../../README.md#module-1)
+
 # Prerequisites
 
 Before you start, here are a few things you need to know. Since React is a JavaScript library, you should be familiar with HTML and JavaScript.

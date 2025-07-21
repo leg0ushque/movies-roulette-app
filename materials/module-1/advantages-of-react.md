@@ -4,6 +4,8 @@ sidebar_label: 'Advantages of React'
 title: 'Advantages of React'
 ---
 
+[Back to Contents](../../README.md#module-1)
+
 # Advantages of React
 
 ## Convention over configuration

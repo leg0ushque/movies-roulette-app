@@ -4,6 +4,8 @@ sidebar_label: 'Functional Paradigm and Principles'
 title: 'Functional Paradigm and Principles'
 ---
 
+[Back to Contents](../../README.md#module-1)
+
 # Functional Paradigm and Principles
 
 ## Imperative vs Declarative programming

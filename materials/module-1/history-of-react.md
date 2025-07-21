@@ -4,6 +4,8 @@ sidebar_label: 'History of React'
 title: 'History of React'
 ---
 
+[Back to Contents](../../README.md#module-1)
+
 # History of React
 
 So, why React? I mean, it's obvious why you chose this program, because React is really popular. Everyone is talking about React, but why? We need to understand the real cause of this popularity. Because not only the number of GitHub stars or Medium.com posts really corresponds to the popularity. The main idea here is that the tool itself might be popular or might be not because of the way it resolves the problem it should. So let's dive deep into it.

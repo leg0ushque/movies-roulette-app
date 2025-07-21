@@ -4,6 +4,8 @@ sidebar_label: '💻 TASK'
 title: 'Home Task Module #1. Core Concepts.'
 ---
 
+[Back to Contents](../../README.md#module-1)
+
 **Practical Task: Creating a React Component to Render a List of Items with Composition**
 
 ## Task Description
