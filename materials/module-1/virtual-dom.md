@@ -4,6 +4,8 @@ sidebar_label: 'Virtual DOM'
 title: 'Virtual DOM'
 ---
 
+[Back to Contents](../../README.md#module-1)
+
 The **Virtual DOM (Document Object Model)** is a lightweight, in-memory representation of the actual DOM. React creates this virtual copy of the DOM to optimize updates and improve performance.
 
 Instead of directly modifying the real DOM when changes occur, React updates the Virtual DOM first. After that, it calculates the differences between the current Virtual DOM and the new one, determines the minimal changes needed, and applies only those updates to the real DOM. This process is known as **reconciliation**.
