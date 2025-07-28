@@ -1,5 +1,5 @@
-[⬅️ Elements and JSX](elements-and-jsx.md)  
-[History of React ➡️](history-of-react.md)
+[⬅️ Project Setup](project-setup.md)  
+[Functional Paradigm ➡️](functional-paradigm.md)
 
 [Back to Contents 📑](../../README.md#module-1)
 
