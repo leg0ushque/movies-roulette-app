@@ -1,10 +1,7 @@
----
-sidebar_position: 2
-sidebar_label: 'Functional Paradigm and Principles'
-title: 'Functional Paradigm and Principles'
----
+[⬅️ Elements and JSX](elements-and-jsx.md)  
+[History of React ➡️](history-of-react.md)
 
-[Back to Contents](../../README.md#module-1)
+[Back to Contents 📑](../../README.md#module-1)
 
 # Functional Paradigm and Principles
 
