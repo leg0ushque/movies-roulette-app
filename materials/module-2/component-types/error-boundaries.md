@@ -1,12 +1,9 @@
----
-sidebar_position: 3
-sidebar_label: 'Error Boundaries'
-title: 'Error Boundaries'
----
+[⬅️ Layout Component](layout-component.md)  
+[Higher-Order Components ➡️](higher-order-components.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
-# Error Boundaries [+ / review]
+# Error Boundaries
 
 ![Error Boundaries image 1](images/error-boundaries-img1.png)
 

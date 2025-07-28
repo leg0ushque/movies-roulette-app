@@ -1,10 +1,6 @@
----
-sidebar_position: 4
-sidebar_label: 'Render Props'
-title: 'Render Props'
----
+[⬅️ Prop Drilling](prop-drilling.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Render Props
 

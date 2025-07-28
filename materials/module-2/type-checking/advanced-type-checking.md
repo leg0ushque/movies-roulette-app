@@ -1,10 +1,6 @@
----
-sidebar_position: 2
-sidebar_label: "Advanced Type Checking"
-title: "Advanced Type Checking"
----
+[⬅️ Prop Types](prop-types.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Advanced Type Checking
 

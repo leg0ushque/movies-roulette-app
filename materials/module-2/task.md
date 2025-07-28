@@ -1,10 +1,6 @@
----
-sidebar_position: 11
-sidebar_label: "💻 TASK"
-title: "Home Task Module #2. React components."
----
+[⬅️ Strict Mode](strict-mode.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../README.md#module-2)
 
 ## Task #1 Description
 

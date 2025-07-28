@@ -1,10 +1,7 @@
----
-sidebar_position: 7
-sidebar_label: 'Code splitting'
-title: 'Code splitting'
----
+[⬅️ State](state.md)  
+[Application Structure ➡️](application-structure.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../README.md#module-2)
 
 # Code splitting
 

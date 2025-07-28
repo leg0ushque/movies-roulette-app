@@ -1,10 +1,7 @@
----
-sidebar_position: 1
-sidebar_label: 'Parent and Child'
-title: 'Parent and Child'
----
+[⬅️ Components](../components.md)  
+[Layout Component ➡️](layout-component.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Parent and Child
 

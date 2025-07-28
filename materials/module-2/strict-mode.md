@@ -1,10 +1,8 @@
----
-sidebar_position: 9
-sidebar_label: 'Strict Mode'
-title: 'Strict Mode'
----
+[⬅️ Application Structure](application-structure.md)  
+[💻 TASK ➡️](task.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../README.md#module-2)
+
 
 # Strict Mode
 

@@ -1,10 +1,5 @@
----
-sidebar_position: 5
-sidebar_label: "Styling"
-title: "Styling"
----
-
-[Back to Contents](../../README.md#module-1)\
+[Advanced Styling ➡️](advanced-styling.md)
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Styling
 

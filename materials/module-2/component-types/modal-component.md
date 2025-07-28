@@ -1,10 +1,7 @@
----
-sidebar_position: 4
-sidebar_label: "Modal Component"
-title: "Modal Component"
----
+[⬅️ Higher-Order Components](higher-order-components.md)  
+[Props ➡️](../props/props.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Modal Component in React
 

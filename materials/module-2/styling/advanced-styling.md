@@ -1,10 +1,5 @@
----
-sidebar_position: 8
-sidebar_label: 'Advanced Styling'
-title: 'Advanced Styling'
----
-
-[Back to Contents](../../README.md#module-1)\
+[⬅️ Styling](styling.md)
+[Type Checking ➡️](../type-checking/prop-types.md)
 
 # Advanced Styling
 

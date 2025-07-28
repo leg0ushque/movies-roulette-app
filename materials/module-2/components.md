@@ -1,10 +1,6 @@
----
-sidebar_position: 1
-sidebar_label: 'Components'
-title: 'Components'
----
+[Parent and Child ➡️](component-types/parent-and-child.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../README.md#module-2)
 
 # Components
 

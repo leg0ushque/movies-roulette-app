@@ -1,10 +1,7 @@
----
-sidebar_position: 1
-sidebar_label: "Using Props"
-title: "Using Props"
----
+[⬅️ Modal Component](../component-types/modal-component.md)  
+[Default Prop ➡️](default-prop.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Props
 

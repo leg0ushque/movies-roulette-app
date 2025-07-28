@@ -1,10 +1,7 @@
----
-sidebar_position: 8
-sidebar_label: "Application Structure"
-title: "Application Structure"
----
+[⬅️ Code Splitting](code-splitting.md)  
+[Strict Mode ➡️](strict-mode.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../README.md#module-2)
 
 # Application Structure
 

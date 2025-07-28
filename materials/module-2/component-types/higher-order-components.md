@@ -1,10 +1,7 @@
----
-sidebar_position: 3
-sidebar_label: 'Higher-Order Components'
-title: 'Higher-Order Components'
----
+[⬅️ Error Boundaries](error-boundaries.md)  
+[Modal Component ➡️](modal-component.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Higher-Order Components
 

@@ -1,10 +1,7 @@
----
-sidebar_position: 4
-sidebar_label: "State"
-title: "State"
----
+[⬅️ Advanced Type Checking](type-checking/advanced-type-checking.md)  
+[Code Splitting ➡️](code-splitting.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../README.md#module-2)
 
 # State
 

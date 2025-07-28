@@ -1,10 +1,7 @@
----
-sidebar_position: 2
-sidebar_label: "Default Props"
-title: "Default props"
----
+[⬅️ Using Props](props.md)  
+[Prop Drilling ➡️](prop-drilling.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Default Props
 

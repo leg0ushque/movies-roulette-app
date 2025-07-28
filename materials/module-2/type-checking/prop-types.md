@@ -1,10 +1,7 @@
----
-sidebar_position: 1
-sidebar_label: "Prop Types"
-title: "Prop Types"
----
+[⬅️ Advanced Styling](../styling/advanced-styling.md)  
+[Advanced Type Checking ➡️](advanced-type-checking.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Prop Types
 

@@ -1,10 +1,7 @@
----
-sidebar_position: 2
-sidebar_label: 'Layout Component'
-title: 'Layout Component'
----
+[⬅️ Parent and Child](parent-and-child.md)  
+[Error Boundaries ➡️](error-boundaries.md)
 
-[Back to Contents](../../README.md#module-1)\
+[Back to Contents 📑](../../../README.md#module-2)
 
 # Layout Component
 
