@@ -1,8 +1,7 @@
----
-sidebar_position: 2
-sidebar_label: 'Basic Approach'
-title: 'Basic Approach'
----
+[⬅️ Motivation](motivation.md)  
+[Built-in Hooks ➡️](built-in-hooks.md)
+
+[Back to Contents 📑](../../README.md#module-3)
 
 # Basic Approach
 

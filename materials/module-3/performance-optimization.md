@@ -1,8 +1,7 @@
----
-sidebar_position: 3
-sidebar_label: 'Performance Optimization'
-title: 'Performance Optimization'
----
+[⬅️ Built-in Hooks](built-in-hooks.md)  
+[React Custom Hooks ➡️](custom-hooks.md)
+
+[Back to Contents 📑](../../README.md#module-3)
 
 # Performance Optimization
 

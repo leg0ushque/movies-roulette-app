@@ -1,8 +1,7 @@
----
-sidebar_position: 4
-sidebar_label: 'React Custom Hooks'
-title: 'React Custom Hooks'
----
+[⬅️ Performance Optimization](performance-optimization.md)  
+[💻 TASK ➡️](task.md)
+
+[Back to Contents 📑](../../README.md#module-3)
 
 **Custom hooks** are one of the most powerful concepts in React, enabling developers to separate and reuse logic efficiently. They are simply JavaScript functions, but when they use React’s built-in hooks like `useState`, `useEffect`, or `useContext`, they unlock the ability to encapsulate complex behaviors in an easily reusable and shareable way.
 

@@ -1,8 +1,6 @@
----
-sidebar_position: 6
-sidebar_label: "💻 TASK"
-title: "Home Task Module #3. React Hooks"
----
+[⬅️ Custom Hooks](custom-hooks.md)
+
+[Back to Contents 📑](../../README.md#module-3)
 
 In this task, you will create various React components using built-in and custom hooks.
 To start your work, go to the template and open the `src/module-3/AppModule3.tsx` and follow instructions.

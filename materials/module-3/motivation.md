@@ -1,8 +1,6 @@
----
-sidebar_position: 1
-sidebar_label: 'Motivation'
-title: 'Motivation'
----
+[Basic Approach ➡️](basic-approach.md)
+
+[Back to Contents 📑](../../README.md#module-3)
 
 # Motivation
 

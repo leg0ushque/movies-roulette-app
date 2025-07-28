@@ -1,8 +1,7 @@
----
-sidebar_position: 3
-sidebar_label: 'Built-in Hooks'
-title: 'Built-in Hooks'
----
+[⬅️ Basic Approach](basic-approach.md)  
+[Performance Optimization ➡️](performance-optimization.md)
+
+[Back to Contents 📑](../../README.md#module-3)
 
 # Built-in Hooks
 
