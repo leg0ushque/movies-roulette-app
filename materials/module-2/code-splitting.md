@@ -4,6 +4,7 @@ sidebar_label: 'Code splitting'
 title: 'Code splitting'
 ---
 
+[Back to Contents](../../README.md#module-1)\
 
 # Code splitting
 

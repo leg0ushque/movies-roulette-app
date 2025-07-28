@@ -4,6 +4,7 @@ sidebar_label: 'Render Props'
 title: 'Render Props'
 ---
 
+[Back to Contents](../../README.md#module-1)\
 
 # Render Props
 

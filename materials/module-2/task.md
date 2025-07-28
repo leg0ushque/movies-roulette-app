@@ -4,6 +4,8 @@ sidebar_label: "💻 TASK"
 title: "Home Task Module #2. React components."
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 ## Task #1 Description
 
 In this task, you will create a React **Class** component that render an input, "add" button and list of items from props.

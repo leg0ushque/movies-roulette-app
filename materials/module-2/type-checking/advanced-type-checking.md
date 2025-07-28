@@ -4,6 +4,8 @@ sidebar_label: "Advanced Type Checking"
 title: "Advanced Type Checking"
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 # Advanced Type Checking
 
 So once you decide that prop types is not enough for you, you might go to TypeScript or Flow. Lets have a look at them.

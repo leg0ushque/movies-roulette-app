@@ -4,6 +4,8 @@ sidebar_label: "Prop Drilling"
 title: "Prop drilling"
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 # Prop drilling
 
 We have functional component that stores the state, and we have lots of functional components that receive or expect to receive some part of that state.

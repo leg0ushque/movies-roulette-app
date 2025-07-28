@@ -4,6 +4,8 @@ sidebar_label: 'Error Boundaries'
 title: 'Error Boundaries'
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 # Error Boundaries [+ / review]
 
 ![Error Boundaries image 1](images/error-boundaries-img1.png)

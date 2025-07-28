@@ -4,6 +4,8 @@ sidebar_label: "Prop Types"
 title: "Prop Types"
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 # Prop Types
 
 ## What are PropsTypes?

@@ -4,6 +4,8 @@ sidebar_label: "Application Structure"
 title: "Application Structure"
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 # Application Structure
 
 So we have a lot of components, a lot of wrappers, a lot of patterns.

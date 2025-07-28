@@ -4,6 +4,8 @@ sidebar_label: 'Parent and Child'
 title: 'Parent and Child'
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 # Parent and Child
 
 ![Movies App Image 1](images/parent-and-child-img1.png)

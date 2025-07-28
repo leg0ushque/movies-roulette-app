@@ -4,6 +4,8 @@ sidebar_label: 'Layout Component'
 title: 'Layout Component'
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 # Layout Component
 
 ![Layout Component image 1](images/layout-component-img1.png)

@@ -4,6 +4,8 @@ sidebar_label: 'Higher-Order Components'
 title: 'Higher-Order Components'
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 # Higher-Order Components
 
 ## What is a Higher-Order Component(HOC)?

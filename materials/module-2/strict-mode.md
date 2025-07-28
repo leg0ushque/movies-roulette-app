@@ -4,6 +4,7 @@ sidebar_label: 'Strict Mode'
 title: 'Strict Mode'
 ---
 
+[Back to Contents](../../README.md#module-1)\
 
 # Strict Mode
 

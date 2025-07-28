@@ -3,6 +3,9 @@ sidebar_position: 1
 sidebar_label: 'Components'
 title: 'Components'
 ---
+
+[Back to Contents](../../README.md#module-1)\
+
 # Components
 
 Components are the core concepts of React.

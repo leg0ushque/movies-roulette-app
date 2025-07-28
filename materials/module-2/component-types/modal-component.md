@@ -4,6 +4,8 @@ sidebar_label: "Modal Component"
 title: "Modal Component"
 ---
 
+[Back to Contents](../../README.md#module-1)\
+
 # Modal Component in React
 
 In React, the `<App />` component is rendered inside a single `<div>` element with the id `#root`. However, nesting modals within other components can lead to issues like conflicting CSS styles (e.g., padding, margins, or positioning) that distort the modal's appearance or behavior.
