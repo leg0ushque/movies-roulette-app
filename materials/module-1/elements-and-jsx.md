@@ -1,10 +1,7 @@
----
-sidebar_position: 6
-sidebar_label: 'Elements and JSX'
-title: 'Elements and JSX'
----
+[⬅️ Elements and JSX](elements-and-jsx.md)  
+[History of React ➡️](history-of-react.md)
 
-[Back to Contents](../../README.md#module-1)
+[Back to Contents 📑](../../README.md#module-1)
 
 # Elements and JSX
 

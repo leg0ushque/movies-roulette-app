@@ -1,10 +1,7 @@
----
-sidebar_position: 3
-sidebar_label: 'History of React'
-title: 'History of React'
----
+[⬅️ Functional Paradigm](functional-paradigm.md)  
+[Advantages of React ➡️](advantages-of-react.md)
 
-[Back to Contents](../../README.md#module-1)
+[Back to Contents 📑](../../README.md#module-1)
 
 # History of React
 

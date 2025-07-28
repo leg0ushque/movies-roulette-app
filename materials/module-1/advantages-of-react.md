@@ -1,10 +1,7 @@
----
-sidebar_position: 4
-sidebar_label: 'Advantages of React'
-title: 'Advantages of React'
----
+[⬅️ History of React](history-of-react.md)  
+[Components ➡️](components.md)
 
-[Back to Contents](../../README.md#module-1)
+[Back to Contents 📑](../../README.md#module-1)
 
 # Advantages of React
 

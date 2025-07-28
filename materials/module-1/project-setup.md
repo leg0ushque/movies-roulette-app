@@ -1,10 +1,7 @@
----
-sidebar_position: 5
-sidebar_label: 'React Project Setup'
-title: 'React Project Setup'
----
+[⬅️ Prerequisites](prerequisites.md)  
+[Elements and JSX ➡️](elements-and-jsx.md)
 
-[Back to Contents](../../README.md#module-1)
+[Back to Contents 📑](../../README.md#module-1)
 
 The recommended way to set up a React project is to use a modern tooling method. There are multiple tools available to streamline your project setup and enhance development efficiency. Below, we will cover **Create React App (CRA)**, **Vite**, and how **webpack eject** works.
 

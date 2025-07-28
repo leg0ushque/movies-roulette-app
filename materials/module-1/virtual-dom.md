@@ -1,10 +1,7 @@
----
-sidebar_position: 8
-sidebar_label: 'Virtual DOM'
-title: 'Virtual DOM'
----
+[⬅️ Components](components.md)  
+[💻 TASK ➡️](task.md)
 
-[Back to Contents](../../README.md#module-1)
+[Back to Contents 📑](../../README.md#module-1)
 
 The **Virtual DOM (Document Object Model)** is a lightweight, in-memory representation of the actual DOM. React creates this virtual copy of the DOM to optimize updates and improve performance.
 

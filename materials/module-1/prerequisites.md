@@ -1,10 +1,6 @@
----
-sidebar_position: 1
-sidebar_label: 'Prerequisites'
-title: 'Prerequisites'
----
+[Project Setup ➡️](project-setup.md)
 
-[Back to Contents](../../README.md#module-1)
+[Back to Contents 📑](../../README.md#module-1)
 
 # Prerequisites
 

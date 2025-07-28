@@ -1,10 +1,7 @@
----
-sidebar_position: 7
-sidebar_label: 'Components'
-title: 'Components'
----
+[⬅️ Advantages of React](advantages-of-react.md)  
+[Virtual DOM ➡️](virtual-dom.md)
 
-[Back to Contents](../../README.md#module-1)
+[Back to Contents 📑](../../README.md#module-1)
 
 # Components
 

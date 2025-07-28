@@ -1,10 +1,6 @@
----
-sidebar_position: 9
-sidebar_label: '💻 TASK'
-title: 'Home Task Module #1. Core Concepts.'
----
+[⬅️ Virtual DOM](virtual-dom.md)
 
-[Back to Contents](../../README.md#module-1)
+[Back to Contents 📑](../../README.md#module-1)
 
 **Practical Task: Creating a React Component to Render a List of Items with Composition**
 
