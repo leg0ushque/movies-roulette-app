@@ -13,6 +13,8 @@ A component that renders a numeric value and two buttons: one to decrement the v
 The component should take an initial value in a property.\
 The component should be written using EcmaScript classes syntax, the `render` method should use `React.createElement` API (without JSX).
 
+![counter](./images/counter.jpg)
+
 **SearchForm**
 
 Refer to the design prototype, implement a component that renders a search input and a button that triggers a new search. The component should accept properties:\
