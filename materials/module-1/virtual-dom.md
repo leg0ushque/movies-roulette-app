@@ -1,5 +1,4 @@
 [⬅️ Components](components.md)  
-[💻 TASK ➡️](task.md)
 
 [Back to Contents 📑](../../README.md#module-1)
 

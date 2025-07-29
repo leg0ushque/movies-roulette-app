@@ -1,8 +1,7 @@
----
-sidebar_position: 2
-sidebar_label: 'Config File'
-title: 'Config File'
----
+[⬅️ Overview](overview.md)  
+[Plugins ➡️](plugins.md)  
+
+[Back to Contents 📑](../../README.md#module-8)
 
 # Config File
 

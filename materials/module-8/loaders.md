@@ -1,8 +1,7 @@
----
-sidebar_position: 5
-sidebar_label: 'Loaders'
-title: 'Loaders'
----
+[⬅️ Source Maps](source-maps.md)  
+[Dev Server ➡️](dev-server.md)  
+
+[Back to Contents 📑](../../README.md#module-8)
 
 # Loaders
 

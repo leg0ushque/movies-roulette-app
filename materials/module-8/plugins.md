@@ -1,8 +1,7 @@
----
-sidebar_position: 3
-sidebar_label: 'Plugins'
-title: 'Plugins'
----
+[⬅️ Config File](config-file.md)  
+[Source Maps ➡️](source-maps.md)  
+
+[Back to Contents 📑](../../README.md#module-8)
 
 # Plugins
 

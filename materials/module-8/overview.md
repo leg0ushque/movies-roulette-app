@@ -1,8 +1,6 @@
----
-sidebar_position: 1
-sidebar_label: 'Overview'
-title: 'Overview'
----
+[Config File ➡️](config-file.md)  
+
+[Back to Contents 📑](../../README.md#module-8)
 
 # Overview
 

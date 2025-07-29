@@ -1,8 +1,6 @@
----
-sidebar_position: 6
-sidebar_label: 'Dev Server'
-title: 'Dev Server'
----
+[⬅️ Loaders](loaders.md)  
+
+[Back to Contents 📑](../../README.md#module-8)
 
 # Dev Server
 

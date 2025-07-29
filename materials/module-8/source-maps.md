@@ -1,8 +1,7 @@
----
-sidebar_position: 4
-sidebar_label: 'Source Maps'
-title: 'Source Maps'
----
+[⬅️ Plugins](plugins.md)  
+[Loaders ➡️](loaders.md)  
+
+[Back to Contents 📑](../../README.md#module-8)
 
 # Source Maps
 
