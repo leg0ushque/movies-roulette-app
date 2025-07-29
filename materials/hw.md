@@ -3,26 +3,31 @@
 _To understand more how components work it's recommended to create a few interactive components.\
 Create the following three components and render them all on one page, so that you can play around with them and test their look and behavior._
 
-**Set up the environment**. Create a git repository on Github, Gitlab, Bitbucket or any other platform. Discuss with your mentor which platform is better. Use Vite or create-react-app to bootstrap a new app. Commit the changes to repository. Install extensions mentioned in the lecture (react developer tools, etc.).
+**Set up the environment**. 
+
+Create a git repository on Github, Gitlab, Bitbucket or any other platform. Discuss with your mentor which platform is better. Use Vite or create-react-app to bootstrap a new app. Commit the changes to repository. Install extensions mentioned in the lecture (react developer tools, etc.).
 
 **Counter**
+
 A component that renders a numeric value and two buttons: one to decrement the value by 1, another to increment the value by 1.\
 The component should take an initial value in a property.\
 The component should be written using EcmaScript classes syntax, the `render` method should use `React.createElement` API (without JSX).
 
 **SearchForm**
+
 Refer to the design prototype, implement a component that renders a search input and a button that triggers a new search. The component should accept two properties:\
 1.	Initial search query. Use the value to set the initial value for the input\
 2.	A "onSearch" callback property. Call the callback property every time the user presses Enter when the input has focus or when the user clicks the Search button. Pass current input value in callback arguments.
 
 **GenreSelect**
+
 Refer to the design prototype, implement a component that renders a list of movie genres with currently selected genre highlighted.\
 The component should accept three properties:\
 A list of genre names to display. Use the incoming list to render genre buttons.\
 A name of currently selected genre. Use the name to identify which button to highlight.\
 A "onSelect" callback property. Call the callback function when the user clicks on any genre button. Pass respective genre name to the callback arguments.
 
-*Q&A* 
+**Q&A** 
 - React components-based approach.
 - JSX
 - Virtual DOM
@@ -43,24 +48,31 @@ Check that you have jest and @testing-library/react packages installed for unit 
 If you haven't created all components from the previous module, finish them now. Cover the logic for all three with tests using these libraries.
 
 **Counter**
+
 - Test that component renders initial value provided in props
 - Test that a click event on "decrement" button decrements the displayed value
 - Test that a click event on "increment" button increments the displayed value
+- 
 **SearchForm**
+  
 - Test that component renders an input with the value equal to initial value passed in props
 - Test that after typing to the input and a "click" event on the Submit button, the "onChange" prop is called with proper value
 - Test that after typing to the input and pressing Enter key, the "onChange" prop is called with proper value
+- 
 **GenreSelect**
+  
 - Test that component renders all genres passed in props
 - Test that component highlights a selected genre passed in props
 - Test that after a click event on a genre button component calls "onChange" callback and passes correct genre in arguments
 
 **End-to-End Testing**
+
 Install and setup Cypress or WebdriverIO for end-to-end tests.
 
 Cover the logic for one of your components using the framework.
 
 **Q&A**
+
 - Types of tests?
 - What is a testing pyramid? Testing trophy/diamond?
 - Static code analysis tools (linters/prop-types/TypeScript).
@@ -73,9 +85,11 @@ _This module will give you an overview of basic React component syntax and their
 You will apply this knowledge in a practical task, where you will create more components for your future fully-functional app._
 
 **Install Storybook**
+
 Install and configure Storybook by following guide from the official website. In the end you should have a "storybook" npm script. When running "npm run storybook" it should start Storybook and open it in your browser.
 
 **Write Storybook stories for existing components**
+
 Create a story file for every component you created in previous modules. You should have at least one story for each of the following components (in total minimum 3):
 - Counter
 - SearchForm
@@ -84,18 +98,22 @@ Create a story file for every component you created in previous modules. You sho
 You can write more stories to cover several states of GenreSelect or SearchForm, but this is optional.
 
 **Implement other components**
+
 Based on Figma prototype implement the following components:
 
 **MovieTile**
+
 This component should render a movie tile from the list of movies.\
 It should take properties to receive image url, movie name, release year, and a list of relevant genres. Alternatively, you can define one component property to take an object with all movie info. Additionally, the component should receive a callback property to capture click event.\
 Optionally, you can implement a context menu popup that opens when a user clicks on three dots button and contains "Edit" and "Delete" menu items.
 
 **MovieDetails**
+
 This component will render movie details when a movie is selected from the list (clicked). The details include movie poster image on the left and the rest of info on the right.\
 The component should take properties to receive image url, movie name, release year, rating, duration and a description. Alternatively, you can specify a single property that accepts an object with all movie info.
 
 **SortControl**
+
 This component will render a label "Sort by" and a select control to the right. Select should have the following options: Release Date, Title. Think of having different sort orders 😊\
 The component should take a property that specifies current selection. Additionally, it should take a callback property to handle selection changes. The callback should be called every time a user changes "Sort by" value. The new value should be passed in callback arguments.\
 Use Storybook when implementing every individual component. Write a story for every component you create. It will help you to check the result and play around with some interactivity before you embed components into the app.
@@ -103,9 +121,11 @@ Use Storybook when implementing every individual component. Write a story for ev
 *Although, it's not required to implement high-fidelity design as per design prototype, it still makes sense to apply some styling to your components, so that you practice in styling React components and your final result looks good.*
 
 **Write tests**
+
 Cover new components with tests using jest and @testing-library/react. Verify necessary data is rendered as well as that behavior works correctly. You can write snapshot tests to cover the rendering. Although, remember that snapshot tests are fragile and will fail any time you change your component markup.
 
 **Q&A**
+
 - Types of components (smart/dumb, class/function, etc.)
 - How react detects change?
 - Props and state
@@ -117,6 +137,7 @@ Cover new components with tests using jest and @testing-library/react. Verify ne
 - Performance optimizations
  
 # HW4 – Advanced Components (1 week)
+
 This module will help you learn built-in tools for state management and component composition.\
 You will apply the composition in practice when will be doing the practical task.
 
@@ -125,6 +146,7 @@ You will apply the composition in practice when will be doing the practical task
 Implement the following new components. Use Storybook to manually verify your components look and behavior during development. Remember to cover these new components with tests.
 
 **Dialog**
+
 The component should render a modal dialog with custom content. It should use the Portals functionality. You can install and use react-portal npm package. Additionally, you can also install focus-trap-react package for better UX. Use Figma prototype to get inspiration about the visual design.
 
 The Dialog component should accept the following props:
@@ -156,10 +178,12 @@ Having implemented above components, now you can compose them to implement the f
 - Delete movie. Render Dialog with content from "delete movie" modal from Figma prototype.
  
 # HW5 – React Hooks (1 week)
+
 This module will explain the concept of hooks, their role in React architecture. It will give you an overview of built-in hooks as well as will learn how to create your own custom ones.\
 Then you will get enough practice in the most common hooks, useState and useEffect, by building a functional web app.
 
 **Prepare**
+
 1.	Install and configure eslint-plugin-react-hooks. It will help you identify mistakes when using hooks.
 2.	Clone the backend repository.
 3.	Navigate to the cloned repository folder and run "npm install" to install dependencies.
@@ -167,9 +191,11 @@ Then you will get enough practice in the most common hooks, useState and useEffe
 5.	Open Swagger API docs: http://localhost:4000/api-docs.
 
 **Implement movie list page**
+
 Now it's time to wire our components up and build the real app.
+
 Create a "MovieListPage" component. You will place all the markup and logic for the main page here. Using useState hook define several states for the component:
- 
+
 - search query
 - sort criterion
 - active genre
@@ -189,12 +215,14 @@ Handle click events on MovieTile and update the selected movie state when a movi
 As a result of this step, you should have a movie list page, with all controls working but without backend integration.
 
 **Implement effects**
+
 By using useEffect hook and Fetch API or axios, implement the following effect:
 When search query, sort criterion or active genre changes, make a request to the backend to get movies corresponding to the new parameters. On response, update movie list with response data. Don't forget to abort previous request in case the user quickly updates several parameters.
 If you're feeling like this is too simple, you can instead integrate react-query or SWR for fetching data. This would better resemble a production-grade project
  All functionality of the app except forms should work now.
 
 **Q&A**
+
 - Rules of hooks
 - Basic built-in hooks: useState, useReducer, useEffect, useRef
 - Optimization hooks: useMemo, useCallback 
@@ -206,11 +234,13 @@ If you're feeling like this is too simple, you can instead integrate react-query
 *The module will make you familiar with one of the most powerful tools for React apps — React Router. You will dive deep into its rich functionality and build your own complex use-cases.*
 
 **Install React Router**
+
 Open react-router tutorial in a separate browser tab. You will find it handy when doing this practical task.
 
 Install react-router-dom and define the root route to render your MovieListPage component. Use "/" value for route path. This will not change the app behavior. It should still load and work as before. But it will enable you to make further changes.
 
 **Move search parameters to URL**
+
 Currently you have several occurrences of useState in your component. You keep track of current search query, selected genre, sorting. All these parameters influence the list of movies to be displayed on the page. If you make changes and then refresh the page, all parameters will reset. Also, you can't share a link to specific search results with your friends. Let's fix it.
 
 Change your component to read current search query, sorting and active genre from the URL by using the "useSearchParams" hook provided by React Router. Don't forget that params may not be specified. To handle this case, you need to default them to specific values when reading.
@@ -240,6 +270,7 @@ Now you should be able to select a movie, refresh the page and still see the mov
 
 
 **Here's the complete description of desired behavior:**
+
 - Navigating to "/" displays a search form and a list of movies.
 - Entering a search query and submitting the search form, the URL updates with "query" search parameter containing the entered search query. The movie list is refreshed to reflect the entered search query.
 - Navigating to "/?query=abc" displays a search form with entered text "abc" and a movie list relevant to the search query.
@@ -252,6 +283,7 @@ Now you should be able to select a movie, refresh the page and still see the mov
 - Navigating to "/:movieId" where :movieId is a random valid movie ID, the page displays movie details on top and a list of movies on the bottom of the page.
 
 **Q&A**
+
 - Defining routes
 - Nested routes
 - Dynamic segments
@@ -267,9 +299,11 @@ This module will give you an overview of solutions to handle forms.
 You will pick one of the most popular solutions to create a fully functional form with input validation.
 
 **Install a form library**
+
 Currently the most popular form libraries for React are React Hook Form and Formik. We recommend you to review docs for each of them and then select one that you like better. Consult with your mentor when making the decision.
 
 **Implement a possibility to add movies**
+
 In Advanced Components module you should have created a Storybook story to showcase a composition of Dialog and MovieForm. In current module you will extend this logic to have a fully functioning form that will let you add new movies.
 
 If you open the design prototype, you will see that a form there is placed in a dialog window on top of the movie list page. In order to achieve this behavior and don't loose context when we add a new movie, you need to define another child route to the route that renders <SeachForm /> element. Use "/new" as a value for path and render a new AddMovieForm component (you need to create it). As a result you should have two levels of nesting. Then add an <Outlet /> to the SearchForm component, so that the router can render nested routes together with the movie search form.
@@ -282,6 +316,7 @@ On design prototype there's a link to add a new movie. Implement it, so that whe
 At the end of this step you should have a possibility to add new movies and then search for them in the list using previously built search functionality.
 
 **Implement a possibility to edit a movie**
+
 To edit an existing movie, you will need another route. According to the design prototype, editing also happens in a dialog window, similar to adding a new movie. Think about the best place to create your child route and create it similar to adding a new movie. Define the pathname yourself, although we recommend "/:movieId/edit".
 
 Similar to adding a new movie, implement a functionality to edit an existing movie. The difference is that you will need to load movie details and then send them to the MovieForm, so that all form fields get populated with existing data.
@@ -290,7 +325,7 @@ In a MovieCard context menu there's a link to edit the movie. When a user clicks
 At the end of this step you should have a possibility to edit any movie from the list.
 
 # Additional materials – Redux
+
 Routing + built-in state management is enough for most of the cases. But sometimes you need to write data-intensive apps where a more complex state management is needed. This module is intended to give you an overview of Redux library for state management and its architecture.
 
 You will be able to learn core principles of Redux as well as libraries that make it easier to use Redux.
-
