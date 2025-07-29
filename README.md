@@ -1,54 +1,11 @@
 # Movies-roulette App
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm run start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm run test`
-
-Launches the JEST test runner with coverage results showed for every file\
-
-### `npm run storybook`
-
-Runs the Storybook
-Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
-
-## E2E Tests
-
-E2E testing is currently available for MovieList page.
-Before running e2e, please, make sure you've Backend API running at https://localhost:4000 (see the 'Backend API' docs below)
-
-To run e2e tests, use *npm start* command first - that will launch the application. Then use
-
-### `npm run wdio`
-
-E2E tests will be run using Chromedriver.
-
-**Note: Remember that the opened Chrome window should be active in your OS to allow tests pass correctly. Please, don't let the e2e pass in the background (inactive Chrome window) - in this case the results may be faulty.**
-
-## Backend API
-
-1. Clone the backend repository from\
-https://github.com/VarvaraZadnepriak/MoviesAPI.ReactJS
-
-2. Navigate to the cloned repository folder and run "npm install" to install dependencies.
-
-3. Run "npm start" command to start the backend server. It will start on https://localhost:4000 .
-
-4. Make sure Swagger is available at http://localhost:4000/api-docs
-
 ## Contents:
 
-### Help Module
-- [Useful Links](./materials/help-module/useful-links.md)
+### Useful links
+1. [Figma Link](https://www.figma.com/design/fKGjrOqR6nJe6LYJopGCZ8/%5BCDP%5D-Home-Task-%E2%80%93-React-v1?node-id=0-1&node-type=canvas&t=3qab9fApk1C8RVpq-0)
+2. [React dev notes](https://react.dev/)
+3. [Old React dev notes](https://ru.legacy.reactjs.org/)
 
 ### Home works
 - [Preview](./materials/hw.md)
@@ -135,3 +92,48 @@ https://github.com/VarvaraZadnepriak/MoviesAPI.ReactJS
 - [Alternative Libraries](./materials/module-additional/alternative-libraries.md)
 - [Context](./materials/module-additional/context.md)
 - [Redux Toolkit](./materials/module-additional/redux-toolkit.md)
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm run start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm run test`
+
+Launches the JEST test runner with coverage results showed for every file\
+
+### `npm run storybook`
+
+Runs the Storybook
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
+
+## E2E Tests
+
+E2E testing is currently available for MovieList page.
+Before running e2e, please, make sure you've Backend API running at https://localhost:4000 (see the 'Backend API' docs below)
+
+To run e2e tests, use *npm start* command first - that will launch the application. Then use
+
+### `npm run wdio`
+
+E2E tests will be run using Chromedriver.
+
+**Note: Remember that the opened Chrome window should be active in your OS to allow tests pass correctly. Please, don't let the e2e pass in the background (inactive Chrome window) - in this case the results may be faulty.**
+
+## Backend API
+
+1. Clone the backend repository from\
+https://github.com/VarvaraZadnepriak/MoviesAPI.ReactJS
+
+2. Navigate to the cloned repository folder and run "npm install" to install dependencies.
+
+3. Run "npm start" command to start the backend server. It will start on https://localhost:4000 .
+
+4. Make sure Swagger is available at http://localhost:4000/api-docs

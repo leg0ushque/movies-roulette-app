@@ -15,9 +15,13 @@ The component should be written using EcmaScript classes syntax, the `render` me
 
 **SearchForm**
 
-Refer to the design prototype, implement a component that renders a search input and a button that triggers a new search. The component should accept two properties:\
+Refer to the design prototype, implement a component that renders a search input and a button that triggers a new search. The component should accept properties:\
 1.	Initial search query. Use the value to set the initial value for the input\
 2.	A "onSearch" callback property. Call the callback property every time the user presses Enter when the input has focus or when the user clicks the Search button. Pass current input value in callback arguments.
+
+Additional acceptance criterias:
+- clean the input on submit
+- submit input on pressing Enter
 
 **GenreSelect**
 
@@ -27,6 +31,9 @@ A list of genre names to display. Use the incoming list to render genre buttons.
 A name of currently selected genre. Use the name to identify which button to highlight.\
 A "onSelect" callback property. Call the callback function when the user clicks on any genre button. Pass respective genre name to the callback arguments.
 
+Additional acceptance criterias:
+- the selected genre must be highlighted
+
 **Q&A** 
 - React components-based approach.
 - JSX
@@ -34,8 +41,14 @@ A "onSelect" callback property. Call the callback function when the user clicks 
 - Components
 - Synthetic events
 - What makes React so popular?
- 
- 
+
+
+# HW1.5 - Updates
+
+- Add ESLint (https://eslint.org/) to your project.
+- Convert your code into TypeScript. Make sure everything works as before the changes!
+- Rewrite GenreSelect and SearchForm component in a functional style (React.FC) 
+
 # HW2 – Testing (1 week)
 
 _Testing is an essential part of software development lifecycle (SDLC). When writing something using React, you will almost always want to cover your code with stable tests that you can rely on.\
