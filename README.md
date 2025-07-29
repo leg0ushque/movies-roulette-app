@@ -2,6 +2,10 @@
 
 ## Available Scripts
 
+First run: do not forget to ensure all deps are downloaded. Please, run 
+
+### `npm install`
+
 In the project directory, you can run:
 
 ### `npm run start`
