@@ -1,13 +1,13 @@
 # Table of Contents
 
 - [HW 1 – Core concepts (3 days)](#hw-1--core-concepts-3-days)
-- [HW 1.5 – Updates](#hw-15--updates)
-- [HW 2 – Testing (1 week)](#hw-2--testing-1-week)
-- [HW 3 – Components (1 week)](#hw-3--components-1-week)
-- [HW 4 – Advanced Components (1 week)](#hw-4--advanced-components-1-week)
-- [HW 5 – React Hooks (1 week)](#hw-5--react-hooks-1-week)
-- [HW 6 – React Router (1 week)](#hw-6--react-router-1-week)
-- [HW 7 – Forms](#hw-7--forms)
+- [HW 1.5 – Updates](#hw15---updates)
+- [HW 2 – Testing (1 week)](#hw-2---testing-1-week)
+- [HW 3 – Components (1 week)](#hw-3---components-1-week)
+- [HW 4 – Advanced Components (1 week)](#hw-4---advanced-components-1-week)
+- [HW 5 – React Hooks (1 week)](#hw-5---react-hooks-1-week)
+- [HW 6 – React Router (1 week)](#hw-6---react-router-1-week)
+- [HW 7 – Forms](#hw-7---forms)
 - [Additional materials – Redux](#additional-materials--redux)
 
     
