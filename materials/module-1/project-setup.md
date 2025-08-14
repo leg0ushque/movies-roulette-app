@@ -10,53 +10,6 @@ https://nodejs.org/en/download
 
 Now you have options: to create with simple Create React App or with Vite
 
-### Using Create React App (CRA)
-
-Create React App is an officially supported way to set up a React project with minimal effort. Assuming you already have **Node.js** installed on your machine, you can create a new React app by running the following commands:
-
-Open CMD in the specific folder and execute following commands:
-```bash
-npx create-react-app my-app
-cd my-app
-npm start
-```
-
-Once installed, your project folder will look similar to this:
-
-![Create-React-App](./images/create-react-app.jpg)
-
-[//]: # (:::warning)
-
-[//]: # (Do not install additional libraries for your homework, you already have all needed dependencies.)
-
-[//]: # (:::)
-
-**What CRA Does:**
-CRA provides a fully configured environment with:
-- Babel and webpack for modern JavaScript bundling.
-- Support for React, JSX, ES6, TypeScript, and Flow syntax.
-- Pre-configured tools for CSS auto-prefixing and resetting/normalization.
-- A live development server for rapid feedback.
-- A build script to prepare your app for production with optimizations like minification, hashed filenames, and sourcemaps.
-- Built-in support for Progressive Web Apps (PWA) with service workers.
-
-**Ejecting from CRA:**
-If you need to customize the webpack configuration, CRA provides an `eject` command. Running this command extracts the configuration files, making them editable. However:
-- **Once ejected, it cannot be undone.**
-- Your project will lose the pre-configured simplicity of CRA.
-- You’ll need to manually manage dependencies and configurations like webpack, Babel, and ESLint.
-
-Run the command with caution:
-```bash
-npm run eject
-```
-
-[//]: # (:::warning)
-
-[//]: # (Do not run this command for your homework, you already have all needed dependencies.)
-
-[//]: # (:::)
-
 ### Using Vite for React
 
 **Vite** (pronounced "veet") is a modern alternative to CRA that focuses on speed and simplicity. It uses **ES Modules** during development for faster builds and a more efficient workflow.
@@ -114,3 +67,55 @@ After ejecting, you can modify files like `webpack.config.js` directly to suit y
 - **Eject** from CRA only if you require deep customization and are prepared for added complexity.
 
 Each approach has its pros and cons. Choose based on your project size, complexity, and development preferences. For small, fast projects, **Vite** might be the way to go. For larger, well-supported setups, **CRA** remains a solid choice.
+
+===
+
+Old approach:
+
+
+### Using Create React App (CRA)
+
+Create React App is an officially supported way to set up a React project with minimal effort. Assuming you already have **Node.js** installed on your machine, you can create a new React app by running the following commands:
+
+Open CMD in the specific folder and execute following commands:
+```bash
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+Once installed, your project folder will look similar to this:
+
+![Create-React-App](./images/create-react-app.jpg)
+
+[//]: # (:::warning)
+
+[//]: # (Do not install additional libraries for your homework, you already have all needed dependencies.)
+
+[//]: # (:::)
+
+**What CRA Does:**
+CRA provides a fully configured environment with:
+- Babel and webpack for modern JavaScript bundling.
+- Support for React, JSX, ES6, TypeScript, and Flow syntax.
+- Pre-configured tools for CSS auto-prefixing and resetting/normalization.
+- A live development server for rapid feedback.
+- A build script to prepare your app for production with optimizations like minification, hashed filenames, and sourcemaps.
+- Built-in support for Progressive Web Apps (PWA) with service workers.
+
+**Ejecting from CRA:**
+If you need to customize the webpack configuration, CRA provides an `eject` command. Running this command extracts the configuration files, making them editable. However:
+- **Once ejected, it cannot be undone.**
+- Your project will lose the pre-configured simplicity of CRA.
+- You’ll need to manually manage dependencies and configurations like webpack, Babel, and ESLint.
+
+Run the command with caution:
+```bash
+npm run eject
+```
+
+[//]: # (:::warning)
+
+[//]: # (Do not run this command for your homework, you already have all needed dependencies.)
+
+[//]: # (:::)
