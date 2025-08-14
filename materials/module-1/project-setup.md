@@ -29,10 +29,6 @@ Open CMD in the specific folder and execute following commands:
    npm run dev
    ```
 
-:::info
-We are using a CRA for this course hometask. Do not run this command for your template.
-:::
-
 2. Vite starts a development server almost instantly, even for larger projects.
 
 **Comparison with CRA:**
