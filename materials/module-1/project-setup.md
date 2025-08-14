@@ -8,8 +8,6 @@ The recommended way to set up a React project is to use a modern tooling method.
 ### Install NodeJS
 https://nodejs.org/en/download
 
-Now you have options: to create with simple Create React App or with Vite
-
 ### Using Vite for React
 
 **Vite** (pronounced "veet") is a modern alternative to CRA that focuses on speed and simplicity. It uses **ES Modules** during development for faster builds and a more efficient workflow.
