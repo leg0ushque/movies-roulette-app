@@ -8,10 +8,13 @@ The recommended way to set up a React project is to use a modern tooling method.
 ### Install NodeJS
 https://nodejs.org/en/download
 
+Now you have options: to create with simple Create React App or with Vite
+
 ### Using Create React App (CRA)
 
 Create React App is an officially supported way to set up a React project with minimal effort. Assuming you already have **Node.js** installed on your machine, you can create a new React app by running the following commands:
 
+Open CMD in the specific folder and execute following commands:
 ```bash
 npx create-react-app my-app
 cd my-app
@@ -65,6 +68,8 @@ npm run eject
 - Optimized for modern JavaScript with tools like **esbuild** and **Rollup**.
 
 **Setting up a React Project with Vite:**
+
+Open CMD in the specific folder and execute following commands:
 1. Install Vite via npm:
    ```bash
    npm create vite@latest my-app --template react
