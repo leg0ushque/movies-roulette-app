@@ -5,6 +5,9 @@
 
 The recommended way to set up a React project is to use a modern tooling method. There are multiple tools available to streamline your project setup and enhance development efficiency. Below, we will cover **Create React App (CRA)**, **Vite**, and how **webpack eject** works.
 
+### Install NodeJS
+https://nodejs.org/en/download
+
 ### Using Create React App (CRA)
 
 Create React App is an officially supported way to set up a React project with minimal effort. Assuming you already have **Node.js** installed on your machine, you can create a new React app by running the following commands:
